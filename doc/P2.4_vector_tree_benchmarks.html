@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta name="generator" content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org" />
+    <title>Boost C++ Libraries</title>
+    <link rel="icon" href="http://www.boost.org/favicon.ico" type="image/ico" />
+    <link rel="stylesheet" type="text/css" href="http://www.boost.org/style-v2/section-welcome.css" />
+    <link href="files/code.css" type="text/css" rel="stylesheet" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(http://www.boost.org/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta name="google-site-verification" content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" />
+  </head>
+  <!--
+Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html-->
+  <!--*******************************************************************************************************  -->
+  <!--                                       B O D Y                                                           -->
+  <!--*******************************************************************************************************  -->
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img src="http://www.boost.org//gfx/space.png"
+              alt="Boost C++ Libraries" class="heading-logo" /> <span class="heading-boost">Boost</span>
+            <span class="heading-cpplibraries">C++ Libraries</span>
+            <!-- Removing the next line, deletes the Preliminary text in the decoration od the top odf the page -->
+            <img src="img/preliminary.gif" alt="Preliminary" style="width: 300px; height: 80px;" />
+          </a></h1>
+        <p class="heading-quote"> <q>...one of the most highly regarded and
+            expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
+            <a href="http://www.gotw.ca/" class="external">Herb Sutter</a> and <a
+              href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu" class="external">Andrei
+              Alexandrescu</a>, <a href="http://safari.awprofessional.com/?XmlId=0321113586"
+              class="external">C++ Coding Standards</a></span></p>
+      </div>
+      <!--  div heading-inner--> </div>
+    <!-- - div  heading -->
+    <!--*******************************************************************************************************  -->
+    <!--                      T E X T   O F      T H E     P A G E                                               -->
+    <!--*******************************************************************************************************  -->
+    <div class="cuerpo_central">
+      <div class="cuerpo_texto"> <br />
+        <br />
+        <br />
+        <span style="font-size: 32pt;"> <span style="font-weight: bold; color: black;">
+            <a href="index.html">The [ Counter Tree + Suballocator ] Library</a></span>
+        </span><br />
+        <div>
+          <div class="author">
+            <h3 class="author"><br />
+              <span class="firstname"></span></h3>
+            <h3 class="author" style="font-style: italic;"><span class="firstname">Francisco
+                Jose Tapia</span>   Copyright © 2010-2012 Francisco Jose Tapia</h3>
+          </div>
+        </div>
+        <div>
+          <div class="legalnotice">
+            <p><span style="font-style: italic;">Distributed under the Boost
+                Software License, Version 1.0. (See accompanying file
+                LICENSE_1_0.txt or copy at </span><a target="_top" href="file:///LICENSE_1_0.txt"
+                style="font-style: italic;">
+                http://www.boost.org/LICENSE_1_0.txt </a><span style="font-style: italic;">)</span>
+            </p>
+          </div>
+        </div>
+        <br />
+        <div class="caja_menu"> <br />
+          <p><span style="font-size: 18pt;font-weight: bold; color: black;">Table
+              of Contents</span></p>
+          <br />
+              <a href="P2.0_vector_tree.html#countertree">2.- Counter Trees
+            with unordered elements ( <span class="texto_codigo">countertree::vector_tree</span>)</a>
+          <br />
+          <div style="margin-left: 40px;"> <a href="P2.0_vector_tree.html#description">2.1.-
+              Description</a><br />
+            <a href="P2.2_vector_tree_functions.html#functions">2.2.- Functions</a><br />
+            <a href="P2.3_vector_tree_examples.html#examples">2.3.- Examples</a><br />
+            <a href="P2.4_vector_tree_benchmarks.html#benchmarks">2.4.-
+              Benchmarks</a><br />
+            <br />
+          </div>
+        </div>
+        <br />
+        <br />
+        <!--*******************************************************************************************************  -->
+        <!--                                          B E N C H M A R K S                                            -->
+        <!--*******************************************************************************************************  -->
+        <a name="benchmarks"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">2.4.-
+          Benchmarks  <small>countertree::vector_tree</small> vs <small>
+            std::deque</small></span> <br />
+        <br />
+        This benchmark is composed by 3 programs:<br />
+        <br />
+        <span style="font-weight: bold; text-decoration: underline;">Program1 :
+          benchmark_vector_tree_01.cpp</span><br />
+        <br />
+        <p> </p>
+        <table cellspacing="0" border="1" cols="5" style="width: 738px; height: 259px;">
+          <colgroup width="236"></colgroup> <colgroup width="118"></colgroup> <colgroup
+            width="123"></colgroup> <colgroup width="121"></colgroup> <colgroup
+            width="122"></colgroup>
+          <tbody>
+            <tr>
+              <td height="23" align="CENTER" valign="MIDDLE" colspan="5"><font size="4">BENCHMARK_VECTOR_TREE_01
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td height="103" align="JUSTIFY" valign="MIDDLE" colspan="5"><b><u><font
+                      size="1"><br />
+                      This program made a 1000000 operations of insertion and
+                      deletion of 64 bits integers in a std::deque and in a
+                      vector_tree checking the time needed ( less is better).We
+                      have two cases :<br />
+                      a) Insertion and deletion in the first and last positions
+                      <br />
+                      b) Insertion and deletion in rnadom positions.</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="55" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><b>Data structure with 100 elements first &amp;
+                  last position</b></td>
+              <td align="LEFT"><b>Data structure with 1000000 elements first
+                  &amp; last positions</b></td>
+              <td align="LEFT"><b>Data structure with 100 elements random
+                  positions</b></td>
+              <td align="LEFT"><b>Data structure with 1000000 elements random
+                  positions</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::deque</b></td>
+              <td align="RIGHT" sdval="0,0109" sdnum="3082;">0,0109</td>
+              <td align="RIGHT" sdval="0,01097" sdnum="3082;">0,01097</td>
+              <td align="RIGHT" sdval="0,3071" sdnum="3082;">0,3071</td>
+              <td align="RIGHT" sdval="598,864" sdnum="3082;">598,864</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::vector_tree</b></td>
+              <td align="RIGHT" sdval="0,157" sdnum="3082;">0,157</td>
+              <td align="RIGHT" sdval="0,324" sdnum="3082;">0,324</td>
+              <td align="RIGHT" sdval="0,2682" sdnum="3082;">0,2682</td>
+              <td align="RIGHT" sdval="1,7708" sdnum="3082;">1,7708</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="test 1 GCC 4.7.2" src="img/benchmark_vector_tree_01_GCC.jpg" />
+        <p><span style="font-weight: bold; text-decoration: underline;">Program2
+            : benchmark_vector_tree_02.cpp</span><br />
+        </p>
+        <img align="justify" src="img/benchmark_vector_tree_linux_2.png" /><br />
+        <table cellspacing="0" border="1" cols="5">
+          <colgroup width="236"></colgroup> <colgroup width="118"></colgroup> <colgroup
+            width="123"></colgroup> <colgroup width="121"></colgroup> <colgroup
+            width="122"></colgroup>
+          <tbody>
+            <tr>
+              <td height="23" align="CENTER" valign="MIDDLE" colspan="5"><font size="4">BENCHMARK_VECTOR_TREE_02
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td height="74" align="JUSTIFY" valign="MIDDLE" colspan="5"><b><u><font
+                      size="1"><br />
+                      This program made a 100000 operations of insertion and
+                      deletion of std::set&lt;int&gt; with 100 elements inserted
+                      in a std::deque and in a vector_tree checking the time
+                      needed ( less is better).We have two cases :<br />
+                      a) Insertion and deletion in the first and last positions
+                      <br />
+                      b) Insertion and deletion in rnadom positions.</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="57" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><b>Data structure with 100 elements first &amp;
+                  last position</b></td>
+              <td align="LEFT"><b>Data structure with 100000 elements first
+                  &amp; last positions</b></td>
+              <td align="LEFT"><b>Data structure with 100 elements random
+                  positions</b></td>
+              <td align="LEFT"><b>Data structure with 100000 elements random
+                  positions</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::deque</b></td>
+              <td align="RIGHT" sdval="0,295" sdnum="3082;">0,295</td>
+              <td align="RIGHT" sdval="0,29" sdnum="3082;">0,29</td>
+              <td align="RIGHT" sdval="0,487" sdnum="3082;">0,487</td>
+              <td align="RIGHT" sdval="160,347" sdnum="3082;">160,347</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::vector_tree</b></td>
+              <td align="RIGHT" sdval="0,383" sdnum="3082;">0,383</td>
+              <td align="RIGHT" sdval="0,3206" sdnum="3082;">0,3206</td>
+              <td align="RIGHT" sdval="0,333" sdnum="3082;">0,333</td>
+              <td align="RIGHT" sdval="0,519" sdnum="3082;">0,519</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <br />
+        <img alt="program 2 GCC 4.7.2" src="img/benchmark_vector_tree_02_GCC.jpg" /><br />
+        <br />
+        <span style="font-weight: bold; text-decoration: underline;">Program3 :
+          benchmark_vector_tree_cnc.cpp</span><br />
+        <br />
+        This program shows the performance of an single core / parallel
+        algorithm used over the different kinds of vector_tree <br />
+        <br />
+        <table cellspacing="0" border="1" cols="2">
+          <colgroup width="441"></colgroup> <colgroup width="118"></colgroup>
+          <tbody>
+            <tr>
+              <td height="22" align="CENTER" valign="MIDDLE" colspan="2"><font size="4">BENCHMARK_VECTOR_TREE_CNC
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td height="63" align="JUSTIFY" valign="MIDDLE" colspan="2">This
+                program store 5000000 aleatory numbers in a vector_tree, and
+                must delete the non prime numbers, testing the time in seconds (
+                less is better) with different configurations</td>
+            </tr>
+            <tr>
+              <td height="36" align="LEFT"><b><font size="3">DATA STRUCTURE</font></b></td>
+              <td align="LEFT"><b><font size="3">Time spent</font></b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::vector_tree ( 1 core)</b></td>
+              <td align="RIGHT" sdval="13,5564" sdnum="3082;">13,5564</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::vector_tree_pool (1
+                  core)</b></td>
+              <td align="RIGHT" sdval="13,572" sdnum="3082;">13,572</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::vector_tree_cnc ( 4
+                  cores)</b></td>
+              <td align="RIGHT" sdval="3,7576" sdnum="3082;">3,7576</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::vector_tree_pool_cnc
+                  ( 4 cores)</b></td>
+              <td align="RIGHT" sdval="3,5256" sdnum="3082;">3,5256</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img src="img/benchmark_vector_tree_cnc_GCC.jpg" alt="program 3 GCC4.7.2" /><br />
+        The test had been done with  GCC 4.7.2 64 bits running on a QuadCore 2.4
+        GHz. with the C0x options activated. <br />
+        <br />
+        <img align="justify" src="img/benchmark_vector_tree_linux.png" /> <br />
+        <br />
+        <!--*******************************************************************************************************  -->
+        <!--                             I C O N O S   P A R T E   I N F E R I O R                                  -->
+        <!--*******************************************************************************************************  -->
+        <a style="float:right" href="P3.0_set_map.html" title="set map"><img src="img/next.png"
+            alt="next page" /></a> <a style="float:right" href="P2.0_vector_tree.html"
+          title="home page"><img src="img/up.png" alt="go to head of the page" /></a>
+        <a style="float:right" href="P2.3_vector_tree_examples.html" title="vector_tree examples"><img
+            alt="previous page" src="img/prev.png" /></a> <a style="float:right"
+          href="index.html" title="home"><img alt="home page" src="img/home.png" /></a>
+        <br />
+      </div>
+    </div>
+    <!--*******************************************************************************************************  -->
+    <!--                    T A B L A    I N F E R I O R   D E   L A    P A G I N A                              -->
+    <!--*******************************************************************************************************  -->
+    <table width="100%" xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision">
+      <tbody>
+        <tr>
+          <td align="left">
+            <p><small>Last revised: September  08, 2010 at 21:42:41 GMT</small></p>
+          </td>
+          <td align="right"> <br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <!-- div cuerpo_texto -->
+    <!-- div cuerpo central -->
+    <!--  div body -->
+    <!--*******************************************************************************************************  -->
+    <!--                                      F O O T E R                                                        -->
+    <!--*******************************************************************************************************  -->
+    <div id="footer">
+      <div id="footer-left">
+        <div id="copyright">
+          <p>Copyright Francisco Jose Tapia 2010 -2012.</p>
+        </div>
+        <div id="license">
+          <p>Distributed under the <a href="/LICENSE_1_0.txt" class="internal">Boost
+              Software License, Version 1.0</a>.</p>
+        </div>
+      </div>
+      <div id="footer-right">
+        <div id="banners">
+          <p id="banner-xhtml"> <a href="http://validator.w3.org/check?uri=referer"
+              class="external">XHTML 1.0</a></p>
+          <p id="banner-css"> <a href="http://jigsaw.w3.org/css-validator/check/referer"
+              class="external">CSS</a></p>
+          <p id="banner-osi"> <a href="http://www.opensource.org/docs/definition.php"
+              class="external">OSI Certified</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

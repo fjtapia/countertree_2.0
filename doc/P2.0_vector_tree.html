@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org"
+      name="generator" />
+    <title>Boost C++ Libraries</title>
+    <link type="image/ico" href="http://www.boost.org/favicon.ico" rel="icon" />
+    <link href="http://www.boost.org/style-v2/section-welcome.css" type="text/css"
+      rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="files/code.css" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(http://www.boost.org/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" name="google-site-verification" />
+  </head>
+  <!--
+Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html-->
+  <!--*******************************************************************************************************  -->
+  <!--                                       B O D Y                                                           -->
+  <!--*******************************************************************************************************  -->
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img class="heading-logo"
+              alt="Boost C++ Libraries" src="http://www.boost.org//gfx/space.png" />
+            <span class="heading-boost">Boost</span> <span class="heading-cpplibraries">C++
+              Libraries</span>
+            <!-- Removing the next line, deletes the Preliminary text in the decoration od the top odf the page -->
+            <img style="width: 300px; height: 80px;" alt="Preliminary" src="img/preliminary.gif" />
+          </a></h1>
+        <p class="heading-quote"> <q>...one of the most highly regarded and
+            expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
+            <a class="external" href="http://www.gotw.ca/">Herb Sutter</a> and <a
+              class="external" href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu">Andrei
+              Alexandrescu</a>, <a class="external" href="http://safari.awprofessional.com/?XmlId=0321113586">C++
+              Coding Standards</a></span></p>
+      </div>
+      <!--  div heading-inner--> </div>
+    <!-- - div  heading -->
+    <!--*******************************************************************************************************  -->
+    <!--                      T E X T   O F      T H E     P A G E                                               -->
+    <!--*******************************************************************************************************  -->
+    <div class="cuerpo_central">
+      <div class="cuerpo_texto"> <br />
+        <br />
+        <span style="font-size: 24pt;"> <span style="font-weight: bold; color: black;">
+            <a href="index.html">The [ Counter Tree + Suballocator ] Library</a>
+          </span></span><br />
+        <div>
+          <div class="author">
+            <h3 class="author"><br />
+              <span class="firstname"></span></h3>
+            <h3 style="font-size: 10pt; font-style: italic; font-weight: bold" class="author">
+              <span style="font-weight: bold;"><span class="firstname" style="font-weight: bold;">Francisco
+                  Jose Tapia</span>   Copyright © 2010-2013 Francisco Jose Tapia</span></h3>
+          </div>
+        </div>
+        <div class="legalnotice">
+          <p><span style="font-size: 10pt; font-style: italic; font-weight: bold">Distributed
+              under the Boost Software License, Version 1.0. (See accompanying
+              file LICENSE_1_0.txt or copy at <a href="file:///LICENSE_1_0.txt"
+                target="_top"> http://www.boost.org/LICENSE_1_0.txt )</a></span>
+          </p>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="caja_menu"> <br />
+          <p><span style="font-size: 18pt;font-weight: bold; color: black;">Table
+              of Contents</span></p>
+          <br />
+              <a href="P2.0_vector_tree.html#countertree">2.- Counter Trees
+            with unordered elements ( <span class="texto_codigo">countertree::vector_tree</span>)</a>
+          <br />
+          <div style="margin-left: 40px;"> <a href="P2.0_vector_tree.html#description">2.1.-
+              Description</a><br />
+            <a href="P2.2_vector_tree_functions.html#functions">2.2.- Functions</a><br />
+            <a href="P2.3_vector_tree_examples.html#examples">2.3.- Examples</a><br />
+            <a href="P2.4_vector_tree_benchmarks.html#benchmarks">2.4.-
+              Benchmarks</a><br />
+            <br />
+          </div>
+        </div>
+        <br />
+        <br />
+        <a name="countertree"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">2.-
+          Countertrees with unordered elements</span>
+        <p>  <br />
+        </p>
+        <p><a name="description"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">2.1.-
+            Description </span></p>
+        <br />
+        With the information unordered, we have the <span style="font-weight: bold;">vector_tree</span>
+        data structure. This data structure have the same interface than a <span
+          style="font-weight: bold;">std::vector</span> and <span style="font-weight: bold;">std::deque</span>. 
+        You can access to the elements by their position. You can use iterators
+        like pointers, because they are random-access. <br />
+        <br />
+        <p>The insertion or deletion don't imply any movement of data. It's only
+          insertion or deletion of a node in the tree. <span style="font-weight: bold;">The
+            operations of  insertion, deletion and access to elements are
+            O(log(N)) operations.</span></p>
+        <p><br />
+          <span style="font-weight: bold;"></span></p>
+        <p>Internally the tree have a pointer to the first element and a pointer
+          to the last. The insertion or deletion in the first or last position
+          with the operations <span style="font-weight: bold;">push_front,
+            push_back , pop_front and pop_back</span> are operations O(1),
+          because they don't need travel by the tree to find the position to
+          insert or the node to delete.</p>
+        <p><br />
+        </p>
+        <p>The STL <span style="font-weight: bold;">std::vector </span>and <span
+            style="font-weight: bold;">std::deque</span> are very fast inserting
+          and deleting at the extreme, but very slow if you must insert or
+          delete in other positions . The <span style="font-weight: bold;">countertree::vector_tree</span>
+          is slower inserting and deleting at the begin or the end, but much
+          more faster inserting and deleting in any other position. </p>
+        <p><br />
+        </p>
+        <p>The <span style="font-weight: bold;">vector_tree</span> don't
+          pretend substitute the STL vector or the deque. It's only an
+          alternative useful if have a vector and must insert or delete elements
+          mainly in central positions.  It is very useful in the problems with
+          priority queues </p>
+        <p><br />
+          <span style="font-weight: bold;"></span></p>
+        <br />
+        <table cellspacing="1" cellpadding="1" border="1" style="text-align: left; margin-left: 40px; width: 764px; height: 113px;">
+          <tbody>
+            <tr>
+              <td style="vertical-align: top;"><br />
+              </td>
+              <td style="vertical-align: top; font-style: italic;"><span style="font-weight: bold;">Insert
+                  first/last </span><br style="font-weight: bold;" />
+                <span style="font-weight: bold;"> position</span><br />
+              </td>
+              <td style="vertical-align: top; font-style: italic;"><span style="font-weight: bold;">Insert
+                  </span><br style="font-weight: bold;" />
+                <span style="font-weight: bold;"> central position</span><br />
+              </td>
+              <td style="vertical-align: top; font-style: italic;"><span style="font-weight: bold;">Delete
+                  </span><br style="font-weight: bold;" />
+                <span style="font-weight: bold;"> central position</span><br />
+              </td>
+              <td style="vertical-align: top; font-style: italic;"><span style="font-weight: bold;">Access</span><br
+                  style="font-weight: bold;" />
+                <span style="font-weight: bold;"> central position</span><br />
+              </td>
+              <td style="vertical-align: top; font-style: italic; height: 63px;"><span
+                  style="font-weight: bold;">Access</span><br style="font-weight: bold;" />
+                <span style="font-weight: bold;"> first/last position</span><br />
+              </td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; width: 121.567px;"><span style="font-weight: bold;">vector
+                  , deque</span><br />
+              </td>
+              <td style="vertical-align: top; width: 83.317px;"> O ( 1 )<br />
+              </td>
+              <td style="vertical-align: top; width: 90.2667px;"> O (N )<br />
+              </td>
+              <td style="vertical-align: top; width: 92.2497px;"> O (N )</td>
+              <td style="vertical-align: top; width: 89.25px;"> O ( 1 )</td>
+              <td style="vertical-align: top; width: 84.5833px;"> O ( 1 )</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top;"><span style="font-weight: bold;">vector_tree </span> <br />
+              </td>
+              <td style="vertical-align: top;">O ( 1  )<br />
+              </td>
+              <td style="vertical-align: top;">O (log (N) )</td>
+              <td style="vertical-align: top;">O (log (N) )</td>
+              <td style="vertical-align: top;">O (log (N) )</td>
+              <td style="vertical-align: top;">O ( 1 )</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <span style="font-style: italic; text-decoration: underline; font-weight: bold;">
+        </span><br />
+        Like in the STL vector, you have the function<span style="font-weight: bold;">
+          at</span> and the <span style="font-weight: bold;">operator[ ]</span>
+        for to access to the elements. The two functions use checked access to
+        the elements<br />
+        <br />
+        <div class="caja_codigo texto_codigo"> <br />
+          <br />
+          <span style="font-family: monospace;"><span class="style5">const </span>
+            <span class="style11">value_type </span> <span class="style10">&amp;
+              </span> <span class="style11">at </span> <span class="style10">(
+            </span> <span class="style11">size_type Pos</span> <span class="style10">)
+            </span> <span class="style5">const</span> <span class="style5">   
+                </span> <span class="style11"><br />
+                    value_type</span> <span class="style10">&amp; </span> <span
+              class="style11">at </span> <span class="style10">( </span> <span
+              class="style11">size_type Pos</span> <span class="style10">) </span>
+            <span class="style5"></span> <br />
+            <br />
+            <span class="style5">const </span> <span class="style11">value_type</span>
+            <span class="style10">&amp; </span> <span class="style11">operator[
+              ] </span> <span class="style10">( </span> <span class="style11">size_type
+              Pos</span> <span class="style10">) </span> <span class="style5">const</span>
+                  <span class="style5"></span> <span class="style11"><br />
+                    value_type </span> <span class="style10">&amp; </span> <span
+              class="style11">operator[ ] </span> <span class="style10">( </span>
+            <span class="style11">size_type Pos</span> <span class="style10">)
+              <br />
+              <br />
+            </span><span class="style5"></span> </span> </div>
+        <br />
+        <br />
+        Additionally, you have two functions, in order to simplify the work with
+        positions.The functions <span style="font-weight: bold;">insert_pos </span>and<span
+          style="font-weight: bold;"> erase_pos</span>, permit  to you manage
+        the elements by their position, without iterators.<br />
+        <br />
+        <div class="caja_codigo texto_codigo"> <br />
+          <span class="style16">iterator </span><span class="style11">insert_pos
+            </span><span class="style10">( </span><span class="style5">const </span><span
+            class="style16">value_type </span><span class="style10">&amp; </span><span
+            class="style11">D </span><span class="style10">, </span><span class="style16">size_type
+            </span><span class="style11">Pos</span><span class="style10">);</span>
+          <br />
+          <br />
+          <span class="style5">void </span><span class="style11">erase_pos </span><span
+            class="style10">( </span><span class="style16">size_type </span><span
+            class="style11">Pos</span><span class="style10">);</span> <br />
+          <span class="body"></span><span class="style5">void </span><span class="style11">erase_pos
+            </span><span class="style10">( </span><span class="style16">size_type
+            </span><span class="style11">Prim</span><span class="style10">, </span><span
+            class="style16">size_type </span><span class="style11">Ult</span><span
+            class="style10">);<br />
+          </span> <span class="style11"></span><span class="style10"></span><span
+            class="style5"></span><span class="style10"></span><span class="style5"></span>
+        </div>
+        <br />
+        <br />
+        <!--*******************************************************************************************************  -->
+        <!--                             I C O N O S   P A R T E   I N F E R I O R                                  -->
+        <!--*******************************************************************************************************  -->
+        <a style="float:right" href="P2.2_vector_tree_functions.html" title="vector_tree functions"><img
+            src="img/next.png" alt="next page" /></a> <a style="float:right" href="P2.0_vector_tree.html"
+          title="home page"><img src="img/up.png" alt="go to head of the page" /></a>
+        <a style="float:right" href="P1.5_next_improvements.html" title="next_improvements"><img
+            alt="previous page" src="img/prev.png" /></a> <a style="float:right"
+          href="index.html" title="home"><img alt="home page" src="img/home.png" /></a>
+      </div>
+    </div>
+    <table width="100%" xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision">
+      <tbody>
+        <tr>
+          <td align="left">
+            <p><small>Last revised: September  08, 2010 at 21:42:41 GMT</small></p>
+          </td>
+          <td> <br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <!-- div cuerpo_texto -->
+    <!-- div cuerpo central -->
+    <!--  div body -->
+    <!--*******************************************************************************************************  -->
+    <!--                                      F O O T E R                                                        -->
+    <!--*******************************************************************************************************  -->
+    <div id="footer">
+      <div id="footer-left">
+        <div id="copyright">
+          <p>Copyright Francisco Jose Tapia 2010 -2012.</p>
+        </div>
+        <div id="license">
+          <p>Distributed under the <a class="internal" href="/LICENSE_1_0.txt">Boost
+              Software License, Version 1.0</a>.</p>
+        </div>
+      </div>
+      <div id="footer-right">
+        <div id="banners">
+          <p id="banner-xhtml"> <a class="external" href="http://validator.w3.org/check?uri=referer">XHTML
+              1.0</a></p>
+          <p id="banner-css"> <a class="external" href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></p>
+          <p id="banner-osi"> <a class="external" href="http://www.opensource.org/docs/definition.php">OSI
+              Certified</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

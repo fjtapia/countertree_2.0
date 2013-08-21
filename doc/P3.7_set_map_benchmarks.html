@@ -1,0 +1,749 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta name="generator" content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org" />
+    <title>Boost C++ Libraries</title>
+    <link rel="icon" href="http://www.boost.org/favicon.ico" type="image/ico" />
+    <link rel="stylesheet" type="text/css" href="http://www.boost.org/style-v2/section-welcome.css" />
+    <link href="files/code.css" type="text/css" rel="stylesheet" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(http://www.boost.org/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta name="google-site-verification" content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" />
+  </head>
+  <!-- Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html -->
+  <!--***************************************************************************************** -->
+  <!--                                     B O D Y                                              -->
+  <!--***************************************************************************************** -->
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img src="http://www.boost.org//gfx/space.png"
+              alt="Boost C++ Libraries" class="heading-logo" /> <span class="heading-boost">Boost</span>
+            <span class="heading-cpplibraries">C++ Libraries</span>
+            <!-- Removing the next line, deletes the Preliminary text in the decoration od the top odf the page -->
+            <img src="img/preliminary.gif" alt="Preliminary" style="width: 300px; height: 80px;" />
+          </a></h1>
+        <p class="heading-quote"> <q>...one of the most highly regarded and
+            expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
+            <a href="http://www.gotw.ca/" class="external">Herb Sutter</a> and <a
+              href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu" class="external">Andrei
+              Alexandrescu</a>, <a href="http://safari.awprofessional.com/?XmlId=0321113586"
+              class="external">C++ Coding Standards</a></span></p>
+      </div>
+      <!--  div heading-inner--> </div>
+    <!-- - div  heading -->
+    <!--***************************************************************************************** -->
+    <!--                      T E X T   O F      T H E     P A G E                                -->
+    <!--***************************************************************************************** -->
+    <div class="cuerpo_central">
+      <div class="cuerpo_texto">
+        <!--***************************************************************************************** -->
+        <!--                       M E N U     P R I N C I P A L                                      -->
+        <!--***************************************************************************************** -->
+        <br />
+        <br />
+        <span style="font-size: 24pt;"> <span style="font-weight: bold; color: black;">
+            <a href="index.html">The [ Counter Tree + Suballocator ] Library</a>
+          </span></span><br />
+        <div>
+          <div class="author">
+            <h3 class="author"><br />
+              <span class="firstname"></span></h3>
+            <h3 class="author" style="font-size: 10pt; font-style: italic; font-weight: bold">
+              <span style="font-weight: bold;"><span style="font-weight: bold;"
+                  class="firstname">Francisco Jose Tapia</span>   Copyright ©
+                2010-2013 Francisco Jose Tapia</span></h3>
+          </div>
+        </div>
+        <div class="legalnotice">
+          <p><span style="font-size: 10pt; font-style: italic; font-weight: bold">Distributed
+              under the Boost Software License, Version 1.0. (See accompanying
+              file LICENSE_1_0.txt or copy at <a target="_top" href="file:///LICENSE_1_0.txt">
+                http://www.boost.org/LICENSE_1_0.txt )</a></span> </p>
+        </div>
+        <br />
+        <br />
+        <div class="caja_menu"> <br />
+          <span style="font-size: 16pt;font-weight: bold; color: black;">Table
+            of Contents</span><br />
+          <br />
+          <div style="margin-left: 40px;"> <a href="P3.0_set_map.html">3.-
+              Ordered elements </a> <span class="texto_codigo">(countertree
+              set, multiset, map and multimap)</span> </div>
+          <div style="margin-left: 80px;"> <a href="P3.0_set_map.html#description">3.1.-
+              Description</a><br />
+            <a href="P3.2_set_functions.html#functions">3.2.- set functions </a><br />
+            <a href="P3.3_multiset_functions.html#functions">3.3.- multiset
+              functions </a><br />
+            <a href="P3.4_map_functions.html#functions">3.4.- map functions  </a><br />
+            <a href="P3.5_multimap_functions.html#functions">3.5.- multimap
+              functions </a><br />
+            <a href="P3.6_set_map_examples.html#examples">3.6.- Examples</a><br />
+            <a href="P3.7_set_map_benchmarks.html#benchmarks">3.7.- Benchmarks </a><br />
+            <div style="margin-left: 40px;"> <a href="P3.7_set_map_benchmarks.html#gcc">3.7.1.-
+                Benchmarks GCC 4.7</a><br />
+              <a href="P3.7_set_map_benchmarks.html#vc++">3.7.2.- Benchmarks
+                VC++13</a><br />
+              <a href="P3.7_set_map_benchmarks.html#clang">3.7.3.- Benchmarks
+                CLANG 3.3</a><br />
+              <br />
+            </div>
+          </div>
+        </div>
+        <!--                         Fin div caja_menu                                                         -->
+        <br />
+        <br />
+        <!--***************************************************************************************** -->
+        <!--                      D E S C R I P T I O N                                               -->
+        <!--***************************************************************************************** --><br />
+        <br />
+        <!--***************************************************************************************** -->
+        <!--                                       B E N C H M A R K S                                 -->
+        <!--***************************************************************************************** -->
+        <p><a name="benchmarks"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">3.7.-
+            Benchmarks (GCC 4.7, VC++ 13, CLANG 3.3) </span></p>
+        <p> </p>
+        The next graphs show you the time comparing the  <span style="font-weight: bold;">std::set,
+          countertree::set, and countertree_set_pool</span>. Take consideration
+        that the countertree structures are more complex than the STL structures
+        due to they must manage not only the pointers, they must manage too the
+        counters of the nodes, which permit the access by position.<br />
+        <br />
+        The benchmark have 3 parts:<br />
+        <ol style="margin-left: 40px;">
+          <li>The insertion of several collections of 30.000.000 numbers of 64
+            bits in the Data Structure selected from from a menu, checking the
+            time needed by each data structure in seconds ( less is better).</li>
+          <li>The same but checking the RAM memory used by the program with all
+            the elements allocated and with all the elements deallocated. This
+            shows the memory consumption, and the capability of the allocators
+            for to return memory to the operating system and decrease the memory
+            used by the program.</li>
+          <li><b><u><font size="1">This program make the intersection of two
+                  sets with 25000000 elements filled with random numbers
+                  checking the time needed ( less is better). This procedure is
+                  done in three different ways</font></u></b></li>
+        </ol>
+        <ul style="margin-left: 80px;">
+          <li><b><u><font size="1">The single core function use the same
+                  algorithm running over a countertree::set</font></u></b></li>
+          <li><b><u><font size="1">The 4 cores function use a <span style="font-weight: bold;">concurrent
+                    algorithm</span> running over a countertree::set_cnc.</font></u></b></li>
+          <li><b><u><font size="1">Using the function set_intersection, defined
+                  in &lt;algorithm&gt;</font></u></b></li>
+        </ul>
+        <b><u><font size="1"> </font></u></b><br />
+        <br />
+        <a name="gcc"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">3.7.1.-
+          Benchmarks GCC 4.7</span><br />
+          <img alt="" src="img/benchmark_set_GCC.png" /><br />
+        <table cellspacing="0" border="1" cols="7">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup> <colgroup
+            width="86"></colgroup> <colgroup width="85" span="2"></colgroup>
+          <tbody>
+            <tr>
+              <td height="23" align="CENTER" valign="MIDDLE" colspan="7"><font size="4">BENCHMARK_SET
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td height="27" align="LEFT" valign="MIDDLE" colspan="7"><b><u><font
+                      size="1"><br />
+                      This program insert 30000000 elements of 64 bits checking
+                      the time needed ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="32" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><b>sorted elements</b></td>
+              <td align="LEFT"><b>few repeated</b></td>
+              <td align="LEFT"><b>quite repeated</b></td>
+              <td align="LEFT"><b>many repeated</b></td>
+              <td align="LEFT"><b>equal elements</b></td>
+              <td align="LEFT"><b>TIME TOTAL</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="16,52">16,52</td>
+              <td align="RIGHT" sdnum="3082;" sdval="54,49">54,49</td>
+              <td align="RIGHT" sdnum="3082;" sdval="70,198">70,198</td>
+              <td align="RIGHT" sdnum="3082;" sdval="7,26">7,26</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,1">0,1</td>
+              <td align="RIGHT" sdnum="3082;" sdval="148,568">148,568</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set + suballocator</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="10,1">10,1</td>
+              <td align="RIGHT" sdnum="3082;" sdval="43,61">43,61</td>
+              <td align="RIGHT" sdnum="3082;" sdval="39,7">39,7</td>
+              <td align="RIGHT" sdnum="3082;" sdval="4,2">4,2</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,1">0,1</td>
+              <td align="RIGHT" sdnum="3082;" sdval="97,71">97,71</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set </b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="17,659">17,659</td>
+              <td align="RIGHT" sdnum="3082;" sdval="63,23">63,23</td>
+              <td align="RIGHT" sdnum="3082;" sdval="77,089">77,089</td>
+              <td align="RIGHT" sdnum="3082;" sdval="7,58">7,58</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,129">0,129</td>
+              <td align="RIGHT" sdnum="3082;" sdval="165,687">165,687</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_pool</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="18,81">18,81</td>
+              <td align="RIGHT" sdnum="3082;" sdval="50,56">50,56</td>
+              <td align="RIGHT" sdnum="3082;" sdval="44,15">44,15</td>
+              <td align="RIGHT" sdnum="3082;" sdval="3,98">3,98</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,24">0,24</td>
+              <td align="RIGHT" sdnum="3082;" sdval="117,74">117,74</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_cnc</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="19,39">19,39</td>
+              <td align="RIGHT" sdnum="3082;" sdval="63,51">63,51</td>
+              <td align="RIGHT" sdnum="3082;" sdval="79,75">79,75</td>
+              <td align="RIGHT" sdnum="3082;" sdval="11,35">11,35</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,32">0,32</td>
+              <td align="RIGHT" sdnum="3082;" sdval="174,32">174,32</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_pool_cnc</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="20,37">20,37</td>
+              <td align="RIGHT" sdnum="3082;" sdval="52,12">52,12</td>
+              <td align="RIGHT" sdnum="3082;" sdval="45">45</td>
+              <td align="RIGHT" sdnum="3082;" sdval="4,17">4,17</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,2">0,2</td>
+              <td align="RIGHT" sdnum="3082;" sdval="121,86">121,86</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img src="img/benchmark_set_time_GCC.jpg" alt="set time GCC" /><br />
+        <table cellspacing="0" border="1" cols="3" style="width: 634px; height: 295px;">
+          <tbody>
+            <tr>
+              <td height="44" align="JUSTIFY" valign="MIDDLE" colspan="3"><u><font
+                    size="4">BENCHMARK_SET memory size ( less is better)</font></u></td>
+            </tr>
+            <tr>
+              <td height="58" align="JUSTIFY" valign="MIDDLE" colspan="3"><b><u><font
+                      size="1"><br />
+                      This program make allocations and deallocations of
+                      30000000 elements of 64 bits checking the memory size used
+                      ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="59" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><b>Memory with all the elements allocated</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1407324">1407324</td>
+              <td align="RIGHT" sdnum="3082;" sdval="1407504">1407504</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set + suballocator</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1177784">1177784</td>
+              <td align="RIGHT" sdnum="3082;" sdval="2708">2708</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set </b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1407324">1407324</td>
+              <td align="RIGHT" sdnum="3082;" sdval="1407512">1407512</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_pool</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1177376">1177376</td>
+              <td align="RIGHT" sdnum="3082;" sdval="2712">2712</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_cnc</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1407328">1407328</td>
+              <td align="RIGHT" sdnum="3082;" sdval="1407508">1407508</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_pool_cnc</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1177876">1177876</td>
+              <td align="RIGHT" sdnum="3082;" sdval="2708">2708</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img src="img/benchmark_set_size_GCC.jpg" alt="set size GCC" /><br />
+        <table cellspacing="0" border="1" style="width: 664px; height: 271px;" cols="2">
+          <colgroup width="284"></colgroup> <colgroup width="131"></colgroup>
+          <tbody>
+            <tr>
+              <td height="23" align="CENTER" valign="MIDDLE" colspan="2"><font size="4">BENCHMARK_SET_INTERSECTION_CNC</font></td>
+            </tr>
+            <tr>
+              <td height="97" align="JUSTIFY" valign="MIDDLE" colspan="2"><b><u><font
+                      size="1"><br />
+                      This program make the intersection of two sets with
+                      25000000 elements filled with random numbers checking the
+                      time needed ( less is better).<br />
+                      The 4 cores function use a <span style="font-weight: bold;">concurrent
+                        algorithm</span> running over a countertree::set_cnc.<br />
+                      The single core function use the same algorithm running
+                      over a countertree::set</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="30" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><span style="font-weight: bold;">Time spent in
+                  seconds</span></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><span style="font-weight: bold;">single
+                  core function</span></td>
+              <td align="RIGHT" sdval="10,81" sdnum="3082;">10,81</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><span style="font-weight: bold;">4
+                  cores function</span></td>
+              <td align="RIGHT" sdval="3,76" sdnum="3082;">3,76</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><span style="font-weight: bold;">std::set_intersection
+                  &lt;function&gt;<br />
+                </span></td>
+              <td align="RIGHT" sdval="9,392" sdnum="3082;">9,392</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img src="img/benchmark_set_intersection_cnc_GCC.jpg" alt="set cnc GCC" /><br />
+        <br />
+        <br />
+        <a name="vc++"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">3.7.2.-
+          Benchmarks VC++ 13</span><br />
+        <img alt="" src="img/benchmark_set_VC10.png" /><br />
+        <br />
+        <table cellspacing="0" border="1" cols="7">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup> <colgroup
+            width="86"></colgroup> <colgroup width="85" span="2"></colgroup>
+          <tbody>
+            <tr>
+              <td height="23" align="CENTER" valign="MIDDLE" colspan="7"><font size="4">BENCHMARK_SET
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td height="27" align="LEFT" valign="MIDDLE" colspan="7"><b><u><font
+                      size="1"><br />
+                      This program insert 30000000 elements of 64 bits checking
+                      the time needed ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="32" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><b>sorted elements</b></td>
+              <td align="LEFT"><b>few repeated</b></td>
+              <td align="LEFT"><b>quite repeated</b></td>
+              <td align="LEFT"><b>many repeated</b></td>
+              <td align="LEFT"><b>equal elements</b></td>
+              <td align="LEFT"><b>TIME TOTAL</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="8,262">8,262</td>
+              <td align="RIGHT" sdnum="3082;" sdval="62,9149">62,9149</td>
+              <td align="RIGHT" sdnum="3082;" sdval="53,2585">53,2585</td>
+              <td align="RIGHT" sdnum="3082;" sdval="4,617">4,617</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,327">0,327</td>
+              <td align="RIGHT" sdnum="3082;" sdval="129,3794">129,3794</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set + suballocator</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="13,712">13,712</td>
+              <td align="RIGHT" sdnum="3082;" sdval="57,4705">57,4705</td>
+              <td align="RIGHT" sdnum="3082;" sdval="49,2649">49,2649</td>
+              <td align="RIGHT" sdnum="3082;" sdval="4,57">4,57</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,343">0,343</td>
+              <td align="RIGHT" sdnum="3082;" sdval="125,3604">125,3604</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set </b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="13,6344">13,6344</td>
+              <td align="RIGHT" sdnum="3082;" sdval="67,4233">67,4233</td>
+              <td align="RIGHT" sdnum="3082;" sdval="53,679">53,679</td>
+              <td align="RIGHT" sdnum="3082;" sdval="4,305">4,305</td>
+              <td align="RIGHT" sdnum="3082;" sdval="0,296">0,296</td>
+              <td align="RIGHT" sdnum="3082;" sdval="139,3377">139,3377</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_pool</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="26,757">26,757</td>
+              <td align="RIGHT" sdnum="3082;" sdval="66,986">66,986</td>
+              <td align="RIGHT" sdnum="3082;" sdval="54,303">54,303</td>
+              <td align="RIGHT" sdnum="3082;" sdval="7,129">7,129</td>
+              <td align="RIGHT" sdnum="3082;" sdval="3,2604">3,2604</td>
+              <td align="RIGHT" sdnum="3082;" sdval="158,4354">158,4354</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_cnc</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="17,4096">17,4096</td>
+              <td align="RIGHT" sdnum="3082;" sdval="72,0721">72,0721</td>
+              <td align="RIGHT" sdnum="3082;" sdval="57,5">57,5</td>
+              <td align="RIGHT" sdnum="3082;" sdval="7,34">7,34</td>
+              <td align="RIGHT" sdnum="3082;" sdval="3,24">3,24</td>
+              <td align="RIGHT" sdnum="3082;" sdval="157,5617">157,5617</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_pool_cnc</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="28,1268">28,1268</td>
+              <td align="RIGHT" sdnum="3082;" sdval="68,1563">68,1563</td>
+              <td align="RIGHT" sdnum="3082;" sdval="55,0525">55,0525</td>
+              <td align="RIGHT" sdnum="3082;" sdval="7,035">7,035</td>
+              <td align="RIGHT" sdnum="3082;" sdval="3,182">3,182</td>
+              <td align="RIGHT" sdnum="3082;" sdval="161,5526">161,5526</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img src="img/benchmark_set_time_VC++.jpg" alt="set time VC++" /><br />
+        <table cellspacing="0" border="1" cols="6" style="width: 733px; height: 271px;">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup> <colgroup
+            width="86"></colgroup> <colgroup width="85"></colgroup>
+          <tbody>
+            <tr>
+              <td height="23" align="CENTER" valign="MIDDLE" colspan="6"><u><font
+                    size="4">BENCHMARK_SET memory size ( less is better)</font></u></td>
+            </tr>
+            <tr>
+              <td height="28" align="JUSTIFY" valign="MIDDLE" colspan="6"><b><u><font
+                      size="1"><br />
+                      This program insert 30000000 elements of 64 bits checking
+                      the memory size used ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="57" align="LEFT" colspan="4"><br />
+              </td>
+              <td align="LEFT"><b>Memory with all the elements allocated</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="4"><b>std::set</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1414228">1414228</td>
+              <td align="RIGHT" sdnum="3082;" sdval="12712">12712</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="4"><b>std::set +
+                  suballocator</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1180964">1180964</td>
+              <td align="RIGHT" sdnum="3082;" sdval="3256">3256</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="4"><b>countertree::set </b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1883100">1883100</td>
+              <td align="RIGHT" sdnum="3082;" sdval="17604">17604</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="4"><b>countertree::set_pool</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1416860">1416860</td>
+              <td align="RIGHT" sdnum="3082;" sdval="4420">4420</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="4"><b>countertree::set_cnc</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1884144">1884144</td>
+              <td align="RIGHT" sdnum="3082;" sdval="18376">18376</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="4"><b>countertree::set_pool_cnc</b></td>
+              <td align="RIGHT" sdnum="3082;" sdval="1416864">1416864</td>
+              <td align="RIGHT" sdnum="3082;" sdval="4428">4428</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img src="img/benchmark_set_size_VC++.jpg" alt="set size VC++" /><br />
+        <table cellspacing="0" border="1" style="width: 689px; height: 292px;" cols="2">
+          <colgroup width="313"></colgroup> <colgroup width="133"></colgroup>
+          <tbody>
+            <tr>
+              <td height="44" align="JUSTIFY" valign="MIDDLE" colspan="2">BENCHMARK_SET_INTERSECTION_CNC</td>
+            </tr>
+            <tr>
+              <td height="111" align="JUSTIFY" valign="MIDDLE" colspan="2"><b><u><font
+                      size="1">This program make the intersection of two sets
+                      with 25000000 elements filled with random numbers checking
+                      the time needed ( less is better).<br />
+                      The 4 cores function use a <span style="font-weight: bold;">concurrent
+                        algorithm</span> running over a countertree::set_cnc.<br />
+                      The single core function use the same algorithm running
+                      over a countertree::set</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="30" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><b>Time spent in seconds</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>single core function</b></td>
+              <td align="RIGHT" sdval="13,1501" sdnum="3082;">13,1501</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>4 cores function</b></td>
+              <td align="RIGHT" sdval="5,616" sdnum="3082;">5,616</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set_intersection
+                  &lt;function&gt;<br />
+                </b></td>
+              <td align="RIGHT" sdval="11,185" sdnum="3082;">11,185</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="set cnc VC++" src="img/benchmark_set_intersection_cnc_VC++.jpg" /><br />
+        <br />
+        <a name="clang"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">3.7.3.-
+          Benchmarks CLANG 3.3</span><br />
+        <img alt="" src="img/benchmark_set_CLANG.png" /><br />
+        <br />
+        <table cellspacing="0" border="1" cols="7">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup> <colgroup
+            width="98"></colgroup> <colgroup width="103"></colgroup> <colgroup
+            width="85"></colgroup>
+          <tbody>
+            <tr>
+              <td height="23" align="CENTER" valign="MIDDLE" colspan="7"><font size="4">BENCHMARK_SET
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td height="27" align="LEFT" valign="MIDDLE" colspan="7"><b><u><font
+                      size="1"><br />
+                      This program insert 30000000 elements of 64 bits checking
+                      the time needed ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="30" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><b>sorted elements</b></td>
+              <td align="LEFT"><b>few repeated</b></td>
+              <td align="LEFT"><b>quite repeated</b></td>
+              <td align="LEFT"><b>many repeated</b></td>
+              <td align="LEFT"><b>equal elements</b></td>
+              <td align="LEFT"><b>TOTAL TIME</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set</b></td>
+              <td align="RIGHT" sdval="24,1126" sdnum="3082;">24,1126</td>
+              <td align="RIGHT" sdval="53,7237" sdnum="3082;">53,7237</td>
+              <td align="RIGHT" sdval="67,611" sdnum="3082;">67,611</td>
+              <td align="RIGHT" sdval="6,839" sdnum="3082;">6,839</td>
+              <td align="RIGHT" sdval="0,25" sdnum="3082;">0,25</td>
+              <td align="RIGHT" sdval="152,5363" sdnum="3082;">152,5363</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set + suballocator</b></td>
+              <td align="RIGHT" sdval="12,8164" sdnum="3082;">12,8164</td>
+              <td align="RIGHT" sdval="45,2689" sdnum="3082;">45,2689</td>
+              <td align="RIGHT" sdval="40,3114" sdnum="3082;">40,3114</td>
+              <td align="RIGHT" sdval="4,013" sdnum="3082;">4,013</td>
+              <td align="RIGHT" sdval="0,251" sdnum="3082;">0,251</td>
+              <td align="RIGHT" sdval="102,6607" sdnum="3082;">102,6607</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set </b></td>
+              <td align="RIGHT" sdval="21,2533" sdnum="3082;">21,2533</td>
+              <td align="RIGHT" sdval="71,496" sdnum="3082;">71,496</td>
+              <td align="RIGHT" sdval="81,7057" sdnum="3082;">81,7057</td>
+              <td align="RIGHT" sdval="7,266" sdnum="3082;">7,266</td>
+              <td align="RIGHT" sdval="0,318" sdnum="3082;">0,318</td>
+              <td align="RIGHT" sdval="182,039" sdnum="3082;">182,039</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_pool</b></td>
+              <td align="RIGHT" sdval="21,1522" sdnum="3082;">21,1522</td>
+              <td align="RIGHT" sdval="62,2116" sdnum="3082;">62,2116</td>
+              <td align="RIGHT" sdval="54,3775" sdnum="3082;">54,3775</td>
+              <td align="RIGHT" sdval="6,1079" sdnum="3082;">6,1079</td>
+              <td align="RIGHT" sdval="0,5377" sdnum="3082;">0,5377</td>
+              <td align="RIGHT" sdval="144,3869" sdnum="3082;">144,3869</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_cnc</b></td>
+              <td align="RIGHT" sdval="20,4735" sdnum="3082;">20,4735</td>
+              <td align="RIGHT" sdval="70,5697" sdnum="3082;">70,5697</td>
+              <td align="RIGHT" sdval="79,9734" sdnum="3082;">79,9734</td>
+              <td align="RIGHT" sdval="7,111" sdnum="3082;">7,111</td>
+              <td align="RIGHT" sdval="0,33" sdnum="3082;">0,33</td>
+              <td align="RIGHT" sdval="178,4576" sdnum="3082;">178,4576</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>countertree::set_pool_cnc</b></td>
+              <td align="RIGHT" sdval="22,7229" sdnum="3082;">22,7229</td>
+              <td align="RIGHT" sdval="58,5538" sdnum="3082;">58,5538</td>
+              <td align="RIGHT" sdval="48,6795" sdnum="3082;">48,6795</td>
+              <td align="RIGHT" sdval="4,1612" sdnum="3082;">4,1612</td>
+              <td align="RIGHT" sdval="0,3759" sdnum="3082;">0,3759</td>
+              <td align="RIGHT" sdval="134,4933" sdnum="3082;">134,4933</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="set time clang" src="img/benchmark_set_time_CLANG.jpg" /><br />
+        <br />
+        <table cellspacing="0" border="1" cols="5">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup> <colgroup
+            width="98"></colgroup>
+          <tbody>
+            <tr>
+              <td height="23" align="CENTER" valign="MIDDLE" colspan="5"><u><font
+                    size="4">BENCHMARK_SET memory size ( less is better)</font></u></td>
+            </tr>
+            <tr>
+              <td height="42" align="JUSTIFY" valign="MIDDLE" colspan="5"><b><u><font
+                      size="1"><br />
+                      This program make allocations and deallocations of
+                      30000000 elements of 64 bits checking the memory size used
+                      ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="44" align="LEFT" colspan="3"><br />
+              </td>
+              <td align="LEFT"><b>Memory with all the elements allocated</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="3"><b>std::set</b></td>
+              <td align="RIGHT" sdval="1407324" sdnum="3082;">1407324</td>
+              <td align="RIGHT" sdval="1407500" sdnum="3082;">1407500</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="3"><b>std::set +
+                  suballocator</b></td>
+              <td align="RIGHT" sdval="1178856" sdnum="3082;">1178856</td>
+              <td align="RIGHT" sdval="2708" sdnum="3082;">2708</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="3"><b>countertree::set </b></td>
+              <td align="RIGHT" sdval="1407328" sdnum="3082;">1407328</td>
+              <td align="RIGHT" sdval="1407508" sdnum="3082;">1407508</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="3"><b>countertree::set_pool</b></td>
+              <td align="RIGHT" sdval="1179088" sdnum="3082;">1179088</td>
+              <td align="RIGHT" sdval="2708" sdnum="3082;">2708</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="3"><b>countertree::set_cnc</b></td>
+              <td align="RIGHT" sdval="1407328" sdnum="3082;">1407328</td>
+              <td align="RIGHT" sdval="1407512" sdnum="3082;">1407512</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT" colspan="3"><b>countertree::set_pool_cnc</b></td>
+              <td align="RIGHT" sdval="1177488" sdnum="3082;">1177488</td>
+              <td align="RIGHT" sdval="2700" sdnum="3082;">2700</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="set size clang" src="img/benchmark_set_size_CLANG.jpg" /><br />
+        <br />
+        <table cellspacing="0" border="1" style="width: 694px; height: 284px;" cols="2">
+          <colgroup width="285"></colgroup> <colgroup width="175"></colgroup>
+          <tbody>
+            <tr>
+              <td height="44" align="JUSTIFY" valign="MIDDLE" colspan="2"><span
+                  style="font-weight: bold;"><font size="4">BENCHMARK_SET_INTERSECTION_CNC</font></span></td>
+            </tr>
+            <tr>
+              <td height="111" align="JUSTIFY" valign="MIDDLE" colspan="2"><b><u><font
+                      size="1"><br />
+                      This program make the intersection of two sets with
+                      25000000 elements filled with random numbers checking the
+                      time needed ( less is better).<br />
+                      The 4 cores function use a <span style="font-weight: bold;">concurrent
+                        algorithm</span> running over a countertree::set_cnc.<br />
+                      The single core function use the same algorithm running
+                      over a countertree::set</font></u></b></td>
+            </tr>
+            <tr>
+              <td height="30" align="LEFT"><br />
+              </td>
+              <td align="LEFT"><b>Time spent in seconds</b></td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>single core function</b></td>
+              <td align="RIGHT" sdval="11,564" sdnum="3082;">11,564</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>4 cores function</b></td>
+              <td align="RIGHT" sdval="3,745" sdnum="3082;">3,745</td>
+            </tr>
+            <tr>
+              <td height="17" align="LEFT"><b>std::set_intersection</b></td>
+              <td align="RIGHT" sdval="11,0575" sdnum="3082;">11,0575</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <br />
+        <img alt="set intersection clang" src="img/benchmark_set_intersection_cnc_CLANG.jpg" /><br />
+        The test had been done using a QuadCore 2.4 GHz ( 8 GB of Dual Channel
+        1066 MHz Memory) with the C++0x options activated, and with the highest
+        level of optimization. <br />
+        <br />
+        <!--*******************************************************************************************************  -->
+        <!--                             I C O N O S   P A R T E   I N F E R I O R                                  -->
+        <!--*******************************************************************************************************  -->
+        <a style="float:right" href="P4.0_suballocator.html" title="suballocators"><img
+            src="img/next.png" alt="next page" /></a> <a style="float:right" href="P3.0_set_map.html"
+          title="home page"><img src="img/up.png" alt="go to head of the page" /></a>
+        <a style="float:right" href="P3.6_set_map_examples.html" title="set map examples"><img
+            alt="previous page" src="img/prev.png" /></a> <a style="float:right"
+          href="index.html" title="home"><img alt="home page" src="img/home.png" /></a>
+      </div>
+    </div>
+    <!--***************************************************************************************** -->
+    <!--                T A B L A    I N F E R I O R   D E   L A    P A G I N A                   -->
+    <!--***************************************************************************************** -->
+    <table width="100%" xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision">
+      <tbody>
+        <tr>
+          <td align="left">
+            <p><small>Last revised: September  08, 2010 at 21:42:41 GMT</small></p>
+          </td>
+          <td> <br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <!-- div cuerpo_texto -->
+    <!-- div cuerpo central -->
+    <!--  div body -->
+    <!--***************************************************************************************** -->
+    <!--                                      F O O T E R                                         -->
+    <!--***************************************************************************************** -->
+    <div id="footer">
+      <div id="footer-left">
+        <div id="copyright">
+          <p>Copyright Francisco Jose Tapia 2010 - 2012.</p>
+        </div>
+        <div id="license">
+          <p>Distributed under the <a href="/LICENSE_1_0.txt" class="internal">Boost
+              Software License, Version 1.0</a>.</p>
+        </div>
+      </div>
+      <div id="footer-right">
+        <div id="banners">
+          <p id="banner-xhtml"> <a href="http://validator.w3.org/check?uri=referer"
+              class="external">XHTML 1.0</a></p>
+          <p id="banner-css"> <a href="http://jigsaw.w3.org/css-validator/check/referer"
+              class="external">CSS</a></p>
+          <p id="banner-osi"> <a href="http://www.opensource.org/docs/definition.php"
+              class="external">OSI Certified</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

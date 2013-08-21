@@ -1,0 +1,485 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org"
+      name="generator" />
+    <title>Boost C++ Libraries</title>
+    <link type="image/ico" href="http://www.boost.org/favicon.ico" rel="icon" />
+    <link href="http://www.boost.org/style-v2/section-welcome.css" type="text/css"
+      rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="files/code.css" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(http://www.boost.org/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" name="google-site-verification" />
+  </head>
+  <!-- Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html-->
+  <!--***************************************************************************************** -->
+  <!--                                        B O D Y                                           -->
+  <!--***************************************************************************************** -->
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img class="heading-logo"
+              alt="Boost C++ Libraries" src="http://www.boost.org//gfx/space.png" />
+            <span class="heading-boost">Boost</span> <span class="heading-cpplibraries">C++
+              Libraries</span> <img style="width: 300px; height: 80px;" alt="Preliminary"
+              src="img/preliminary.gif" /> </a></h1>
+        <p class="heading-quote"> <q>...one of the most highly regarded and
+            expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
+            <a class="external" href="http://www.gotw.ca/">Herb Sutter</a> and <a
+              class="external" href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu">Andrei
+              Alexandrescu</a>, <a class="external" href="http://safari.awprofessional.com/?XmlId=0321113586">C++
+              Coding Standards</a></span></p>
+      </div>
+    </div>
+    <div class="cuerpo_central"> <br />
+      <div class="cuerpo_texto"> <br />
+        <span style="font-size: 24pt;"> <span style="font-weight: bold; color: black;">
+            <a href="index.html">The [ Counter Tree + Suballocator ] Library</a>
+          </span></span><br />
+        <div>
+          <div class="author">
+            <h3 class="author"><br />
+              <span class="firstname"></span></h3>
+            <h3 style="font-size: 10pt; font-style: italic; font-weight: bold" class="author">
+              <span style="font-weight: bold;"><span class="firstname" style="font-weight: bold;">Francisco
+                  Jose Tapia</span>   Copyright © 2010-2013 Francisco Jose Tapia</span></h3>
+          </div>
+        </div>
+        <div class="legalnotice">
+          <p><span style="font-size: 10pt; font-style: italic; font-weight: bold">Distributed
+              under the Boost Software License, Version 1.0. (See accompanying
+              file LICENSE_1_0.txt or copy at <a href="file:///LICENSE_1_0.txt"
+                target="_top"> http://www.boost.org/LICENSE_1_0.txt )</a></span>
+          </p>
+        </div>
+        <br />
+        <br />
+        <!--***************************************************************************************** -->
+        <!--                                        M E N U                                           -->
+        <!--***************************************************************************************** -->
+        <div class="caja_menu"> <span style="font-size: 16pt; color: black;"><br />
+            Table of Contents</span> <br />
+          <div style="margin-left: 40px;">
+            <div style="margin-left: 40px;"> <a href="P1.0_introduction.html#introduction">1.-
+                Introduction</a><br />
+              <div style="margin-left: 40px;"><a href="P1.0_introduction.html#countertree">1.1.-
+                  Description of the Counter Trees</a><br />
+                <div style="margin-left: 40px;"><a href="P1.0_introduction.html#iterators">1.1.1.-
+                    Iterators</a></div>
+                <a href="P1.2_description_suballocators.html#suballocator">1.2.-
+                  Description of the Suballocators </a><br />
+                <a href="P1.2_description_suballocators.html#countertree_suballocator">1.3.-
+                  Description of Counter Trees + Suballocators </a><br />
+                <a href="P1.4_concurrent_versions.html#concurrent">1.4.-
+                  Concurrent version</a><br />
+                <div style="margin-left: 40px;"><a href="P1.4_concurrent_versions.html#lock">1.4.1.-
+                    Lock description</a><br />
+                </div>
+                <div style="margin-left: 40px;"><a href="P1.4_concurrent_versions.html#description">1.4.2.-
+                    Description of the class of the library</a><br />
+                  <a href="P1.4_concurrent_versions.html#problems">1.4.3.-
+                    Problems associated to the concurrency. Solutions
+                    implemented</a><br />
+                  <a href="P1.4_concurrent_versions.html#deletion">1.4.4.-
+                    Access by position and deletion in the first/last position</a></div>
+                <a href="P1.5_next_improvements.html#next_improvements">1.5.-
+                  Next Improvements</a><br />
+                <div style="margin-left: 40px;"><a href="P1.5_next_improvements.html#parallel">1.5.1-
+                    Parallel design of copy and clear trees ,logical functions
+                    with trees and several functions of &lt;algorithm&gt;</a><br />
+                  <a href="P1.5_next_improvements.html#redesign">1.5.2- Redesign
+                    of the internal algorithm</a><br />
+                  <a href="P1.5_next_improvements.html#augmented">1.5.3-
+                    Augmented trees</a></div>
+                <br />
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <br />
+        <p><a name="introduction"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">1.-
+            Introduction</span></p>
+        <p> </p>
+        This project is the joining of two separate ideas, the countertrees and
+        the suballocators. Each one have it own sense and utility. But they are
+        complementarity, and working joined express the goal of this project,
+        providing tools for to improve the user's work.<br />
+        <br />
+        <br />
+        <p><a name="countertree"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">1.1.-
+            Description of the Counter Trees</span></p>
+        <br />
+        <p> The counter trees are red-black trees where each node have an
+          additional counter. This counter represent the number of nodes under
+          it, including itself. This counter permit us to access to the elements
+          by the position, in the same way than a vector. It is a random access
+          container and, of course, random access iterators. </p>
+        <p><br />
+        </p>
+        <p>This library is an implementation of a counter tree with pointers to
+          the first and last elements . </p>
+        <p> <img align="middle" alt="Example of Counter Tree" style="border: 25px solid white;"
+            src="img/physic-logic.png" /> </p>
+        <p><br />
+        </p>
+        <p>I didn't find any implementation of the binary Counter Trees, except
+          my version of 14 years ago. Due this, <span style="font-weight: bold;">all
+            the algorithms for insert, delete, sort, find and balance was
+            created and developed specifically for this project, and they are
+            not based in any previous code or implementation.</span> </p>
+        <p><br />
+        </p>
+        The basic idea of this class is simple, you can use like a vector. It
+        permit access to the elements by their position. The allocators are
+        random access, like in a vector. The insertion or deletion of one
+        element don't imply any movement of data. It's only insertion or
+        deletion of a node in the tree. <span style="font-weight: bold;">The
+          operations of  insertion, deletion and access to elements are
+          O(log(N)) operations.<br />
+          <br />
+        </span>
+        <p> In the <span style="font-weight: bold;"> multi core process</span>,
+          the traditional trees ( STL set, multiset, map and multimap) have a
+          great problem. If you have 4000 element in a map, and want to be
+          processed by 4 cores. Each core need an iterator to it first element,
+          and a integer with the number of elements to process. The thread 0,
+          have begin( ) and 1000, but the thread 1 for to obtain an iterator to
+          the position 1000, need travel sequentially all the nodes from the
+          position 0 to the 1000. </p>
+        <p><br />
+        </p>
+        <p>The counter tree don't have the problem described before, the
+          iterators are random access and let it go directly. With the counter
+          trees, to distribute the elements of the tree over an arbitrary number
+          of cores is equal than to do with a vector. This is the key for to
+          design parallel algorithms for these data structures.</p>
+        <p><br />
+        </p>
+        <p>Based on the Counter Trees we have two kind of data structures :</p>
+        <ul style="margin-left: 40px;">
+          <li>With unordered elements ( vector_tree)</li>
+          <li>With ordered elements ( set, multiset, map and multimap)</li>
+        </ul>
+        <br />
+        <br />
+        <p><span style="font-size:16pt">COUNTER TREE WITH UNORDERED ELEMENTS</span></p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;">With <span style="font-weight: bold;">unordered
+            elements</span>, you have a <span style="font-weight: bold;">vector_tree</span>.
+          It is like a vector with identical interface, identical operations
+          than std::vector and std::deque . The difference is the performance. </p>
+        <ul style="margin-left: 80px;">
+          <li>The<span style="font-weight: bold;"> vector_tree</span> have the
+            same speed inserting or deleting in any position. </li>
+          <li>The <span style="font-weight: bold;">std::vector</span> it is
+            very fast inserting and deleting in the first or in the last
+            position, but very slow inserting or deleting in central positions.
+          </li>
+        </ul>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;">The <span style="font-weight: bold;">vector_tree</span>
+          is slower than the std::vector inserting or deleting in the first and 
+          last position, but  much more faster inserting or deleting in central
+          positions. This class don't pretend replace to the std::vector or
+          queue. It is only other alternative, useful in several problems, like
+          the priority queues implementation because don't have the limitations
+          of the implementations based on vectors or based on trees like set or
+          map.</p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;">In the library, you have an concurrent
+          implementation ( vector_tree_cnc) , which is thread safe for all the
+          operations of the class( insertion, deletion, lectures and
+          modification), and a non concurrent version ( vector_tree).<br />
+        </p>
+        <br />
+        <br />
+        <p><span style="font-size:16pt">COUNTER TREE WITH ORDERED ELEMENTS</span></p>
+        <div style="margin-left: 40px;"> <br />
+          With <span style="font-weight: bold;">ordered elements</span>, you
+          have in the namespace countertree the classes <span style="font-weight: bold;">set,
+            multiset, map and multimap</span>. They have the same interface than
+          the STL std::set, std::multiset, std::map,std::multimap classes, plus
+          the capacity of access to the elements by the position like in a
+          vector. <br />
+          <br />
+          The iterators are random access. You can subtract two iterators for to
+          know the number of elements between them. <br />
+          <br />
+          You have the <span style="font-weight: bold;">concurrent version
+            set_cnc , multiset_cnc, map_cnc and multimap_cnc,</span>  which
+          permit the concurrency of any operations, insertion , deletion ,
+          lectures and modification in  safe way, and a non concurrent version
+          for to work with only 1 thread.<br />
+          <br />
+        </div>
+         <br />
+        <p><a name="iterators"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">1.1.1.-
+            Iterators</span></p>
+        <p><br />
+        </p>
+        <p>The countertrees have a rich set of iterators ( iterator,
+          const_iterator, reverse_iterator and const_reverse_iterator ). All are
+          random access, for to reach any position don't need travel by any
+          other  position in the same way than the STL<span style="font-weight: bold;">
+            iterators.  </span>These iterators are fully compatible with the
+          functions and algorithms of the STL. </p>
+        <p><br />
+        </p>
+        <p>If you add 10 to an iterator, the iterator point 10 positions
+          forward, And if you subtract 10 , or add -10, the iterator point 10
+          positions backward.  You can subtract two iterators and know the
+          distance between them.<br />
+          <br />
+          <br />
+          <img src="img/iterators.png" alt="iterators" title="iterators" /><br />
+          <br />
+          <br />
+          You have 4 special places ( rend, begin ,rbegin,end). All kind of
+          iterators can reach the four special places, by example: if you want 
+          with an iterator, reach the rend position have the function it_rend (
+          ). The preffix of the function indicates the kind of iterator
+          returned.<br />
+        </p>
+        <div style="margin-left: 40px;">it_     : iterator<br />
+          cit_   : const_iterator<br />
+          rit_   : reverse_iterator<br />
+          crit_ : const reverse_iterator</div>
+        <br />
+        You can subtract two iterators for to know the number of elements
+        between them. This arithmetic is valid with <span style="font-weight: bold;">ALL
+          the iterators</span>, even with the <span style="font-weight: bold;">four
+          special places</span> <span style="font-weight: bold;"></span>. <br />
+        The position of the  four special places with each type of iterators is
+        :.<br />
+        <br />
+        <table border="1" style="width: 897px; height: 150px;">
+          <tbody>
+            <tr>
+              <td style="width: 189.433px;">
+                <div style="margin-left: 40px;"><span style="font-weight: bold;">SPECIAL
+                    PLACE</span></div>
+              </td>
+              <td>
+                <div style="margin-left: 40px;"><span style="font-weight: bold;">POSITION
+                    with iterator </span><br />
+                  <span style="font-weight: bold;">and const_iterator</span></div>
+              </td>
+              <td>
+                <div style="margin-left: 40px; height: 44px;"><span style="font-weight: bold;">POSITION
+                    with reverse_iterator and</span><br />
+                  <span style="font-weight: bold;">const_reverse_iterator</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="margin-left: 40px;">rend</div>
+              </td>
+              <td style="width: 332.333px; text-align: justify;">
+                <div style="margin-left: 40px;">-1</div>
+              </td>
+              <td style="width: 377.233px;">
+                <div style="margin-left: 40px;">number of elements</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="margin-left: 40px;">begin</div>
+              </td>
+              <td>
+                <div style="margin-left: 40px;">0</div>
+              </td>
+              <td>
+                <div style="margin-left: 40px;">number of elements -1</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="margin-left: 40px;">rbegin</div>
+              </td>
+              <td>
+                <div style="margin-left: 40px;">number of elements -1</div>
+              </td>
+              <td>
+                <div style="margin-left: 40px;">0</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="margin-left: 40px;">end</div>
+              </td>
+              <td>
+                <div style="margin-left: 40px;">number of elements </div>
+              </td>
+              <td>
+                <div style="margin-left: 40px;">-1</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <br />
+        All kind of iterators have a function <span style="font-weight: bold;">pos(
+          )</span> which provide the position in the <span style="font-weight: bold;">vector_tree</span>
+        even in the special places. <br />
+        You can obtain an iterator to the element in a position with the
+        function iterator_pos or const_iterator_pos<br />
+        <br />
+        <div class="caja_codigo texto_codigo"> <br />
+          <br />
+          <span class="style11">size_type      pos          </span><span class="style10">(
+          </span> <span class="style5">void</span> <span class="style10">) </span>
+          <span class="style5">const</span> <br />
+          <pre><code><span class="style11"><br />      iterator       iterator_pos </span><span
+class="style10">( </span><span class="style11">signed_type Pos1</span><span class="style10">)
+</span><span class="style11">const_iterator const_iterator_pos </span><span class="style10">( </span><span
+class="style11">signed_type Pos1</span><span class="style10">) </span><span class="style5">const</span></code></pre>
+          <br />
+          <br />
+        </div>
+        <br />
+        The list of functions for to obtain an iterator located in a special
+        position are :<br />
+        <br />
+        <div class="caja_codigo">
+          <pre><code><span class="style10"></span><span class="style2">
+</span></code><code><span class="style2">//***************************************************************************
+//                      I T E R A T O R S
+//***************************************************************************
+</span><span class="style11">iterator it_begin  </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">iterator begin     </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">iterator it_end    </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">iterator end       </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">iterator it_rbegin</span><span class="style10"> ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">iterator it_rend   </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style10">
+</span><span class="style2">//***************************************************************************
+//                C O N S T _ I T E R A T O R
+//***************************************************************************
+</span><span class="style11">const_iterator cit_begin   </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_iterator begin</span><span class="style10">       ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_iterator cbegin      </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_iterator cit_end     </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_iterator end         </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_iterator cend        </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_iterator cit_rbegin  </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_iterator cit_rend    </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style10">
+</span><span class="style2">//***************************************************************************
+//             R E V E R S E _ I T E R A T O R
+//***************************************************************************
+</span><span class="style11">reverse_iterator rit_begin</span><span class="style10">   ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">reverse_iterator rit_end     </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">reverse_iterator rit_rbegin  </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">reverse_iterator rbegin</span><span class="style10">      ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">reverse_iterator rit_rend  </span><span class="style10">  ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style11">reverse_iterator rend</span><span class="style10">        ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style10">
+</span><span class="style2">//***************************************************************************
+//          C O N S T _ R E V E R S E _ I T E R A T O R
+//***************************************************************************
+</span><span class="style11">const_reverse_iterator crit_begin   </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_reverse_iterator crit_end</span><span class="style10">     ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_reverse_iterator crit_rbegin</span><span class="style10">  ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_reverse_iterator rbegin       </span><span class="style10">( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_reverse_iterator crbegin</span><span class="style10">      ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_reverse_iterator crit_rend</span><span class="style10">    ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_reverse_iterator rend</span><span class="style10">         ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style11">const_reverse_iterator crend</span><span class="style10">        ( </span><span
+class="style5">void</span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style10">
+</span><span class="style10">
+</span></code></pre> </div>
+        <br />
+        <br />
+        <br />
+        <a style="float:right" href="P1.2_description_suballocators.html" title="suballocator "><img
+            src="img/next.png" alt="suballocator description" /></a> <a style="float:right"
+          href="P1.0_introduction.html" title="introduction"><img src="img/up.png"
+            alt="go to head of the page" /></a> <a style="float:right" href="index.html"
+          title="home page"><img alt="previous page" src="img/prev.png" /></a> <a
+          style="float:right" href="index.html" title="home page"><img alt="home page"
+            src="img/home.png" /></a> </div>
+      <table width="100%" xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision">
+        <tbody>
+          <tr>
+            <td align="left">
+              <p><small>Last revised: September  30, 2012 at 21:42:41 GMT</small></p>
+            </td>
+            <td> <br />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr />
+      <div id="footer">
+        <div id="footer-left">
+          <div id="copyright">
+            <p>Copyright Francisco Jose Tapia 2010-2012.</p>
+          </div>
+          <div id="license">
+            <p>Distributed under the <a class="internal" href="/LICENSE_1_0.txt">Boost
+                Software License, Version 1.0</a>.</p>
+          </div>
+        </div>
+        <div id="footer-right">
+          <div id="banners">
+            <p id="banner-xhtml"> <a class="external" href="http://validator.w3.org/check?uri=referer">XHTML
+                1.0</a></p>
+            <p id="banner-css"> <a class="external" href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></p>
+            <p id="banner-osi"> <a class="external" href="http://www.opensource.org/docs/definition.php">OSI
+                Certified</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

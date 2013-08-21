@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org"
+      name="generator" />
+    <title>Boost C++ Libraries</title>
+    <link type="image/ico" href="http://www.boost.org/favicon.ico" rel="icon" />
+    <link href="http://www.boost.org/style-v2/section-welcome.css" type="text/css"
+      rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="files/code.css" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(http://www.boost.org/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" name="google-site-verification" />
+  </head>
+  <!--
+Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html-->
+  <!--*******************************************************************************************************  -->
+  <!--                                       B O D Y                                                           -->
+  <!--*******************************************************************************************************  -->
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <div class="heading-placard"></div>
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img class="heading-logo"
+              alt="Boost C++ Libraries" src="http://www.boost.org//gfx/space.png" />
+            <span class="heading-boost">Boost</span> <span class="heading-cpplibraries">C++
+              Libraries</span>
+            <!-- Removing the next line, deletes the Preliminary text in the decoration od the top odf the page -->
+            <img style="width: 300px; height: 80px;" alt="Preliminary" src="img/preliminary.gif" />
+          </a></h1>
+        <p class="heading-quote"> <q>...one of the most highly regarded and
+            expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
+            <a class="external" href="http://www.gotw.ca/">Herb Sutter</a> and <a
+              class="external" href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu">Andrei
+              Alexandrescu</a>, <a class="external" href="http://safari.awprofessional.com/?XmlId=0321113586">C++
+              Coding Standards</a></span></p>
+      </div>
+      <!--  div heading-inner--> </div>
+    <!-- - div  heading -->
+    <div class="clear"></div>
+    <!--*******************************************************************************************************  -->
+    <!--                      T E X T   O F      T H E     P A G E                                               -->
+    <!--*******************************************************************************************************  -->
+    <div class="cuerpo_central">
+      <div class="cuerpo_texto"> <br />
+        <br />
+        <br />
+        <span style="font-size: 32pt;"> <span style="font-weight: bold; color: black;">
+            <a href="index.html">The [ Counter Tree + Suballocator ] Library</a></span>
+        </span><br />
+        <div>
+          <div class="author">
+            <h3 class="author"><br />
+              <span class="firstname"></span></h3>
+            <h3 style="font-style: italic;" class="author"><span class="firstname">Francisco
+                Jose Tapia</span>   Copyright © 2010-2012 Francisco Jose Tapia</h3>
+          </div>
+        </div>
+        <div>
+          <div class="legalnotice">
+            <p><span style="font-style: italic;">Distributed under the Boost
+                Software License, Version 1.0. (See accompanying file
+                LICENSE_1_0.txt or copy at </span><a style="font-style: italic;"
+                href="file:///LICENSE_1_0.txt" target="_top">
+                http://www.boost.org/LICENSE_1_0.txt </a><span style="font-style: italic;">)</span>
+            </p>
+          </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="caja_menu"> <br />
+          <p><span style="font-size: 18pt;font-weight: bold; color: black;">Table
+              of Contents</span></p>
+          <br />
+              <a href="P2.0_vector_tree.html#countertree">2.- Counter Trees
+            with unordered elements ( <span class="texto_codigo">countertree::vector_tree</span>)</a>
+          <br />
+          <div style="margin-left: 40px;"> <a href="P2.0_vector_tree.html#description">2.1.-
+              Description</a><br />
+            <a href="P2.2_vector_tree_functions.html#functions">2.2.- Functions</a><br />
+            <a href="P2.3_vector_tree_examples.html#examples">2.3.- Examples</a><br />
+            <a href="P2.4_vector_tree_benchmarks.html#benchmarks">2.4.-
+              Benchmarks</a><br />
+            <br />
+          </div>
+        </div>
+        <br />
+        <br />
+        <!--*******************************************************************************************************  -->
+        <!--                                      E X A M P L E     C O D E                                          -->
+        <!--*******************************************************************************************************  -->
+        <p><a name="examples"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">2.3.-
+            Examples <br />
+          </span></p>
+        <p> <br />
+        </p>
+        <br />
+        <div class="caja_codigo texto_codigo"> <br />
+          <br />
+          <span class="style9">#include
+            &lt;boost/countertree/vector_tree.hpp&gt;
+            <p></p>
+            #include &lt;iostream&gt;</span> <br />
+          <br />
+          <span class="style5">int </span> <span class="style11">main </span>
+          <span class="style10">( </span> <span class="style5">void </span> <span
+            class="style10">)<br />
+            { </span> <span class="style2">//----------------------------
+            begin -------------------------<br />
+          </span>
+          <!--     countertree :: vector_tree < int > V ; --> <span class="style11">   
+            countertree</span><span class="style10">::</span><span class="style11">vector_tree</span>
+          <span class="style10">&lt;</span><span class="style5">int</span><span
+            class="style10">&gt; </span> <span class="style11">V </span><span
+            class="style10">;<br />
+          </span> <span class="style5">    for </span> <span class="style10">(
+          </span> <span class="style5">int </span> <span class="style11">i </span>
+          <span class="style10">= </span> <span class="style4">0 </span> <span
+            class="style10">; </span> <span class="style11">i </span> <span
+            class="style10">&lt; </span> <span class="style4">10 </span> <span
+            class="style10">; </span> <span class="style11">i </span> <span
+            class="style10">++) <br />
+          </span> <span class="style11">        V</span><span class="style10">.</span><span
+            class="style11">push_back</span> <span class="style10">( ( (</span><span
+            class="style11">i</span><span class="style10">+</span><span class="style4">1</span><span
+            class="style10">) *</span> <span class="style4">10</span><span class="style10">));<br />
+            <br />
+          </span> <span class="style11">    countertree</span><span class="style10">::</span><span
+            class="style11">vector_tree</span> <span class="style10">&lt;</span><span
+            class="style5">int</span><span class="style10">&gt;::</span><span class="style11">iterator
+            Alfa</span> <span class="style10">, </span> <span class="style11">Beta
+            </span><span class="style10">; </span>
+          <p></p>
+          <!-- Alfa = V . begin () + 3 ; // Iterator to the position 3 --> <span
+            class="style11">    Alfa </span><span class="style10">= </span> <span
+            class="style11">V</span><span class="style10">.</span><span class="style11">begin</span><span
+            class="style10">() + </span> <span class="style4">3 </span><span
+            class="style10">; </span> <span class="style2">// Iterator to the
+            position 3</span>
+          <p></p>
+          <!--     Beta = V.end() - 2 ; // iterator to the position 8 --> <span
+            class="style11">    Beta </span> <span class="style10">= </span>
+          <span class="style11">V</span><span class="style10">.</span><span class="style11">end</span><span
+            class="style10">() - </span> <span class="style4">2 </span><span
+            class="style10">; </span> <span class="style2">// iterator to the
+            position 8<br />
+            <br />
+                // We insert two elements at the beginning of the vector_tree V
+            <p></p>
+                // and the positions of the elements pointed by Alfa and Beta,
+            change.</span>
+          <p></p>
+          <span class="style11">    V</span><span class="style10">.</span><span
+            class="style11">push_front</span> <span class="style10">( </span>
+          <span class="style4">2 </span><span class="style10">);</span>
+          <p></p>
+          <span class="style11">    V</span><span class="style10">.</span><span
+            class="style11">push_front </span> <span class="style10">( </span><span
+            class="style4">1</span><span class="style10">) ;</span> <br />
+          <br />
+          <span class="style2">   
+            //-------------------------------------------------------------------------
+            <p></p>
+                // All the iterators retrieve the correct position, even end()
+            and rend()
+            <p></p>
+                // The position of end() is the size of the data stucture and
+            rend() is -1
+            <p></p>
+               
+            //---------------------------------------------------------------------------</span>
+          <p></p>
+          <span class="style11">    std</span><span class="style10">::</span><span
+            class="style11">cout</span><span class="style10">&lt;&lt;</span> <span
+            class="style6">"Expecting [5,10] -----&gt; "</span><span class="style10">;</span>
+          <p></p>
+          <span class="style11">    std</span><span class="style10">::</span><span
+            class="style11">cout</span><span class="style10">&lt;&lt;</span> <span
+            class="style6">"["</span><span class="style10">&lt;&lt;</span><span
+            class="style11">Alfa</span><span class="style10">.</span><span class="style11">pos</span>
+          <span class="style10">()&lt;&lt;</span> <span class="style6">" , "</span><span
+            class="style10">&lt;&lt;</span><span class="style11">Beta</span><span
+            class="style10">.</span>.<span class="style11">pos</span> <span class="style10">()&lt;&lt;</span><span
+            class="style6">"]"</span> <span class="style10">&lt;&lt;</span><span
+            class="style11">std</span><span class="style10">::</span><span class="style11">endl
+            </span> <span class="style10">;</span><br />
+          <br />
+          <span class="style11">    std</span><span class="style10">::</span><span
+            class="style11">cout</span> <span class="style10">&lt;&lt;</span><span
+            class="style6">"Expecting : (40 , 50 , 60 , 70 , 80 )-------&gt;"</span>
+          <span class="style10">;</span>
+          <p></p>
+          <!-- for ( int i = ( int ) Alfa . pos () ; i < Beta . pos () ; i ++) -->
+          <span class="style5">    for </span><span class="style10">( </span><span
+            class="style5">int </span><span class="style11">i </span> <span class="style10">=
+            (</span><span class="style5">int</span><span class="style10">)</span>
+          <span class="style11">Alfa</span><span class="style10">.</span><span class="style11">pos</span><span
+            class="style10">() ; </span> <span class="style11">i </span><span
+            class="style10">&lt; </span><span class="style11">Beta</span><span
+            class="style10">.</span><span class="style11">pos</span> <span class="style10">()
+            ; </span> <span class="style11">i </span><span class="style10">++)<br />
+          </span>
+          <!--         std :: cout << V [ i ]<< " " ; --> <span class="style11">   
+                std</span><span class="style10">::</span><span class="style11">cout</span>
+          <span class="style10">&lt;&lt;</span><span class="style11">V</span><span
+            class="style10">[</span><span class="style11">i</span><span class="style10">]&lt;&lt;</span>
+          <span class="style6">" "</span><span class="style10">;</span>
+          <p></p>
+          <span class="style11">    std</span><span class="style10">::</span><span
+            class="style11">cout</span> <span class="style10">&lt;&lt;</span> <span
+            class="style11">std</span><span class="style10">::</span><span class="style11">endl
+            </span><span class="style10">;</span>
+          <p></p>
+          <span class="style5">    return </span> <span class="style4">0 </span><span
+            class="style10">;
+            <p></p>
+            };</span> <br />
+          <br />
+        </div>
+        <br />
+        This program delete the non prime numbers stored in a vector_tree using
+        threads such as cores have the processor.<br />
+        <br />
+        <div class="caja_codigo texto_codigo"> <br />
+          <pre><code><span style="font: 10pt Liberation Mono;"><span class="style2">//----------------------------------------------------------------------------
+</span><span class="style15">/// </span><span class="style17">@file </span><span
+class="style15">: example_vector_tree_cnc.cpp
+/// </span><span class="style17">@brief </span><span class="style15">Test program of the class countertree::vector_tree
+///
+/// </span><span class="style17">@author </span><span class="style15">Copyright (c) 2010 2012 Francisco JosÃ© Tapia (fjtapia@gmail.com )\n
+///         Distributed under the Boost Software License, Version 1.0.\n
+///         ( See accompanyingfile LICENSE_1_0.txt or copy at
+///           http://www.boost.org/LICENSE_1_0.txt  )
+/// </span><span class="style17">@version </span><span class="style15">0.1
+///
+/// </span><span class="style17">@remarks </span><span class="style15">This program store aleatory numbers in a vector_tree, and must delete
+///          the non prime numbers,
+</span><span class="style2">//-----------------------------------------------------------------------------
+</span><span class="style9">#include &lt;iostream&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;boost/countertree/vector_tree.hpp&gt;
+#define NELEM 5000000
+
+</span><span class="style5">using </span><span class="style16">std</span><span class="style10">::</span><span
+class="style16">cout </span><span class="style10">;
+</span><span class="style5">using </span><span class="style16">std</span><span class="style10">::</span><span
+class="style11">endl</span><span class="style10">;
+</span><span class="style5">namespace </span><span class="style11">cntree </span><span
+class="style10">= </span><span class="style11">countertree</span><span class="style10">;
+
+</span><span class="style5">static const uint32_t </span><span class="style11">NC </span><span
+class="style10">= </span><span class="style16">std</span><span class="style10">::</span><span
+class="style11">thread</span><span class="style10">::</span><span class="style11">hardware_concurrency</span><span
+class="style10">() ;
+</span><span class="style5">static const uint32_t </span><span class="style11">NCores </span><span
+class="style10">= (</span><span class="style11">NC </span><span class="style10">&gt;</span><span
+class="style4">8</span><span class="style10">) ? </span><span class="style4">8 </span><span
+class="style10">: </span><span class="style11">NC </span><span class="style10">;
+
+</span><span class="style5">uint32_t </span><span class="style11">Primo </span><span
+class="style10">[ </span><span class="style4">10000</span><span class="style10">] ,</span><span
+class="style11">Primo2</span><span class="style10">[</span><span class="style4">10000</span><span
+class="style10">];
+</span><span class="style5">uint32_t </span><span class="style11">NPrimo </span><span
+class="style10">;
+</span><span class="style5">typedef </span><span class="style11">cntree</span><span
+class="style10">::</span><span class="style11">vector_tree_cnc </span><span class="style10">&lt;</span><span
+class="style5">uint32_t</span><span class="style10">&gt;          </span><span class="style11">VT</span><span
+class="style10">;
+
+</span><span class="style5">void </span><span class="style11">Generation </span><span
+class="style10">( </span><span class="style5">void</span><span class="style10">)
+{   </span><span class="style2">//------------------ DefiniciÃ³n de constantes------------
+    </span><span class="style16">cout</span><span class="style10">&lt;&lt;</span><span
+class="style6">"Generation -----------------------------&gt;"</span><span class="style10">;
+    </span><span class="style11">Primo </span><span class="style10">[</span><span
+class="style4">0</span><span class="style10">] = </span><span class="style4">2 </span><span
+class="style10">;
+    </span><span class="style11">Primo </span><span class="style10">[</span><span
+class="style4">1</span><span class="style10">] = </span><span class="style4">3 </span><span
+class="style10">;
+    </span><span class="style11">Primo </span><span class="style10">[</span><span
+class="style4">2</span><span class="style10">] = </span><span class="style4">5</span><span
+class="style10">;
+    </span><span class="style11">Primo </span><span class="style10">[</span><span
+class="style4">3</span><span class="style10">] = </span><span class="style4">7</span><span
+class="style10">;
+    </span><span class="style11">Primo </span><span class="style10">[</span><span
+class="style4">4</span><span class="style10">] = </span><span class="style4">11</span><span
+class="style10">;
+    </span><span class="style11">Primo </span><span class="style10">[</span><span
+class="style4">5</span><span class="style10">] = </span><span class="style4">13 </span><span
+class="style10">;
+    </span><span class="style11">NPrimo </span><span class="style10">= </span><span
+class="style4">6 </span><span class="style10">;
+
+    </span><span class="style5">uint64_t </span><span class="style11">Tope </span><span
+class="style10">=</span><span class="style4">2</span><span class="style10">, </span><span
+class="style11">Tope2 </span><span class="style10">= </span><span class="style4">25</span><span
+class="style10">;
+
+    </span><span class="style5">for </span><span class="style10">( </span><span
+class="style5">uint32_t </span><span class="style11">Num </span><span class="style10">= </span><span
+class="style4">17 </span><span class="style10">; </span><span class="style11">Num </span><span
+class="style10">&lt; </span><span class="style4">65536 </span><span class="style10">; </span><span
+class="style11">Num</span><span class="style10">+=</span><span class="style4">2</span><span
+class="style10">)
+    {   </span><span class="style5">bool </span><span class="style11">EsPrimo </span><span
+class="style10">= </span><span class="style5">true </span><span class="style10">;
+        </span><span class="style5">if </span><span class="style10">( </span><span
+class="style11">Num </span><span class="style10">&gt;= </span><span class="style11">Tope2</span><span
+class="style10">)
+        {   </span><span class="style11">Tope</span><span class="style10">++ ;
+            </span><span class="style11">Tope2 </span><span class="style10">= </span><span
+class="style11">Primo</span><span class="style10">[</span><span class="style11">Tope </span><span
+class="style10">]* </span><span class="style11">Primo</span><span class="style10">[</span><span
+class="style11">Tope</span><span class="style10">];
+        };
+        </span><span class="style5">for </span><span class="style10">( </span><span
+class="style5">uint32_t </span><span class="style11">k </span><span class="style10">= </span><span
+class="style4">1 </span><span class="style10">; </span><span class="style11">k </span><span
+class="style10">&lt; </span><span class="style11">Tope </span><span class="style5">and </span><span
+class="style11">EsPrimo</span><span class="style10">; ++</span><span class="style11">k</span><span
+class="style10">)
+        {   </span><span class="style5">if </span><span class="style10">(  ( </span><span
+class="style11">Num </span><span class="style10">% </span><span class="style11">Primo</span><span
+class="style10">[</span><span class="style11">k</span><span class="style10">]) == </span><span
+class="style4">0 </span><span class="style10">) </span><span class="style11">EsPrimo </span><span
+class="style10">= </span><span class="style5">false </span><span class="style10">;
+        };
+        </span><span class="style5">if </span><span class="style10">(</span><span
+class="style11">EsPrimo</span><span class="style10">) </span><span class="style11">Primo </span><span
+class="style10">[ </span><span class="style11">NPrimo</span><span class="style10">++] = </span><span
+class="style11">Num</span><span class="style10">;
+    };
+    </span><span class="style5">for </span><span class="style10">(</span><span class="style5">uint32_t </span><span
+class="style11">i </span><span class="style10">=</span><span class="style4">0 </span><span
+class="style10">; </span><span class="style11">i </span><span class="style10">&lt; </span><span
+class="style11">NPrimo </span><span class="style10">;++</span><span class="style11">i</span><span
+class="style10">)
+        </span><span class="style11">Primo2</span><span class="style10">[ </span><span
+class="style11">i</span><span class="style10">] = </span><span class="style11">Primo</span><span
+class="style10">[</span><span class="style11">i</span><span class="style10">]* </span><span
+class="style11">Primo</span><span class="style10">[</span><span class="style11">i</span><span
+class="style10">];
+    </span><span class="style16">cout</span><span class="style10">&lt;&lt;</span><span
+class="style6">"End generation \n"</span><span class="style10">;
+};
+</span><span class="style5">void </span><span class="style11">Criba </span><span
+class="style10">( </span><span class="style11">VT </span><span class="style10">&amp; </span><span
+class="style11">VTC </span><span class="style10">,</span><span class="style5">typename </span><span
+class="style11">VT</span><span class="style10">::</span><span class="style16">iterator  </span><span
+class="style11">Alfa </span><span class="style10">, </span><span class="style5">uint32_t </span><span
+class="style11">NElem</span><span class="style10">)
+{   </span><span class="style2">//----------------------- begin--------------------
+    </span><span class="style5">typename </span><span class="style11">VT</span><span
+class="style10">::</span><span class="style16">iterator </span><span class="style11">Beta </span><span
+class="style10">= </span><span class="style11">Alfa</span><span class="style10">;
+    </span><span class="style5">for </span><span class="style10">( </span><span
+class="style5">uint32_t </span><span class="style11">i </span><span class="style10">=</span><span
+class="style4">0 </span><span class="style10">; </span><span class="style11">i </span><span
+class="style10">&lt; </span><span class="style11">NElem </span><span class="style10">; ++</span><span
+class="style11">i</span><span class="style10">)
+    {   </span><span class="style11">Alfa </span><span class="style10">= </span><span
+class="style11">Beta </span><span class="style10">;
+        </span><span class="style11">Beta </span><span class="style10">= </span><span
+class="style11">Alfa </span><span class="style10">+</span><span class="style4">1 </span><span
+class="style10">;
+        </span><span class="style5">uint32_t </span><span class="style11">N </span><span
+class="style10">= *</span><span class="style11">Alfa </span><span class="style10">;
+        </span><span class="style5">bool </span><span class="style11">EsPrimo </span><span
+class="style10">= </span><span class="style5">true </span><span class="style10">;
+        </span><span class="style5">for </span><span class="style10">(</span><span
+class="style5">uint32_t </span><span class="style11">k </span><span class="style10">= </span><span
+class="style4">0 </span><span class="style10">; </span><span class="style11">EsPrimo </span><span
+class="style5">and </span><span class="style11">Primo2</span><span class="style10">[</span><span
+class="style11">k</span><span class="style10">]&lt;= </span><span class="style11">N</span><span
+class="style10">; ++</span><span class="style11">k</span><span class="style10">)
+        {   </span><span class="style5">if </span><span class="style10">( (</span><span
+class="style11">N</span><span class="style10">%</span><span class="style11">Primo</span><span
+class="style10">[</span><span class="style11">k</span><span class="style10">]) == </span><span
+class="style4">0</span><span class="style10">) </span><span class="style11">EsPrimo </span><span
+class="style10">= </span><span class="style5">false </span><span class="style10">;
+        };
+        </span><span class="style5">if </span><span class="style10">( </span><span
+class="style11">EsPrimo</span><span class="style10">) </span><span class="style11">VTC</span><span
+class="style10">.</span><span class="style16">erase </span><span class="style10">( </span><span
+class="style11">Alfa</span><span class="style10">);
+    };
+};
+
+</span><span class="style5">int  </span><span class="style11">main </span><span
+class="style10">( </span><span class="style5">void</span><span class="style10">)
+{   </span><span class="style16">cout</span><span class="style10">&lt;&lt;</span><span
+class="style6">"----------------------------------------------------------------------------\n"</span><span
+class="style10">;
+    </span><span class="style16">cout</span><span class="style10">&lt;&lt;</span><span
+class="style6">"This program store "</span><span class="style10">&lt;&lt;</span><span
+class="style11">NELEM</span><span class="style10">&lt;&lt;</span><span class="style6">" numbers of 32 bits in a vector_tree\n"    </span><span
+class="style10">;
+    </span><span class="style16">cout</span><span class="style10">&lt;&lt;</span><span
+class="style6">"The time measured is the process of delete the prime numbers ( around 10%)\n"</span><span
+class="style10">;
+    </span><span class="style16">cout</span><span class="style10">&lt;&lt;</span><span
+class="style6">"done with several threads such as cores have the processor\n"</span><span
+class="style10">;
+    </span><span class="style16">cout</span><span class="style10">&lt;&lt;</span><span
+class="style6">"----------------------------------------------------------------------------\n"</span><span
+class="style10">;
+    </span><span class="style11">Generation</span><span class="style10">() ;
+    </span><span class="style16">std</span><span class="style10">::</span><span
+class="style11">thread  T </span><span class="style10">[</span><span class="style4">8</span><span
+class="style10">] ;
+    </span><span class="style5">typename </span><span class="style11">VT</span><span
+class="style10">::</span><span class="style16">iterator </span><span class="style11">Ini</span><span
+class="style10">[</span><span class="style4">8</span><span class="style10">];
+    </span><span class="style5">uint32_t </span><span class="style11">NE </span><span
+class="style10">[</span><span class="style4">8</span><span class="style10">] ;
+    </span><span class="style5">const uint32_t </span><span class="style11">Cupo </span><span
+class="style10">= </span><span class="style11">NELEM </span><span class="style10">/ </span><span
+class="style11">NCores </span><span class="style10">;
+
+    </span><span class="style11">VT VTC </span><span class="style10">;
+    </span><span class="style5">for </span><span class="style10">(</span><span class="style5">uint32_t </span><span
+class="style11">i </span><span class="style10">=</span><span class="style4">0 </span><span
+class="style10">; </span><span class="style11">i </span><span class="style10">&lt; </span><span
+class="style11">NELEM </span><span class="style10">;++</span><span class="style11">i</span><span
+class="style10">)
+        </span><span class="style11">VTC</span><span class="style10">.</span><span
+class="style16">push_back </span><span class="style10">( </span><span class="style11">RANDOM </span><span
+class="style10">| </span><span class="style4">1 </span><span class="style10">) ;
+
+    </span><span class="style5">for </span><span class="style10">(</span><span class="style5">uint32_t </span><span
+class="style11">i </span><span class="style10">=</span><span class="style4">0 </span><span
+class="style10">; </span><span class="style11">i </span><span class="style10">&lt; </span><span
+class="style11">NCores </span><span class="style10">; ++</span><span class="style11">i</span><span
+class="style10">)
+    {   </span><span class="style11">Ini</span><span class="style10">[</span><span
+class="style11">i</span><span class="style10">] = </span><span class="style11">VTC</span><span
+class="style10">.</span><span class="style16">begin</span><span class="style10">() + ( </span><span
+class="style11">i </span><span class="style10">* </span><span class="style11">Cupo</span><span
+class="style10">);
+        </span><span class="style11">NE</span><span class="style10">[</span><span
+class="style11">i</span><span class="style10">]=  ((</span><span class="style11">i</span><span
+class="style10">*</span><span class="style11">Cupo</span><span class="style10">)&gt; </span><span
+class="style11">NELEM</span><span class="style10">)?(</span><span class="style11">NELEM</span><span
+class="style10">-(</span><span class="style11">i</span><span class="style10">-</span><span
+class="style4">1</span><span class="style10">)* </span><span class="style11">Cupo</span><span
+class="style10">):</span><span class="style11">Cupo </span><span class="style10">;
+    }
+
+    </span><span class="style5">for </span><span class="style10">(</span><span class="style5">uint32_t </span><span
+class="style11">i </span><span class="style10">=</span><span class="style4">0 </span><span
+class="style10">; </span><span class="style11">i </span><span class="style10">&lt; </span><span
+class="style11">NCores </span><span class="style10">; ++</span><span class="style11">i</span><span
+class="style10">)
+    {   </span><span class="style11">T</span><span class="style10">[</span><span
+class="style11">i</span><span class="style10">] = </span><span class="style16">std</span><span
+class="style10">::</span><span class="style11">thread </span><span class="style10">( </span><span
+class="style11">Criba</span><span class="style10">,</span><span class="style16">std</span><span
+class="style10">::</span><span class="style16">ref</span><span class="style10">( </span><span
+class="style11">VTC</span><span class="style10">), </span><span class="style11">Ini</span><span
+class="style10">[</span><span class="style11">i</span><span class="style10">], </span><span
+class="style11">NE</span><span class="style10">[</span><span class="style11">i</span><span
+class="style10">] ) ;
+    };
+    </span><span class="style5">for </span><span class="style10">(</span><span class="style5">uint32_t </span><span
+class="style11">i </span><span class="style10">=</span><span class="style4">0 </span><span
+class="style10">; </span><span class="style11">i </span><span class="style10">&lt; </span><span
+class="style11">NCores </span><span class="style10">; ++</span><span class="style11">i</span><span
+class="style10">)
+    {   </span><span class="style11">T</span><span class="style10">[</span><span
+class="style11">i</span><span class="style10">].</span><span class="style11">join</span><span
+class="style10">();
+    };
+    </span><span class="style16">cout</span><span class="style10">&lt;&lt;</span><span
+class="style11">VTC</span><span class="style10">.</span><span class="style16">size</span><span
+class="style10">()&lt;&lt;</span><span class="style6">" elements stored at end of the process\n"</span><span
+class="style10">;
+
+    </span><span class="style5">return </span><span class="style4">0 </span><span
+class="style10">;
+};</span></span>
+</code></pre><br />
+          <span class="style10"></span> <br />
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+          <br />
+        <br />
+        <!--*******************************************************************************************************  -->
+        <!--                             I C O N O S   P A R T E   I N F E R I O R                                  -->
+        <!--*******************************************************************************************************  -->
+        <a style="float:right" href="P2.4_vector_tree_benchmarks.html" title="vector_tree benchmarks"><img
+            src="img/next.png" alt="next page" /></a> <a style="float:right" href="P2.0_vector_tree.html"
+          title="home page"><img src="img/up.png" alt="go to head of the page" /></a>
+        <a style="float:right" href="P2.2_vector_tree_functions.html" title="vector_tree functions"><img
+            alt="previous page" src="img/prev.png" /></a> <a style="float:right"
+          href="index.html" title="home"><img alt="home page" src="img/home.png" /></a>
+      </div>
+    </div>
+    <!--*******************************************************************************************************  -->
+    <!--                    T A B L A    I N F E R I O R   D E   L A    P A G I N A                              -->
+    <!--*******************************************************************************************************  -->
+    <table width="100%" xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision">
+      <tbody>
+        <tr>
+          <td align="left">
+            <p><small>Last revised: September  08, 2010 at 21:42:41 GMT</small></p>
+          </td>
+          <td align="right"> <br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <div class="box-bottom"></div>
+    <!-- div cuerpo_texto -->
+    <div class="clear"></div>
+    <!-- div cuerpo central -->
+    <!--  div body -->
+    <!--*******************************************************************************************************  -->
+    <!--                                      F O O T E R                                                        -->
+    <!--*******************************************************************************************************  -->
+    <div id="footer">
+      <div id="footer-left">
+        <div id="copyright">
+          <p>Copyright Francisco Jose Tapia 2010 -2012.</p>
+        </div>
+        <div id="license">
+          <p>Distributed under the <a class="internal" href="/LICENSE_1_0.txt">Boost
+              Software License, Version 1.0</a>.</p>
+        </div>
+      </div>
+      <div id="footer-right">
+        <div id="banners">
+          <p id="banner-xhtml"> <a class="external" href="http://validator.w3.org/check?uri=referer">XHTML
+              1.0</a></p>
+          <p id="banner-css"> <a class="external" href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></p>
+          <p id="banner-osi"> <a class="external" href="http://www.opensource.org/docs/definition.php">OSI
+              Certified</a></p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </body>
+</html>

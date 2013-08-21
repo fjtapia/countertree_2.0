@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org"
+      name="generator" />
+    <title>Boost C++ Libraries</title>
+    <link type="image/ico" href="http://www.boost.org/favicon.ico" rel="icon" />
+    <link href="http://www.boost.org/style-v2/section-welcome.css" type="text/css"
+      rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="files/code.css" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(http://www.boost.org/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" name="google-site-verification" />
+  </head>
+  <!-- Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html-->
+  <!--***************************************************************************************** -->
+  <!--                                        B O D Y                                           -->
+  <!--***************************************************************************************** -->
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img class="heading-logo"
+              alt="Boost C++ Libraries" src="http://www.boost.org//gfx/space.png" />
+            <span class="heading-boost">Boost</span> <span class="heading-cpplibraries">C++
+              Libraries</span> <img style="width: 300px; height: 80px;" alt="Preliminary"
+              src="img/preliminary.gif" /> </a></h1>
+        <p class="heading-quote"> <q>...one of the most highly regarded and
+            expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
+            <a class="external" href="http://www.gotw.ca/">Herb Sutter</a> and <a
+              class="external" href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu">Andrei
+              Alexandrescu</a>, <a class="external" href="http://safari.awprofessional.com/?XmlId=0321113586">C++
+              Coding Standards</a></span></p>
+      </div>
+    </div>
+    <div class="clear"> </div>
+    <div class="cuerpo_central"> <br />
+      <div class="cuerpo_texto"> <br />
+        <span style="font-size: 24pt;"> <span style="font-weight: bold; color: black;">
+            <a href="index.html">The [ Counter Tree + Suballocator ] Library</a>
+          </span></span><br />
+        <div>
+          <div class="author">
+            <h3 class="author"><br />
+              <span class="firstname"></span></h3>
+            <h3 class="author" style="font-size: 10pt; font-style: italic; font-weight: bold">
+              <span style="font-weight: bold;"><span style="font-weight: bold;"
+                  class="firstname">Francisco Jose Tapia</span>   Copyright ©
+                2010-2013 Francisco Jose Tapia</span></h3>
+          </div>
+        </div>
+        <div class="legalnotice">
+          <p><span style="font-size: 10pt; font-style: italic; font-weight: bold">Distributed
+              under the Boost Software License, Version 1.0. (See accompanying
+              file LICENSE_1_0.txt or copy at <a target="_top" href="file:///LICENSE_1_0.txt">
+                http://www.boost.org/LICENSE_1_0.txt )</a></span> </p>
+        </div>
+        <br />
+        <span style="font-size: 16pt; color: black;">BRIEF</span><br />
+        <br />
+        <div style="margin-left: 40px;"> <span style="font-style: italic;">This
+            library provide a <span style="font-weight: bold;">concurrent</span>
+            and <span style="font-weight: bold;">thread safe</span>
+            implementation of the tree based data structures ( <span style="font-weight: bold;">set,
+              multiset, map</span> and <span style="font-weight: bold;">multimap</span>,
+            plus a new data structure named <span style="font-weight: bold;">vector_tree</span>) 
+            with <span style="font-weight: bold;">random access iterators</span>
+            and <span style="font-weight: bold;">access by position</span> like
+            a vector. This </span><span style="font-style: italic;">permit to
+            distribute the elements stored in the trees, between an arbitrary
+            number of threads, identically as do with the vectors, making easy
+            the design of <span style="font-weight: bold;">parallel algorithms</span>
+            applied to the tree based data structures (as you can see in </span><span
+            style="font-style: italic;"><a href="P2.3_vector_tree_examples.html">2.3.-
+              Examples</a> and </span><span style="font-style: italic;"><a href="P3.6_set_map_examples.html#examples">3.6.-
+              Examples</a>) , and their use by the<span style="font-weight: bold;">
+              multicore development tools</span> as <span style="font-weight: bold;">OpenMP,
+              Threading Building Blocks ...</span><br />
+            <br />
+          </span><span style="font-style: italic;">These data structures are
+            based on a kind of red-black trees ( <span style="font-weight: bold;">Counter
+              Tree</span>) which  permit the access by position, like in a
+            vector, to the elements stored in the tree, and random access
+            iterators. Based on this trees this library provide, in the
+            namespace countertree,  <span style="font-weight: bold;">classes
+              set, multiset, map and multimap</span>, compatible with the class
+            with the same name in the Standard Library, plus a new data
+            structure ( <span style="font-weight: bold;">vector_tree</span>)
+            which is a vector, built over this kind of tree, compatible with the
+            vector and deque of the Standard Library. <br />
+            <br />
+          </span><span style="font-style: italic;">All these classes have <span
+              style="font-weight: bold;">access by position</span>, like the
+            vectors , and <span style="font-weight: bold;">random access
+              iterators</span>.You can subtract two iterators for to know the
+            number of elements between them. These classes have a<span style="font-weight: bold;">
+              concurrent version,</span> which is thread-safe with all the
+            operations of the class, and other version non concurrent for to
+            work only with 1 thread.<br />
+            <br />
+            The library present too, the <span style="font-weight: bold;">suballocators</span>.
+            They are pools for to improve the allocation and deallocation of
+            fixed size elements, like in the trees and lists. They are
+            compatible with the allocator's definition of the Standard Library.
+            They can be used by any class which need an allocator. The advantage
+            of the suballocators  are</span></div>
+        <span style="font-style: italic;"> </span>
+        <div style="margin-left: 40px;"> <span style="font-style: italic;"><br />
+          </span> </div>
+        <span style="font-style: italic;"> </span>
+        <ol style="margin-left: 80px;">
+          <span style="font-style: italic;"> </span>
+          <ol>
+            <span style="font-style: italic;"> </span>
+            <ol>
+              <span style="font-style: italic;"> </span>
+              <li><span style="font-style: italic;">Improve the speed ( around
+                  30% in a heavy use with a std::set )</span></li>
+              <span style="font-style: italic;"> </span>
+              <li><span style="font-style: italic;">Reduce the <span style="font-weight: bold;">memory
+                    consumption</span>.</span></li>
+              <span style="font-style: italic;"> </span>
+              <li><span style="font-style: italic;">Improve the memory
+                  management, returning to the operating system the unused
+                  memory, reducing dynamically the amount of memory used by the
+                  program (Many allocators <span style="font-weight: bold;">don't
+                    return well the unused chucks of memory</span> to the
+                  Operating System  and the memory  used by the allocator is the
+                  maximum used and never decrease)</span></li>
+            </ol>
+          </ol>
+        </ol>
+        <br />
+        <br />
+        <br />
+        <div class="caja_menu"> <span style="font-size: 16pt; color: black;"><br />
+            Table of Contents</span> <br />
+          <div style="margin-left: 80px;"><br />
+          </div>
+          <div style="margin-left: 40px;">
+            <div style="margin-left: 40px;"> <a href="P1.0_introduction.html#introduction">1.-
+                Introduction</a><br />
+              <div style="margin-left: 40px;"><a href="P1.0_introduction.html#countertree">1.1.-
+                  Description of the Counter Trees</a><br />
+                <div style="margin-left: 40px;"><a href="P1.0_introduction.html#iterators">1.1.1.-
+                    Iterators</a></div>
+                <a href="P1.2_description_suballocators.html#suballocator">1.2.-
+                  Description of the Suballocators </a><br />
+                <a href="P1.2_description_suballocators.html#countertree_suballocator">1.3.-
+                  Description of Counter Trees + Suballocators </a><br />
+                <a href="P1.4_concurrent_versions.html#concurrent">1.4.-
+                  Concurrent version</a><br />
+                <div style="margin-left: 40px;"><a href="P1.4_concurrent_versions.html#lock">1.4.1.-
+                    Lock description</a><br />
+                </div>
+                <div style="margin-left: 40px;"><a href="P1.4_concurrent_versions.html#description">1.4.2.-
+                    Description of the class of the library</a><br />
+                  <a href="P1.4_concurrent_versions.html#problems">1.4.3.-
+                    Problems associated to the concurrency. Solutions
+                    implemented</a><br />
+                  <a href="P1.4_concurrent_versions.html#deletion">1.4.4.-
+                    Access by position and deletion in the first/last position</a></div>
+                <a href="P1.5_next_improvements.html#next_improvements">1.5.-
+                  Next Improvements</a><br />
+                <div style="margin-left: 40px;"><a href="P1.5_next_improvements.html#parallel">1.5.1-
+                    Parallel design of copy and clear trees ,logical functions
+                    with trees and several functions of &lt;algorithm&gt;</a><br />
+                  <a href="P1.5_next_improvements.html#redesign">1.5.2- Redesign
+                    of the internal algorithm</a><br />
+                  <a href="P1.5_next_improvements.html#augmented">1.5.3-
+                    Augmented trees</a></div>
+              </div>
+              <div style="margin-left: 40px;"> <br />
+                <a href="P2.0_vector_tree.html">2.- Counter Trees with unordered
+                  elements ( <span class="texto_codigo">vector_tree</span>)</a>
+                <br />
+                <div style="margin-left: 40px;"> <a href="P2.0_vector_tree.html#description">2.1.-
+                    vector_tree description</a><br />
+                  <a href="P2.2_vector_tree_functions.html">2.2.- vector_tree
+                    functions</a><br />
+                  <a href="P2.3_vector_tree_examples.html">2.3.- Examples</a><br />
+                  <a href="P2.4_vector_tree_benchmarks.html">2.4.- Benchmarks</a><br />
+                </div>
+                <br />
+                <a href="P3.0_set_map.html">3.- Ordered elements </a> <span class="texto_codigo">(countertree
+                  set, multiset, map and multimap)</span> <br />
+                <div style="margin-left: 40px;"> <a href="P3.0_set_map.html#description">3.1.-
+                    Description</a></div>
+                <div style="margin-left: 40px;"> <a href="P3.2_set_functions.html#functions">3.2.-
+                    set functions </a><br />
+                  <a href="P3.3_multiset_functions.html#functions">3.3.-
+                    multiset functions </a><br />
+                  <a href="P3.4_map_functions.html#functions">3.4.- map
+                    functions  </a><br />
+                  <a href="P3.5_multimap_functions.html#functions">3.5.-
+                    multimap functions </a><br />
+                  <a href="P3.6_set_map_examples.html#examples">3.6.- Examples</a><br />
+                  <a href="P3.7_set_map_benchmarks.html#benchmarks">3.7.-
+                    Benchmarks </a></div>
+                <div style="margin-left: 80px;"> <a href="P3.7_set_map_benchmarks.html#gcc">3.7.1.-
+                    Benchmarks GCC 4.7</a><br />
+                  <a href="P3.7_set_map_benchmarks.html#vc++">3.7.2.- Benchmarks
+                    VC++13</a><br />
+                  <a href="P3.7_set_map_benchmarks.html#clang">3.7.3.-
+                    Benchmarks CLANG 3.3</a></div>
+                <br />
+                <a href="P4.0_suballocator.html">4.- Suballocators<br />
+                </a>
+                <div style="margin-left: 40px;"><a href="suballocator.html"> </a>
+                  <a href="P4.0_suballocator.html#problems">4.1.- Problems with
+                    allocators in Windows and Linux</a><br />
+                  <a href="P4.0_suballocator.html#description"> 4.2.-
+                    Description of the Suballocators </a><br />
+                  <a href="P4.3_suballocator_functions.html">4.3.- Functions of
+                    the Suballocators </a><br />
+                  <a href="P4.4_suballocator_cnc_functions.html">4.4.- Functions
+                    of the Suballocators_cnc </a><br />
+                  <a href="P4.5_suballocator_examples.html">4.5.- Examples </a><br />
+                  <a href="P4.6_suballocator_benchmarks.html">4.6.- Benchmarks </a><br />
+                </div>
+                <div style="margin-left: 80px;"> <a href="P4.6_suballocator_benchmarks.html#gcc">4.6.-
+                    Benchmark GCC 4.7</a><br />
+                  <a href="P4.6_suballocator_benchmarks.html#vc++">4.6.-
+                    Benchmark VC++ 13</a><br />
+                  <a href="P4.6_suballocator_benchmarks.html#clang">4.6.-
+                    Benchmark CLANG 3.3</a></div>
+                <br />
+                5.- Documentation of the code<br />
+                <div style="margin-left: 40px;"><a href="html/index.html">5.1.-
+                    Doxygen documentation</a><br />
+                  <a href="html/files.html">5.2.- Source code</a><br />
+                  <a href="The_Suballocator_Algorithms.pdf" target="_parent">5.2.-
+                    Algorithm description of the Suballocator (pdf)</a><br />
+                </div>
+                <br />
+              </div>
+            </div>
+            <div style="margin-left: 80px;"><a title="references" href="P6.0_references.html">6.-
+                References</a><br />
+              <br />
+              <a title="countertree_2.0.zip" href="countertree_2.0.zip">7.-
+                Download</a><br />
+              <br />
+              <a title="countertree_1.0.zip" href="countertree_1.0.zip">8.- Old
+                version</a></div>
+            <br />
+            <br />
+            <br />
+          </div>
+        </div>
+        <br />
+        <br />
+        <a style="float:right" href="P1.0_introduction.html" title="Introduction">
+          <img src="img/next.png" alt="link to introduction page" /></a> <a style="float:right"
+          href="index.html" title="index.html"> <img src="img/up.png" alt="go to head of the page" /></a> 
+        <a style="float:right" href="index.html" title="index.html"><img alt="home page"
+            src="img/home.png" /></a> <br />
+        <br />
+        <br />
+        <table width="100%" xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision">
+          <tbody>
+            <tr>
+              <td align="left">
+                <p><small>Last revised: September  30, 2012 at 21:42:41 GMT</small></p>
+              </td>
+              <td align="right"> <br />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <div id="footer">
+          <div id="footer-left">
+            <div id="copyright">
+              <p>Copyright Francisco Jose Tapia 2010-2012.</p>
+            </div>
+            <div id="license">
+              <p>Distributed under the <a class="internal" href="/LICENSE_1_0.txt">Boost
+                  Software License, Version 1.0</a>.</p>
+            </div>
+          </div>
+          <div id="footer-right">
+            <div id="banners">
+              <p id="banner-xhtml"> <a class="external" href="http://validator.w3.org/check?uri=referer">XHTML
+                  1.0</a></p>
+              <p id="banner-css"> <a class="external" href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a></p>
+              <p id="banner-osi"> <a class="external" href="http://www.opensource.org/docs/definition.php">OSI
+                  Certified</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
