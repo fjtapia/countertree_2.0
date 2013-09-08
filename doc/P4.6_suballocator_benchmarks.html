@@ -1,0 +1,690 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org"
+      name="generator" />
+    <title>Boost C++ Libraries</title>
+    <link type="image/ico" href="img/favicon.ico" rel="icon" />
+    <link href="css/section-welcome.css" type="text/css" rel="stylesheet" />
+    <link href="css/code.css" type="text/css" rel="stylesheet" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" name="google-site-verification" />
+    <!--
+Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html
+-->
+  </head>
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <div class="heading-placard"></div>
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img class="heading-logo"
+              alt="Boost C++ Libraries" src="img/space.png" /> <span class="heading-boost">Boost</span>
+            <span class="heading-cpplibraries">C++ Libraries</span> <img src="img/preliminary.gif"
+              alt="Preliminary" style="width: 300px; height: 80px;" /> </a></h1>
+        <p class="heading-quote"> <q>...one of the most highly regarded and
+            expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
+            <a class="external" href="http://www.gotw.ca/">Herb Sutter</a> and <a
+              class="external" href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu">Andrei
+              Alexandrescu</a>, <a class="external" href="http://safari.awprofessional.com/?XmlId=0321113586">C++
+              Coding Standards</a></span></p>
+      </div>
+    </div>
+    <div class="clear"> </div>
+    <div class="cuerpo_central"> <br />
+      <div class="cuerpo_texto"> <br />
+        <span style="font-size: 24pt;"> <span style="font-weight: bold; color: black;">
+            <a href="index.html">The [ Counter Tree + Suballocator ] Library</a>
+          </span></span><br />
+        <div>
+          <div class="author">
+            <h3 class="author"><br />
+              <span class="firstname"></span></h3>
+            <h3 class="author" style="font-size: 10pt; font-style: italic; font-weight: bold">
+              <span style="font-weight: bold;"><span style="font-weight: bold;"
+                  class="firstname">Francisco Jose Tapia</span>   Copyright ©
+                2010-2013 Francisco Jose Tapia</span></h3>
+          </div>
+        </div>
+        <div class="legalnotice">
+          <p><span style="font-size: 10pt; font-style: italic; font-weight: bold">Distributed
+              under the Boost Software License, Version 1.0. (See accompanying
+              file LICENSE_1_0.txt or copy at <a target="_top" href="file:///LICENSE_1_0.txt">
+                http://www.boost.org/LICENSE_1_0.txt )</a></span> </p>
+        </div>
+        <br />
+
+        <br />
+        <!--*******************************************************************************************************-->
+        <!--                                     M E N U                                                           -->
+        <!--*******************************************************************************************************-->
+        <div class="caja_menu"> <span style="font-weight: bold;"><br />
+          </span><span style="font-size: 16pt;font-weight: bold; color: black;">Table
+            of Contents</span> <br />
+          <br />
+          <div style="margin-left: 40px;"><a href="P4.0_suballocator.html">4.-
+              Suballocators</a><br />
+          </div>
+          <div style="margin-left: 80px;"> <a href="P4.0_suballocator.html#problems">4.1.-
+              Problems with allocators in Windows and Linux</a><br />
+            <a href="P4.0_suballocator.html#description"> 4.2.- Description of
+              the Suballocators </a><br />
+            <a href="P4.3_suballocator_functions.html">4.3.- Functions of the
+              Suballocators </a><br />
+            <a href="P4.4_suballocator_cnc_functions.html">4.4.- Functions of
+              the Suballocators_cnc </a><br />
+            <a href="P4.5_suballocator_examples.html">4.5.- Examples </a><br />
+            <a href="P4.6_suballocator_benchmarks.html">4.6.- Benchmarks </a><br />
+            <div style="margin-left: 40px;"> <a href="P4.6_suballocator_benchmarks.html#gcc">4.6.-
+                Benchmark GCC 4.7</a><br />
+              <a href="P4.6_suballocator_benchmarks.html#vc++">4.6.- Benchmark
+                VC++ 13</a><br />
+              <a href="P4.6_suballocator_benchmarks.html#clang">4.6.- Benchmark
+                CLANG 3.3</a></div>
+            <br />
+            <br />
+          </div>
+        </div>
+        <!--        Fin div caja_menu  --> <br />
+        <br />
+        <!--*******************************************************************************************************-->
+        <!--                                                  B E N C H M A R K                                    -->
+        <!--*******************************************************************************************************-->
+        <p><a name="benchmark"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">4.6.-
+            Benchmarks (GCC 4.7, VC++ 13, CLANG 3.3) </span></p>
+        <br />
+        The test had been done with  GCC 4.7 (64 bits) and run on a QuadCore 2.4
+        GHz ( 8 GB of Dual Channel 1066 MHz Memory) with the C++0x options
+        activated, and with the highest level of optimization.<br />
+        <span style="font-weight: bold;">IMPORTANT!</span> The results of the
+        benchmarks have a great dependency of the processor, and the size of the
+        cache. <br />
+        <br />
+        <span style="font-weight: bold; text-decoration: underline;">Allocate
+          50.000.000 elements of uint64_t</span><br />
+        <br />
+        The benchmark of the suballocator is a vector of pointers to elements
+        uint64_t. The size of the vector is 50.000.000 elements. This vector is
+        obtained from dynamic memory, and is used for to link the elements
+        obtained from the allocator.The allocator is selected from a menu .<br />
+        The left graph shows the time of the 5 operations over the allocator .
+        We take the time with the function <span style="font-weight: bold;">clock(
+          )</span>
+        <ol style="margin-left: 40px;">
+          <li>Allocate 50000000 elements of 64 bits</li>
+          <li>Deallocate all from the last to the first</li>
+          <li>Deallocate all from the first to the last</li>
+          <li>Deallocate odd elements</li>
+          <li>Deallocate odds elements and reallocate </li>
+        </ol>
+        <br />
+        The right  graph shows the memory used by the program in 3 moments:<br />
+        <ol style="margin-left: 40px;">
+          <li>The vector of pointers had been created and 50.000.000 elements
+            uint64_t allocated</li>
+          <li>The vector of pointers had been created and 50.000.000 elements
+            uint64_t had been deallocated</li>
+          <li>The vector of pointers had been deleted and 50.000.000 elements
+            uint64_t had been deallocated</li>
+        </ol>
+        <br />
+        This second graph shows the memory consumption, and the capability of
+        the allocators for to return memory to the operating system and decrease
+        the memory used by the program <br />
+        <br />
+        <br />
+        <span style="font-weight: bold; text-decoration: underline;">Allocate
+          30.000.000 elements uint64_t and insert in a std::set</span><br />
+        <br />
+        The second Benchmark is the insertion of several collections of
+        30.000.000 numbers of 64 bits in a std::tree. You select the allocator
+        from a menu <br />
+        <p> <span style="font-weight: bold;">This graph is very important</span>,
+          because show other important property of the allocators. The time
+          spend  by the allocator in the insertion of a number in the set is
+          less than 1%. As you can see  we  save around 35%.of the time  The
+          allocator always provide the first position free. This provide us a
+          very compact data area, and this improve the cache performance.</p>
+        <p><br />
+        </p>
+        <p>The left graph is the time consumed, and the right is the memory used
+          by the allocator when the 30.000.000 elements are allocated , and
+          after when are freed, and the std::set is empty. This shows the memory
+          consumption, and the capability of the allocators for to return memory
+          to the operating system and decrease the memory used by the program </p>
+        * The source code of malloc_allocator, mt_allocator and pool_allocator
+        is in a directory of the GCC compiler (<span style="font-style: italic;">
+          In my computer /usr/include/c++/4.7/ext</span>). Check if your CLANG
+        compiler access to this directory, for to compile the benchmark programs
+        <br />
+        <br />
+        <br />
+        <p><a name="gcc"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">4.6.1.-
+            Benchmarks GCC 4.7 </span></p>
+        <br />
+        <br />
+        <table cellspacing="0" border="1" style="width: 810px; height: 350px;" cols="7">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup> <colgroup
+            width="86"></colgroup> <colgroup width="85" span="2"></colgroup>
+          <tbody>
+            <tr>
+              <td align="CENTER" valign="MIDDLE" height="23" colspan="7"><font size="4">BENCHMARK_ALLOCATOR
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td align="LEFT" valign="MIDDLE" height="27" colspan="7"><b><u><font
+                      size="1"><br />
+                      This program make allocations and deallocations of
+                      50000000 elements of 64 bits checking the time needed (
+                      less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="73"><br />
+              </td>
+              <td align="LEFT"><b>Allocation of all the elements</b></td>
+              <td align="LEFT"><b>deallocate all from the first to the last</b></td>
+              <td align="LEFT"><b>deallocate all from the last to the first</b></td>
+              <td align="LEFT"><b>deallocate odd elements</b></td>
+              <td align="LEFT"><b>deallocate odd elements and reallocate</b></td>
+              <td align="LEFT"><b>TIME TOTAL</b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator</b></td>
+              <td align="RIGHT" sdval="1,307" sdnum="3082;">1,307</td>
+              <td align="RIGHT" sdval="0,998" sdnum="3082;">0,998</td>
+              <td align="RIGHT" sdval="0,998" sdnum="3082;">0,998</td>
+              <td align="RIGHT" sdval="0,746" sdnum="3082;">0,746</td>
+              <td align="RIGHT" sdval="2,121" sdnum="3082;">2,121</td>
+              <td align="RIGHT" sdval="6,17" sdnum="3082;">6,17</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator</b></td>
+              <td align="RIGHT" sdval="0,74" sdnum="3082;">0,74</td>
+              <td align="RIGHT" sdval="0,64" sdnum="3082;">0,64</td>
+              <td align="RIGHT" sdval="0,591" sdnum="3082;">0,591</td>
+              <td align="RIGHT" sdval="0,322" sdnum="3082;">0,322</td>
+              <td align="RIGHT" sdval="0,822" sdnum="3082;">0,822</td>
+              <td align="RIGHT" sdval="3,115" sdnum="3082;">3,115</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator_cnc</b></td>
+              <td align="RIGHT" sdval="3,594" sdnum="3082;">3,594</td>
+              <td align="RIGHT" sdval="3,445" sdnum="3082;">3,445</td>
+              <td align="RIGHT" sdval="3,392" sdnum="3082;">3,392</td>
+              <td align="RIGHT" sdval="1,752" sdnum="3082;">1,752</td>
+              <td align="RIGHT" sdval="3,753" sdnum="3082;">3,753</td>
+              <td align="RIGHT" sdval="15,936" sdnum="3082;">15,936</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>malloc_allocator</b></td>
+              <td align="RIGHT" sdval="1,165" sdnum="3082;">1,165</td>
+              <td align="RIGHT" sdval="0,917" sdnum="3082;">0,917</td>
+              <td align="RIGHT" sdval="0,914" sdnum="3082;">0,914</td>
+              <td align="RIGHT" sdval="0,741" sdnum="3082;">0,741</td>
+              <td align="RIGHT" sdval="2,089" sdnum="3082;">2,089</td>
+              <td align="RIGHT" sdval="5,826" sdnum="3082;">5,826</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>mt_allocator</b></td>
+              <td align="RIGHT" sdval="0,671" sdnum="3082;">0,671</td>
+              <td align="RIGHT" sdval="0,525" sdnum="3082;">0,525</td>
+              <td align="RIGHT" sdval="0,524" sdnum="3082;">0,524</td>
+              <td align="RIGHT" sdval="0,384" sdnum="3082;">0,384</td>
+              <td align="RIGHT" sdval="1,16" sdnum="3082;">1,16</td>
+              <td align="RIGHT" sdval="3,264" sdnum="3082;">3,264</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>pool_allocator</b></td>
+              <td align="RIGHT" sdval="0,959" sdnum="3082;">0,959</td>
+              <td align="RIGHT" sdval="0,593" sdnum="3082;">0,593</td>
+              <td align="RIGHT" sdval="0,572" sdnum="3082;">0,572</td>
+              <td align="RIGHT" sdval="0,286" sdnum="3082;">0,286</td>
+              <td align="RIGHT" sdval="0,832" sdnum="3082;">0,832</td>
+              <td align="RIGHT" sdval="3,242" sdnum="3082;">3,242</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>boost::fast_pool_allocator</b></td>
+              <td align="RIGHT" sdval="0,577" sdnum="3082;">0,577</td>
+              <td align="RIGHT" sdval="0,51" sdnum="3082;">0,51</td>
+              <td align="RIGHT" sdval="0,51" sdnum="3082;">0,51</td>
+              <td align="RIGHT" sdval="0,257" sdnum="3082;">0,257</td>
+              <td align="RIGHT" sdval="0,675" sdnum="3082;">0,675</td>
+              <td align="RIGHT" sdval="2,529" sdnum="3082;">2,529</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="allocator time gcc" src="img/benchmark_allocator_time_GCC.jpg" /><br />
+        <img src="img/benchmark_allocator_GCC.png" alt="" title="BENCHMARK ALLOCATOR GCC"
+          longdesc="img/benchmark_allocator_GCC.png" /><br />
+        <table cellspacing="0" border="1" style="width: 761px; height: 366px;" cols="4">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup>
+          <tbody>
+            <tr>
+              <td align="CENTER" valign="MIDDLE" height="23" colspan="4"><u><font
+                    size="4">BENCHMARK_ALLOCATOR memory size ( less is better)</font></u></td>
+            </tr>
+            <tr>
+              <td align="JUSTIFY" valign="MIDDLE" height="41" colspan="4"><b><u><font
+                      size="1"><br />
+                      This program make allocations and deallocations of
+                      50000000 elements of 64 bits checking the memory size used
+                      ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="101"><br />
+              </td>
+              <td align="LEFT"><b>Memory with all the elements allocated and
+                  data structures filled</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated and
+                  data structures cleared</b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator</b></td>
+              <td align="RIGHT" sdval="1954092" sdnum="3082;">1954092</td>
+              <td align="RIGHT" sdval="1954332" sdnum="3082;">1954332</td>
+              <td align="RIGHT" sdval="1563784" sdnum="3082;">1563784</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator</b></td>
+              <td align="RIGHT" sdval="791488" sdnum="3082;">791488</td>
+              <td align="RIGHT" sdval="392276" sdnum="3082;">392276</td>
+              <td align="RIGHT" sdval="5964" sdnum="3082;">5964</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator_cnc</b></td>
+              <td align="RIGHT" sdval="792460" sdnum="3082;">792460</td>
+              <td align="RIGHT" sdval="392288" sdnum="3082;">392288</td>
+              <td align="RIGHT" sdval="2004" sdnum="3082;">2004</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>malloc_allocator</b></td>
+              <td align="RIGHT" sdval="1954092" sdnum="3082;">1954092</td>
+              <td align="RIGHT" sdval="1954332" sdnum="3082;">1954332</td>
+              <td align="RIGHT" sdval="1563748" sdnum="3082;">1563748</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>mt_allocator</b></td>
+              <td align="RIGHT" sdval="1178988" sdnum="3082;">1178988</td>
+              <td align="RIGHT" sdval="1179264" sdnum="3082;">1179264</td>
+              <td align="RIGHT" sdval="788720" sdnum="3082;">788720</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>pool_allocator</b></td>
+              <td align="RIGHT" sdval="783868" sdnum="3082;">783868</td>
+              <td align="RIGHT" sdval="783984" sdnum="3082;">783984</td>
+              <td align="RIGHT" sdval="393400" sdnum="3082;">393400</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>boost::fast_pool_allocator</b></td>
+              <td align="RIGHT" sdval="915880" sdnum="3082;">915880</td>
+              <td align="RIGHT" sdval="916168" sdnum="3082;">916168</td>
+              <td align="RIGHT" sdval="525620" sdnum="3082;">525620</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="allocator size gcc" src="img/benchmark_allocator_size_GCC.jpg" /><br />
+        <br />
+        <br />
+        <p><a name="vc++"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">4.6.2.-
+            Benchmarks  VC++ 13 </span></p>
+        <br />
+        <img src="img/benchmark_allocator_VC10.png" alt="" title="BENCHMARK ALLOCATOR VC10" /><br />
+        <table cellspacing="0" border="1" style="width: 804px; height: 287px;" cols="7">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup> <colgroup
+            width="86"></colgroup> <colgroup width="85" span="2"></colgroup>
+          <tbody>
+            <tr>
+              <td align="CENTER" valign="MIDDLE" height="23" colspan="7"><font size="4">BENCHMARK_ALLOCATOR
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td align="LEFT" valign="MIDDLE" height="27" colspan="7"><b><u><font
+                      size="1"><br />
+                      This program make allocations and deallocations of
+                      50000000 elements of 64 bits checking the time needed (
+                      less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="73"><br />
+              </td>
+              <td align="LEFT"><b>Allocation of all the elements</b></td>
+              <td align="LEFT"><b>deallocate all from the first to the last</b></td>
+              <td align="LEFT"><b>deallocate all from the last to the first</b></td>
+              <td align="LEFT"><b>deallocate odd elements</b></td>
+              <td align="LEFT"><b>deallocate odd elements and reallocate</b></td>
+              <td align="LEFT"><b>TIME TOTAL</b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator</b></td>
+              <td align="RIGHT" sdval="3,619" sdnum="3082;">3,619</td>
+              <td align="RIGHT" sdval="2,09" sdnum="3082;">2,09</td>
+              <td align="RIGHT" sdval="3,416" sdnum="3082;">3,416</td>
+              <td align="RIGHT" sdval="0,982" sdnum="3082;">0,982</td>
+              <td align="RIGHT" sdval="2,558" sdnum="3082;">2,558</td>
+              <td align="RIGHT" sdval="12,665" sdnum="3082;">12,665</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator</b></td>
+              <td align="RIGHT" sdval="0,842" sdnum="3082;">0,842</td>
+              <td align="RIGHT" sdval="0,842" sdnum="3082;">0,842</td>
+              <td align="RIGHT" sdval="0,764" sdnum="3082;">0,764</td>
+              <td align="RIGHT" sdval="0,436" sdnum="3082;">0,436</td>
+              <td align="RIGHT" sdval="0,998" sdnum="3082;">0,998</td>
+              <td align="RIGHT" sdval="3,882" sdnum="3082;">3,882</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator_cnc</b></td>
+              <td align="RIGHT" sdval="3,9852" sdnum="3082;">3,9852</td>
+              <td align="RIGHT" sdval="3,8772" sdnum="3082;">3,8772</td>
+              <td align="RIGHT" sdval="3,8502" sdnum="3082;">3,8502</td>
+              <td align="RIGHT" sdval="1,9531" sdnum="3082;">1,9531</td>
+              <td align="RIGHT" sdval="4,2062" sdnum="3082;">4,2062</td>
+              <td align="RIGHT" sdval="17,8719" sdnum="3082;">17,8719</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>boost::fast_pool_allocator</b></td>
+              <td align="RIGHT" sdval="1,918" sdnum="3082;">1,918</td>
+              <td align="RIGHT" sdval="1,872" sdnum="3082;">1,872</td>
+              <td align="RIGHT" sdval="1,934" sdnum="3082;">1,934</td>
+              <td align="RIGHT" sdval="0,982" sdnum="3082;">0,982</td>
+              <td align="RIGHT" sdval="2,121" sdnum="3082;">2,121</td>
+              <td align="RIGHT" sdval="8,827" sdnum="3082;">8,827</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="allocator time vc++" src="img/benchmark_allocator_time_VC++.jpg" /><br />
+        <br />
+        <table cellspacing="0" border="1" style="width: 741px; height: 309px;" cols="4">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup>
+          <tbody>
+            <tr>
+              <td align="CENTER" valign="MIDDLE" height="23" colspan="4"><u><font
+                    size="4">BENCHMARK_ALLOCATOR memory size ( less is better)</font></u></td>
+            </tr>
+            <tr>
+              <td align="JUSTIFY" valign="MIDDLE" height="41" colspan="4"><b><u><font
+                      size="1"><br />
+                      This program make allocations and deallocations of
+                      50000000 elements of 64 bits checking the memory size used
+                      ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="102"><br />
+              </td>
+              <td align="LEFT"><b>Memory with all the elements allocated and
+                  data structures filled</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated and
+                  data structures cleared</b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator</b></td>
+              <td align="RIGHT" sdval="1179488" sdnum="3082;">1179488</td>
+              <td align="RIGHT" sdval="399428" sdnum="3082;">399428</td>
+              <td align="RIGHT" sdval="11436" sdnum="3082;">11436</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator</b></td>
+              <td align="RIGHT" sdval="793676" sdnum="3082;">793676</td>
+              <td align="RIGHT" sdval="395000" sdnum="3082;">395000</td>
+              <td align="RIGHT" sdval="3128" sdnum="3082;">3128</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator_cnc</b></td>
+              <td align="RIGHT" sdval="794808" sdnum="3082;">794808</td>
+              <td align="RIGHT" sdval="395568" sdnum="3082;">395568</td>
+              <td align="RIGHT" sdval="4268" sdnum="3082;">4268</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>boost::fast_pool_allocator</b></td>
+              <td align="RIGHT" sdval="919240" sdnum="3082;">919240</td>
+              <td align="RIGHT" sdval="919240" sdnum="3082;">919240</td>
+              <td align="RIGHT" sdval="527852" sdnum="3082;">527852</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="allocator size vc++" src="img/benchmark_allocator_size_VC++.jpg" /><br />
+        <br />
+        <p><a name="clang"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">4.6.3.-
+            Benchmarks CLANG 3.3 </span></p>
+        <br />
+        <img src="img/benchmark_allocator_CLANG.png" alt="" title="BENCHMARK ALLOCATOR CLANG" /><br />
+        <table cellspacing="0" border="1" style="width: 813px; height: 349px;" cols="7">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup> <colgroup
+            width="86"></colgroup> <colgroup width="85" span="2"></colgroup>
+          <tbody>
+            <tr>
+              <td align="CENTER" valign="MIDDLE" height="22" colspan="7"><font size="4">BENCHMARK_ALLOCATOR
+                  Time ( less is better)</font></td>
+            </tr>
+            <tr>
+              <td align="LEFT" valign="MIDDLE" height="27" colspan="7"><b><u><font
+                      size="1"><br />
+                      This program make allocations and deallocations of
+                      50000000 elements of 64 bits checking the time needed (
+                      less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="74"><br />
+              </td>
+              <td align="LEFT"><b>Allocation of all the elements</b></td>
+              <td align="LEFT"><b>deallocate all from the first to the last</b></td>
+              <td align="LEFT"><b>deallocate all from the last to the first</b></td>
+              <td align="LEFT"><b>deallocate odd elements</b></td>
+              <td align="LEFT"><b>deallocate odd elements and reallocate</b></td>
+              <td align="LEFT"><b>TIME TOTAL</b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator</b></td>
+              <td align="RIGHT" sdval="1,3209" sdnum="3082;">1,3209</td>
+              <td align="RIGHT" sdval="0,999" sdnum="3082;">0,999</td>
+              <td align="RIGHT" sdval="1,001" sdnum="3082;">1,001</td>
+              <td align="RIGHT" sdval="0,745" sdnum="3082;">0,745</td>
+              <td align="RIGHT" sdval="2,304" sdnum="3082;">2,304</td>
+              <td align="RIGHT" sdval="6,3699" sdnum="3082;">6,3699</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator</b></td>
+              <td align="RIGHT" sdval="0,801" sdnum="3082;">0,801</td>
+              <td align="RIGHT" sdval="0,72" sdnum="3082;">0,72</td>
+              <td align="RIGHT" sdval="0,65" sdnum="3082;">0,65</td>
+              <td align="RIGHT" sdval="0,358" sdnum="3082;">0,358</td>
+              <td align="RIGHT" sdval="0,833" sdnum="3082;">0,833</td>
+              <td align="RIGHT" sdval="3,362" sdnum="3082;">3,362</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator_cnc</b></td>
+              <td align="RIGHT" sdval="3,626" sdnum="3082;">3,626</td>
+              <td align="RIGHT" sdval="3,467" sdnum="3082;">3,467</td>
+              <td align="RIGHT" sdval="3,439" sdnum="3082;">3,439</td>
+              <td align="RIGHT" sdval="1,762" sdnum="3082;">1,762</td>
+              <td align="RIGHT" sdval="3,743" sdnum="3082;">3,743</td>
+              <td align="RIGHT" sdval="16,037" sdnum="3082;">16,037</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>malloc_allocator</b></td>
+              <td align="RIGHT" sdval="1,085" sdnum="3082;">1,085</td>
+              <td align="RIGHT" sdval="0,932" sdnum="3082;">0,932</td>
+              <td align="RIGHT" sdval="0,935" sdnum="3082;">0,935</td>
+              <td align="RIGHT" sdval="0,744" sdnum="3082;">0,744</td>
+              <td align="RIGHT" sdval="2,205" sdnum="3082;">2,205</td>
+              <td align="RIGHT" sdval="5,901" sdnum="3082;">5,901</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>mt_allocator</b></td>
+              <td align="RIGHT" sdval="0,853" sdnum="3082;">0,853</td>
+              <td align="RIGHT" sdval="0,588" sdnum="3082;">0,588</td>
+              <td align="RIGHT" sdval="0,585" sdnum="3082;">0,585</td>
+              <td align="RIGHT" sdval="0,387" sdnum="3082;">0,387</td>
+              <td align="RIGHT" sdval="1,2" sdnum="3082;">1,2</td>
+              <td align="RIGHT" sdval="3,613" sdnum="3082;">3,613</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>pool_allocator</b></td>
+              <td align="RIGHT" sdval="0,647" sdnum="3082;">0,647</td>
+              <td align="RIGHT" sdval="0,558" sdnum="3082;">0,558</td>
+              <td align="RIGHT" sdval="0,558" sdnum="3082;">0,558</td>
+              <td align="RIGHT" sdval="0,299" sdnum="3082;">0,299</td>
+              <td align="RIGHT" sdval="0,77" sdnum="3082;">0,77</td>
+              <td align="RIGHT" sdval="2,832" sdnum="3082;">2,832</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>boost::fast_pool_allocator</b></td>
+              <td align="RIGHT" sdval="0,543" sdnum="3082;">0,543</td>
+              <td align="RIGHT" sdval="0,452" sdnum="3082;">0,452</td>
+              <td align="RIGHT" sdval="0,454" sdnum="3082;">0,454</td>
+              <td align="RIGHT" sdval="0,253" sdnum="3082;">0,253</td>
+              <td align="RIGHT" sdval="0,722" sdnum="3082;">0,722</td>
+              <td align="RIGHT" sdval="2,424" sdnum="3082;">2,424</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="allocator time clang" src="img/benchmark_allocator_time_CLANG.jpg" /><br />
+        <br />
+        <table cellspacing="0" border="1" style="width: 718px; height: 366px;" cols="4">
+          <colgroup width="236"></colgroup> <colgroup width="86"></colgroup> <colgroup
+            width="92"></colgroup> <colgroup width="102"></colgroup>
+          <tbody>
+            <tr>
+              <td align="CENTER" valign="MIDDLE" height="23" colspan="4"><u><font
+                    size="4">BENCHMARK_ALLOCATOR memory size ( less is better)</font></u></td>
+            </tr>
+            <tr>
+              <td align="JUSTIFY" valign="MIDDLE" height="41" colspan="4"><b><u><font
+                      size="1"><br />
+                      This program make allocations and deallocations of
+                      50000000 elements of 64 bits checking the memory size used
+                      ( less is better)</font></u></b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="103"><br />
+              </td>
+              <td align="LEFT"><b>Memory with all the elements allocated and
+                  data structures filled</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated</b></td>
+              <td align="LEFT"><b>Memory with all the elements deallocated and
+                  data structures cleared</b></td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator</b></td>
+              <td align="RIGHT" sdval="1954176" sdnum="3082;">1954176</td>
+              <td align="RIGHT" sdval="1954324" sdnum="3082;">1954324</td>
+              <td align="RIGHT" sdval="1563772" sdnum="3082;">1563772</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator</b></td>
+              <td align="RIGHT" sdval="790576" sdnum="3082;">790576</td>
+              <td align="RIGHT" sdval="392232" sdnum="3082;">392232</td>
+              <td align="RIGHT" sdval="1968" sdnum="3082;">1968</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>std::allocator + suballocator_cnc</b></td>
+              <td align="RIGHT" sdval="790568" sdnum="3082;">790568</td>
+              <td align="RIGHT" sdval="392248" sdnum="3082;">392248</td>
+              <td align="RIGHT" sdval="1968" sdnum="3082;">1968</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>malloc_allocator</b></td>
+              <td align="RIGHT" sdval="1954108" sdnum="3082;">1954108</td>
+              <td align="RIGHT" sdval="1954332" sdnum="3082;">1954332</td>
+              <td align="RIGHT" sdval="1563780" sdnum="3082;">1563780</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>mt_allocator</b></td>
+              <td align="RIGHT" sdval="1179000" sdnum="3082;">1179000</td>
+              <td align="RIGHT" sdval="1179260" sdnum="3082;">1179260</td>
+              <td align="RIGHT" sdval="788712" sdnum="3082;">788712</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>pool_allocator</b></td>
+              <td align="RIGHT" sdval="782896" sdnum="3082;">782896</td>
+              <td align="RIGHT" sdval="783144" sdnum="3082;">783144</td>
+              <td align="RIGHT" sdval="392592" sdnum="3082;">392592</td>
+            </tr>
+            <tr>
+              <td align="LEFT" height="17"><b>boost::fast_pool_allocator</b></td>
+              <td align="RIGHT" sdval="915904" sdnum="3082;">915904</td>
+              <td align="RIGHT" sdval="916168" sdnum="3082;">916168</td>
+              <td align="RIGHT" sdval="525616" sdnum="3082;">525616</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <img alt="allocator size clang" src="img/benchmark_allocator_size_CLANG.jpg" /><br />
+        <br />
+        <br />
+        <br />
+        <img src="img/benchmark_set_allocator_CLANG.png" alt="" title="BENCHMARK SET ALLOCATOR CLANG" /><br />
+        <br />
+        </div>
+        <!--*******************************************************************************************************  -->
+        <!--                             I C O N O S   P A R T E   I N F E R I O R                                  -->
+        <!--*******************************************************************************************************  -->
+        <a title="documentation" href="index.html" style="float:right"><img
+            alt="next page" src="img/next.png" /></a> <a title="home page" href="P4.0_suballocator.html"
+          style="float:right"><img alt="go to head of the page" src="img/up.png" /></a>
+        <a title="suballocator examples" href="P4.5_suballocator_examples.html"
+          style="float:right"><img src="img/prev.png" alt="previous page" /></a>
+        <a title="home" href="index.html" style="float:right"><img src="img/home.png"
+            alt="home page" /></a> <br />
+      </div>
+    </div>
+    <!--*******************************************************************************************************-->
+    <!--                    T A B L A    I N F E R I O R   D E   L A    P A G I N A                            -->
+    <!--*******************************************************************************************************-->
+    <table width="100%" xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision">
+      <tbody>
+        <tr>
+          <td align="left">
+            <p><small>Last revised: April  16, 2012 <br />
+              </small></p>
+          </td>
+          <td align="right"> <br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <div class="box-bottom"></div>
+    <!-- div cuerpo_texto -->
+    <div class="clear"></div>
+    <!-- div cuerpo central -->
+    <!--  div body -->
+    <!--*******************************************************************************************************-->
+    <!--                                      F O O T E R                                                      -->
+    <!--*******************************************************************************************************-->
+    <div id="footer">
+      <div id="footer-left">
+        <div id="copyright">
+          <p>Copyright Francisco Jose Tapia 2010- 2012.</p>
+        </div>
+        <div id="license">
+          <p>Distributed under the <a href="/LICENSE_1_0.txt" class="internal">Boost
+              Software License, Version 1.0</a>.</p>
+        </div>
+      </div>
+      <div id="footer-right">
+        <div id="banners">
+          <p id="banner-xhtml"> <a href="http://validator.w3.org/check?uri=referer"
+              class="external">XHTML 1.0</a></p>
+          <p id="banner-css"> <a href="http://jigsaw.w3.org/css-validator/check/referer"
+              class="external">CSS</a></p>
+          <p id="banner-osi"> <a href="http://www.opensource.org/docs/definition.php"
+              class="external">OSI Certified</a></p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+#  Boost string_algo library test suite Jamfile
+#
+#  Copyright Francisco Tapia 2012. Use, modification and
+#  distribution is subject to the Boost Software License, Version
+#  1.0. (See accompanying file LICENSE_1_0.txt or copy at
+#  http://www.boost.org/LICENSE_1_0.txt)
+#
+#  See http://www.boost.org for updates, documentation, and revision history.
+
+import testing ;
+
+
+project 
+	: requirements
+      <threading>multi
+      <toolset>msvc:<asynch-exceptions>on
+      #<toolset>msvc:<cxxflags>/EHa 
+      #<toolset>msvc:<cxxflags>/wd4244
+      #<toolset>gcc:<cxxflags>-Wunused-local-typedefs        
+      <toolset>gcc:<cxxflags>-Wno-unused-variable 
+      <toolset>gcc:<cxxflags>-std=c++11 
+      <toolset>clang:<cxxflags>-Wno-unused-variable
+      <toolset>clang:<cxxflags>-Wc++11-compat
+      <toolset>clang:<cxxflags>-std=c++11
+;
+
+test-suite "forest-dir"
+:
+[ run bjam_base_iterator.cpp ]
+[ run bjam_base_node.cpp ]
+[ run bjam_branch.cpp ]
+[ run bjam_iterator.cpp ]
+[ run bjam_node.cpp ]
+[ run bjam_tree.cpp ]
+[ run bjam_sorted_tree.cpp ]
+;
+
+test-suite "alloc-dir"
+:
+[ run bjam_heap.cpp ]
+[ run bjam_pool_cnc.cpp ]
+[ run bjam_pool.cpp ]
+;
+
+test-suite "common-dir"
+:
+[ run bjam_algorithms.cpp ]
+[ run bjam_mysingleton.cpp ]
+[ run bjam_singleton.cpp ]
+[ run bjam_spinlock.cpp ]
+[ run bjam_unique_object.cpp ]
+;
+
+
+
+test-suite "countertree-dir"
+:
+[ run bjam_myallocator.cpp ]
+[ run bjam_cntree_map_cnc.cpp ]
+[ run bjam_cntree_map.cpp ]
+[ run bjam_cntree_set_cnc.cpp ]
+[ run bjam_cntree_set.cpp ]
+[ run bjam_cntree_vector_cnc.cpp ]
+[ run bjam_cntree_vector.cpp ]
+[ run bjam_map_cnc.cpp ]
+[ run bjam_map.cpp ]
+[ run bjam_map_pool_cnc.cpp ]
+[ run bjam_map_pool.cpp ]
+[ run bjam_set_cnc.cpp ]
+[ run bjam_set.cpp ]
+[ run bjam_set_pool_cnc.cpp ]
+[ run bjam_set_pool.cpp ]
+[ run bjam_suballocator_cnc_countertree.cpp ]
+[ run bjam_suballocator_cnc.cpp ]
+[ run bjam_suballocator_countertree.cpp ]
+[ run bjam_suballocator.cpp ]
+[ run bjam_vector_tree_cnc.cpp ]
+[ run bjam_vector_tree.cpp ]
+[ run bjam_vector_tree_pool_cnc.cpp ]
+[ run bjam_vector_tree_pool.cpp ]
+;
+

@@ -1,0 +1,28 @@
+var a00013 =
+[
+    [ "Allocator", "a00013.html#a415d29651cab16aca8267a376245aad4", null ],
+    [ "AllocByte", "a00013.html#a0b0a9e07108d3db62e1db491bd000913", null ],
+    [ "const_pointer", "a00013.html#a43d8443d20a51768f15c4d21413970b5", null ],
+    [ "const_reference", "a00013.html#a3bc963cb47769792e1757cb23c7b1be5", null ],
+    [ "difference_type", "a00013.html#a57c3d812527a460d4c8edff1df2a8f70", null ],
+    [ "MyPool", "a00013.html#a2af97dafdbb492d33d3ba5b485a20516", null ],
+    [ "pointer", "a00013.html#ad6aeca7ffe5bb7b33f01c7754b508f34", null ],
+    [ "reference", "a00013.html#a453dc8570ef6f448479b36c5e0943efd", null ],
+    [ "size_type", "a00013.html#aab9e740cda93935d9dd2001aef199e0c", null ],
+    [ "value_type", "a00013.html#a0481dff10dce2da6fdef5b2ea3ad5734", null ],
+    [ "basic_suballoc32", "a00013.html#a38a0a5fac108327bbf40caae6aa5b878", null ],
+    [ "basic_suballoc32", "a00013.html#a863e1bb36254c73af4495414f9763fa2", null ],
+    [ "basic_suballoc32", "a00013.html#a7ebe69e09ac27780ec3fbb52b442606c", null ],
+    [ "~basic_suballoc32", "a00013.html#a9d304efcbaa212035beead15540e704f", null ],
+    [ "address", "a00013.html#ae0343f169cc399d8dfba165ccfa2db23", null ],
+    [ "address", "a00013.html#a636b411c1050210a0ffb658becb5c262", null ],
+    [ "allocate", "a00013.html#a4c3fba9db4da99992c5938965389df02", null ],
+    [ "construct", "a00013.html#a632296ed36ea31c2ce14180fc21e7e6d", null ],
+    [ "construct", "a00013.html#a1948e6f97bf3fc55649cd7e3a1c2f1da", null ],
+    [ "construct", "a00013.html#a2270aad09e2bc4babdebabba904dc253", null ],
+    [ "deallocate", "a00013.html#af37b2ea48de12bb923a10821d4f1ebf2", null ],
+    [ "destroy", "a00013.html#a49b5decc37e73b1060ab7e5a0d9e330d", null ],
+    [ "max_size", "a00013.html#a94639cbbc6e165c43a061e754b877b0d", null ],
+    [ "A", "a00013.html#a79dd2f9679e0a7af94977f03e2772758", null ],
+    [ "PPila", "a00013.html#a17a8079cae986912b68e1bd34f0a6f32", null ]
+];

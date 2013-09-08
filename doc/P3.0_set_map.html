@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org"
+      name="generator" />
+    <title>Boost C++ Libraries</title>
+    <link type="image/ico" href="img/favicon.ico" rel="icon" />
+    <link href="css/section-welcome.css" type="text/css" rel="stylesheet" />
+    <link href="css/code.css" type="text/css" rel="stylesheet" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" name="google-site-verification" />
+    <!--
+Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html
+-->
+  </head>
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <div class="heading-placard"></div>
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img class="heading-logo"
+              alt="Boost C++ Libraries" src="img/space.png" /> <span class="heading-boost">Boost</span>
+            <span class="heading-cpplibraries">C++ Libraries</span> <img src="img/preliminary.gif"
+              alt="Preliminary" style="width: 300px; height: 80px;" /> </a></h1>
+        <p class="heading-quote"> <q>...one of the most highly regarded and
+            expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
+            <a class="external" href="http://www.gotw.ca/">Herb Sutter</a> and <a
+              class="external" href="http://en.wikipedia.org/wiki/Andrei_Alexandrescu">Andrei
+              Alexandrescu</a>, <a class="external" href="http://safari.awprofessional.com/?XmlId=0321113586">C++
+              Coding Standards</a></span></p>
+      </div>
+    </div>
+    <div class="clear"> </div>
+    <div class="cuerpo_central"> <br />
+      <div class="cuerpo_texto"> <br />
+        <span style="font-size: 24pt;"> <span style="font-weight: bold; color: black;">
+            <a href="index.html">The [ Counter Tree + Suballocator ] Library</a>
+          </span></span><br />
+        <div>
+          <div class="author">
+            <h3 class="author"><br />
+              <span class="firstname"></span></h3>
+            <h3 class="author" style="font-size: 10pt; font-style: italic; font-weight: bold">
+              <span style="font-weight: bold;"><span style="font-weight: bold;"
+                  class="firstname">Francisco Jose Tapia</span>   Copyright ©
+                2010-2013 Francisco Jose Tapia</span></h3>
+          </div>
+        </div>
+        <div class="legalnotice">
+          <p><span style="font-size: 10pt; font-style: italic; font-weight: bold">Distributed
+              under the Boost Software License, Version 1.0. (See accompanying
+              file LICENSE_1_0.txt or copy at <a target="_top" href="file:///LICENSE_1_0.txt">
+                http://www.boost.org/LICENSE_1_0.txt )</a></span> </p>
+        </div>
+        <br />
+        <br />
+        <div class="caja_menu"> <br />
+          <span style="font-size: 16pt;font-weight: bold; color: black;">Table
+            of Contents</span><br />
+          <br />
+          <div style="margin-left: 40px;"> <a href="P3.0_set_map.html">3.-
+              Ordered elements </a> <span class="texto_codigo">(countertree
+              set, multiset, map and multimap)</span> </div>
+          <div style="margin-left: 80px;"> <a href="P3.0_set_map.html#description">3.1.-
+              Description</a><br />
+            <a href="P3.2_set_functions.html#functions">3.2.- set functions </a><br />
+            <a href="P3.3_multiset_functions.html#functions">3.3.- multiset
+              functions </a><br />
+            <a href="P3.4_map_functions.html#functions">3.4.- map functions  </a><br />
+            <a href="P3.5_multimap_functions.html#functions">3.5.- multimap
+              functions </a><br />
+            <a href="P3.6_set_map_examples.html#examples">3.6.- Examples</a><br />
+            <a href="P3.7_set_map_benchmarks.html#benchmarks">3.7.- Benchmarks </a><br />
+            <div style="margin-left: 40px;"> <a href="P3.7_set_map_benchmarks.html#gcc">3.7.1.-
+                Benchmarks GCC 4.7</a><br />
+              <a href="P3.7_set_map_benchmarks.html#vc++">3.7.2.- Benchmarks
+                VC++13</a><br />
+              <a href="P3.7_set_map_benchmarks.html#clang">3.7.3.- Benchmarks
+                CLANG 3.3</a><br />
+              <br />
+            </div>
+          </div>
+        </div>
+        <!--                         Fin div caja_menu                                                         -->
+        <br />
+        <br />
+        <p><a name="set_map"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">3.-
+            Ordered Elements </span></p>
+        <br />
+        <!--***************************************************************************************** -->
+        <!--                      D E S C R I P T I O N                                               -->
+        <!--***************************************************************************************** -->
+        <p><a name="description"></a> <span style="font-size: 18pt;font-weight: bold; color: black;">3.1.-
+            Description </span></p>
+        <p> </p>
+        When you store ordered elements over a Counter Tree, you have, in the
+        namespace countertree, the classes cntree_set, cntree_multiset,
+        cntree_map and cntree_multimap. These classes have the interface of the
+        classes set, multiset , map and multimap of the Standard Library. <br />
+        <br />
+        These classes have a bool template parameter named <span style="font-weight: bold;">cnc</span>.
+        When it's true the class have concurrency control and is thread safe
+        with all the operations, this is different threads can be doing
+        insertions, deletions, consults..., mixed in a safe way. When this
+        parameter is false, the class don't have concurrency control and only
+        can be used inside a thread. Why the difference ?. The speed. The
+        introduction of  concurrency controls, introduce too delays in the
+        process. The non concurrent version is fastest than the concurrent
+        version.<br />
+        <br />
+        These classes have random access iterators as described in the point <a
+          title="1.1.1- Iterators" href="P1.0_introduction.html#iterators">1.1.1-
+          Iterators</a> . The iterators are random access and permit you  add or
+        substract any integer value to the iterators, and can substract two
+        iterators for to know the distance between them, even the special values
+        <span style="font-weight: bold;">end( ) </span> and <span style="font-weight: bold;">rend( 
+          )</span> iterators, always inside the logic. If you add 10 to an
+        iterator, the iterator point 10 positions forward, And if you subtract
+        10 , or add -10, the iterator point 10 positions backward. If you have
+        100 elements stored in the vector_tree, the iterator with the value end(
+        ) internally have the position 100, and the iterator with the value
+        rend( ) have the position -1. <br />
+        <br />
+        These iterators are fully compatible with the functions and algorithms
+        of the STL with random access read only iterators.<br />
+        <br />
+        The iterators and reverse_iterators of set and multiset  are read only,
+        because if you permit  to write, the order of the elements in the data
+        structure can be altered, breaking the first rule of set and multiset,
+        which say they are ordered containers. Due to this the iterator and
+        const_iterator of the set and multiset are the same class, and the
+        reverse_iterator and const_reverse_iterator too, defined originally as <span
+          style="font-weight: bold;">countertree::tools::const_iterator</span>
+        and <span style="font-weight: bold;">countertree::tools::const_reverse_iterator
+          </span><br /> <br />
+        The iterators have a function <span style="font-weight: bold;">pos(  )
+        </span>which provide their position in the tree. All the iterators
+        return a correct position even the <span style="font-weight: bold;">begin(),
+          end(), rbegin()</span> and <span style="font-weight: bold;">rend()</span>.
+        <br />
+        <br />
+        <div style="margin-left: 40px;" class="caja_codigo"> <br />
+          <span class="style11">size_type pos </span><span class="style10">( </span><span
+            class="style5">void</span><span class="style10">) </span><span class="style5">const<br />
+            <br />
+          </span> </div>
+        <br />
+        <br />
+        All the iterators operations are checked, if occur any error an
+        exception is raised. It prevent from errors like compare two iterators
+        from different data structure, try to access to the data from an
+        iterator not initialized etc... You can mix safely access by iterators
+        and access by position. <br />
+        <br />
+        Additionally, you can access to the elements by the position in the same
+        way than a vector, using the function<span style="font-weight: bold;">
+          pos ( Position ) </span>. We use this function instead of the  <span
+          style="font-weight: bold;">operator [  ],</span> ot the function <span
+          style="font-weight: bold;">at ( ), </span> because they are used in
+        the <span style="font-weight: bold;">STL map</span> , and can confuse
+        to the users.  The access are checked<br />
+        <br />
+        <div class="caja_codigo"> <br />
+          <span class="style5">const </span> <span class="style11">value_type
+          </span> <span class="style10">&amp; </span> <span class="style11">pos
+            </span> <span class="style10">( </span> <span class="style11">size_type
+            Position</span> <span class="style10">) </span> <span class="style5">const<br />
+            <br />
+          </span> </div>
+        <br />
+        This function permit you travel the set elements like a vector with a
+        simple for loop.<br />
+        <br />
+        The final classes provided to the users are alias template of these base
+        classes. You can see several classes with the same name and different
+        suffix. The meaning of these suffix is :<br />
+        <div style="margin-left: 40px;"> <span style="font-weight: bold;">_cnc</span> 
+          : indicate that the data structure have concurrent control, and can be
+          used safely combining any operations in a multi thread environment<br />
+          <span style="font-weight: bold;">_pool</span>  : indicate that the
+          memory management of this data structure is done with a suballocator<br />
+          <span style="font-weight: bold;">_pool_cnc </span> : indicate the data
+          structure is thread safe and the pool too</div>
+        <br />
+        Combining the base classes with the suffix, we have 4 version of each
+        class<br />
+        <br />
+        <span style="font-weight: bold;">SET</span><br />
+        <div style="margin-left: 40px;">set                =  cntree_set<br />
+          set_pool        =  cntree_set + suballocator &lt;std::allocator&gt;<br />
+          set_cnc         =  cntree_set concurrent<br />
+          set_pool_cnc =  cntree_set concurrent + suballocator_cnc
+          &lt;std::allocator&gt;</div>
+        <br />
+        <span style="font-weight: bold;">MULTISET</span><br />
+        <div style="margin-left: 40px;">multiset                =
+          cntree_multiset<br />
+          multiset_pool        = cntree_multiset + suballocator
+          &lt;std::allocator&gt;<br />
+          multiset_cnc         = cntree_multiset concurrent<br />
+          multiset_pool_cnc = cntree_multiset concurrent + suballocator_cnc
+          &lt;std::allocator&gt;</div>
+        <br />
+        <span style="font-weight: bold;">MAP</span><br />
+        <div style="margin-left: 40px;">map               = cntree_map<br />
+          map_pool        = cntree_map + suballocator &lt;std::allocator&gt;<br />
+          map_cnc         = cntree_map concurrent<br />
+          map_pool_cnc = cntree_map concurrent + suballocator_cnc
+          &lt;std::allocator&gt;</div>
+        <br />
+        <span style="font-weight: bold;">MULTIMAP</span><br />
+        <div style="margin-left: 40px;">multimap                =
+          cntree_multimap<br />
+          multimap_pool        = cntree_multimap + suballocator
+          &lt;std::allocator&gt;<br />
+          multimap_cnc         = cntree_multimap concurrent<br />
+          multimap_pool_cnc = cntree_multimap concurrent + suballocator_cnc
+          &lt;std::allocator&gt;</div>
+        <br />
+        These classes have the same interface than the STL , set, multiset, map
+        and multimap plus random access iterators, access by position like the
+        vectors and additional functions as described in the point <a href="P1.4_concurrent_versions.html#problems">1.4.2.-
+          Problems associated to the concurrency. Solutions implemented</a>.<br />
+        <br />
+        For to use these classes you must include the files<br />
+        <br />
+        <div class="caja_codigo"><br />
+          <span class="style9">#include &lt;boost/countertree/set.hpp&gt; <br />
+          </span><span class="style9">#include &lt;boost/countertree/map.hpp&gt;</span><br />
+          <br />
+          <span class="style9"> </span> </div>
+        <br />
+        <br />
+        Here two examples that show the utility of the random access iterators
+        in this data structures.
+        <p style="margin-bottom: 0in"><br />
+        </p>
+        <p style="font-weight: bold; text-decoration: underline;">Example 1.
+          Query Optimization</p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;">Imagine a university doing a study about
+          the relation of the age and the weight of the people. In a file have
+          the information about several millions of people. For to accelerate
+          the process they use multimap structures of <b>pairs [value,
+            position_in_file], </b>as index of the file. They have a multimap
+          for the age and other for the weight. </p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;">For to search in the multimap we use the <b>upper_bound
+            </b>and <b>lower_bound</b> functions , which return iterators. The
+          iterators of countertree are random access and permit you to know the
+          number of element selected with the distance between two iterators
+          subtracting them. </p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;">In the weight query, they found 100
+          elements and in the age query, 10000 elements. It is faster travel the
+          100 elements of the weight query checking the age, than the opposite.</p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="font-weight: bold; text-decoration: underline;">Example 2.
+          Multicore deployment</p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;">Imagine a map of 100.000.000 elements. We
+          need check which elements make true an external condition. </p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;">If we have a 4 cores  machine, to
+          distribute the elements between the cores is easy. Each core receives
+          an iterator to the first element of the range and a number of element
+          to process. (Remember in the STL map, the iterators aren't random
+          access, and for to reach the position 25000000, you need travel
+          sequentially from the position 0).</p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-bottom: 0in; margin-left: 40px;"><span style="text-decoration: underline;">Core       
+            Range to be processed</span></p>
+        <p style="margin-bottom: 0in; margin-left: 40px;">0            
+          begin()                      , 25000000 elements </p>
+        <p style="margin-bottom: 0in; margin-left: 40px;">1             begin()+
+          25000000  , 25000000 elements</p>
+        <p style="margin-bottom: 0in; margin-left: 40px;">2             begin()+
+          50000000  , 25000000 elements</p>
+        <p style="margin-bottom: 0in; margin-left: 40px;">3             begin()+
+          75000000  , 25000000 elements</p>
+        <p style="margin-bottom: 0in; margin-left: 40px;"><br />
+        </p>
+        <p style="margin-bottom: 0in; margin-left: 40px;">You can see an example
+          of the parallel intersection of two sets this in the point <a href="P3.6_set_map_examples.html"
+            title="set map examples">3.6- examples </a></p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <p style="margin-left: 40px;"><br />
+        </p>
+        <!--*******************************************************************************************************  -->
+        <!--                             I C O N O S   P A R T E   I N F E R I O R                                  -->
+        <!--*******************************************************************************************************  -->
+        <a title="set functions" href="P3.2_set_functions.html" style="float:right"><img
+            alt="next page" src="img/next.png" /></a> <a title="home page" href="P3.0_set_map.html"
+          style="float:right"><img alt="go to head of the page" src="img/up.png" /></a>
+        <a title="vector_tree benchmarks" href="P2.4_vector_tree_benchmarks.html"
+          style="float:right"><img src="img/prev.png" alt="previous page" /></a>
+        <a title="home" href="index.html" style="float:right"><img src="img/home.png"
+            alt="home page" /></a> </div>
+    </div>
+    <!--***************************************************************************************** -->
+    <!--                T A B L A    I N F E R I O R   D E   L A    P A G I N A                   -->
+    <!--***************************************************************************************** -->
+    <table width="100%" xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision">
+      <tbody>
+        <tr>
+          <td align="left">
+            <p><small>Last revised: September  08, 2010 at 21:42:41 GMT</small></p>
+          </td>
+          <td> <br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <hr />
+    <!-- div cuerpo_texto -->
+    <!-- div cuerpo central -->
+    <!--  div body -->
+    <!--***************************************************************************************** -->
+    <!--                                      F O O T E R                                         -->
+    <!--***************************************************************************************** -->
+    <div id="footer">
+      <div id="footer-left">
+        <div id="copyright">
+          <p>Copyright Francisco Jose Tapia 2010 - 2012.</p>
+        </div>
+        <div id="license">
+          <p>Distributed under the <a href="/LICENSE_1_0.txt" class="internal">Boost
+              Software License, Version 1.0</a>.</p>
+        </div>
+      </div>
+      <div id="footer-right">
+        <div id="banners">
+          <p id="banner-xhtml"> <a href="http://validator.w3.org/check?uri=referer"
+              class="external">XHTML 1.0</a></p>
+          <p id="banner-css"> <a href="http://jigsaw.w3.org/css-validator/check/referer"
+              class="external">CSS</a></p>
+          <p id="banner-osi"> <a href="http://www.opensource.org/docs/definition.php"
+              class="external">OSI Certified</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
