@@ -30,7 +30,7 @@ static const uint32_t NCores = (NC >8) ? 8 : NC ;
 
 uint32_t Primo [ 10000] ,Primo2[10000];
 uint32_t NPrimo ;
-
+void Generation ( void);
 
 void Generation ( void)
 {	//------------------ Definición de constantes------------

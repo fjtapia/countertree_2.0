@@ -34,7 +34,7 @@ int BusquedaBinaria ( const cntree::cntree_vector<int> &A , int Valor);
 
 void prueba1 (void)
 {   //------------------------ Inicio -----------------------------
-	std::cout<<"Prueba1\n";
+	//std::cout<<"Prueba1\n";
     cntree::cntree_vector<int32_t > A ;
 
     A.insert_pos( 0,9 ) ;      BOOST_CHECK (A.check() );
@@ -171,7 +171,7 @@ void prueba1 (void)
 
 void prueba2 ( void)
 {   //---------------------- Variables----------------------------
-	std::cout<<"Prueba2\n";
+	//std::cout<<"Prueba2\n";
     cntree::cntree_vector<int> M1 , M2;
 
     M1.insert_pos( 0, 1003) ;       BOOST_CHECK (M1.check()  );
@@ -249,7 +249,7 @@ void prueba2 ( void)
 
 void prueba3 ( void)
 {   //---------------------- Variables----------------------------
-	std::cout<<"Prueba3\n";
+	//std::cout<<"Prueba3\n";
     int Numero [1000];
 
     //------------------------ Inicio -----------------------------
@@ -315,7 +315,7 @@ int BusquedaBinaria ( const cntree::cntree_vector<int> &A , int Valor)
 
 void prueba4 ( void)
 {   //---------------------- Variables----------------------------
-	std::cout<<"Prueba4\n";
+	//std::cout<<"Prueba4\n";
     cntree::cntree_vector<int> M1, M2, M3 ;
        int i ;
 
@@ -407,7 +407,7 @@ void prueba4 ( void)
 
 void prueba5 ( void)
 {   //---------------------------- begin -------------------------
-	std::cout<<"Prueba5\n";
+	//std::cout<<"Prueba5\n";
     cntree::cntree_vector<int >  V1, V2, V3 ;
     std::vector<int> V4 ;
 
@@ -443,7 +443,7 @@ void prueba5 ( void)
 
 void prueba6 ( void)
 {   //---------------------------- begin -------------------------
-    std::cout<<"Prueba6\n";
+    //std::cout<<"Prueba6\n";
     typedef cntree::cntree_vector <int,true> VInt ;
     VInt    V1, V2 ;
     cntree::cntree_vector< VInt,true > VT1 ;
@@ -514,7 +514,7 @@ void prueba6 ( void)
 };
 void prueba7 ( void)
 {   //--------------------------- begin --------------------------------------
-	std::cout<<"Prueba7\n";
+	//std::cout<<"Prueba7\n";
     cntree::cntree_vector<int,false> V1, V2,V3,V4 ;
 
     for ( int i =0 ; i < 10 ; ++i)
