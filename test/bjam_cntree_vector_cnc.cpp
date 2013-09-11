@@ -29,7 +29,11 @@ using countertree::common::size_type ;
 
 typedef typename cntree::cntree_vector <uint32_t,true>::iterator vt_iterator ;
 static const uint32_t HC = std::thread::hardware_concurrency() ;
+<<<<<<< HEAD
 static const uint32_t NCores = ( HC > 8)?8 :HC ;
+=======
+static const uint32_t NCores = ( HC > 4)?4 :HC ;
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 uint32_t Primo [ 10000] ;
 uint32_t NPrimo ;
 

@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['data',['data',['../structcountertree_1_1forest_1_1node.html#a834d3b86e8e5c6cdaebaccf336d01c4c',1,'countertree::forest::node::data()'],['../structcountertree_1_1alloc_1_1_n_t_o_t_a_l_w_o_r_d32.html#ae395fc656365f76f76412bbd6963f083',1,'countertree::alloc::NTOTALWORD32::Data()'],['../structcountertree_1_1alloc_1_1_n_t_o_t_a_l_w_o_r_d32_3_011_00_01_power2_01_4.html#ab8bf48f47775fe8ab05039465bcde8c1',1,'countertree::alloc::NTOTALWORD32&lt; 1, Power2 &gt;::Data()'],['../structcountertree_1_1alloc_1_1_n_t_o_t_a_l_w_o_r_d64.html#a002bb855e1d8171b3386d21da10b3323',1,'countertree::alloc::NTOTALWORD64::Data()'],['../structcountertree_1_1alloc_1_1_n_t_o_t_a_l_w_o_r_d64_3_011_u_l_l_00_01_power2_01_4.html#a5cb044e485251745188faab146d2cd9d',1,'countertree::alloc::NTOTALWORD64&lt; 1ULL, Power2 &gt;::Data()']]]
+];

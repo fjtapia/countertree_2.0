@@ -5,6 +5,7 @@
     <meta content="HTML Tidy for Windows (vers 1st November 2003), see www.w3.org"
       name="generator" />
     <title>Boost C++ Libraries</title>
+<<<<<<< HEAD
     <link type="image/ico" href="img/favicon.ico" rel="icon" />
     <link href="css/section-welcome.css" type="text/css" rel="stylesheet" />
     <link href="css/code.css" type="text/css" rel="stylesheet" />
@@ -21,6 +22,27 @@ Note: Editing website content is documented at:http://www.boost.org/development/
               alt="Boost C++ Libraries" src="img/space.png" /> <span class="heading-boost">Boost</span>
             <span class="heading-cpplibraries">C++ Libraries</span> <img src="img/preliminary.gif"
               alt="Preliminary" style="width: 300px; height: 80px;" /> </a></h1>
+=======
+    <link type="image/ico" href="http://www.boost.org/favicon.ico" rel="icon" />
+    <link href="http://www.boost.org/style-v2/section-welcome.css" type="text/css"
+      rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="files/code.css" />
+    <!--[if IE 7]> <style type="text/css"> body { behavior: url(http://www.boost.org/style-v2/csshover3.htc); } </style> <![endif]-->
+    <meta content="mpr2HgFpodnbF_8fv4qXd9roIClVwtX3C-Kd3F6r61w" name="google-site-verification" />
+  </head>
+  <!-- Note: Editing website content is documented at:http://www.boost.org/development/website_updating.html-->
+  <!--***************************************************************************************** -->
+  <!--                                        B O D Y                                           -->
+  <!--***************************************************************************************** -->
+  <body>
+    <div id="heading">
+      <div class="heading-inner">
+        <h1 class="heading-title"> <a href="http://www.boost.org/"> <img class="heading-logo"
+              alt="Boost C++ Libraries" src="http://www.boost.org//gfx/space.png" />
+            <span class="heading-boost">Boost</span> <span class="heading-cpplibraries">C++
+              Libraries</span> <img style="width: 300px; height: 80px;" alt="Preliminary"
+              src="img/preliminary.gif" /> </a></h1>
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
         <p class="heading-quote"> <q>...one of the most highly regarded and
             expertly designed C++ library projects in the world.</q> <span class="heading-attribution">—
             <a class="external" href="http://www.gotw.ca/">Herb Sutter</a> and <a
@@ -32,6 +54,10 @@ Note: Editing website content is documented at:http://www.boost.org/development/
     <div class="clear"> </div>
     <div class="cuerpo_central"> <br />
       <div class="cuerpo_texto"> <br />
+<<<<<<< HEAD
+=======
+        <br />
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
         <span style="font-size: 24pt;"> <span style="font-weight: bold; color: black;">
             <a href="index.html">The [ Counter Tree + Suballocator ] Library</a>
           </span></span><br />
@@ -53,7 +79,10 @@ Note: Editing website content is documented at:http://www.boost.org/development/
         </div>
         <br />
         <br />
+<<<<<<< HEAD
         <br />
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
         <!--***************************************************************************************** -->
         <!--                                        M E N U                                           -->
         <!--***************************************************************************************** -->
@@ -70,6 +99,7 @@ Note: Editing website content is documented at:http://www.boost.org/development/
                   Description of the Suballocators </a><br />
                 <a href="P1.2_description_suballocators.html#countertree_suballocator">1.3.-
                   Description of Counter Trees + Suballocators </a><br />
+<<<<<<< HEAD
                 <a href="P1.4_concurrent_versions.html#concurrent">1.4.- Class
                   structure Code description</a><br />
                 <div style="margin-left: 40px;"> <a href="P1.4_concurrent_versions.html#description">1.4.1.-
@@ -82,6 +112,20 @@ Note: Editing website content is documented at:http://www.boost.org/development/
                     </a><a href="P1.4_concurrent_versions.html#lock">Detailed lock
                     description</a><br />
                 </div>
+=======
+                <a href="P1.4_concurrent_versions.html#concurrent">1.4.-
+                  Concurrent version</a><br />
+                <div style="margin-left: 40px;"><a href="P1.4_concurrent_versions.html#lock">1.4.1.-
+                    Lock description</a><br />
+                </div>
+                <div style="margin-left: 40px;"><a href="P1.4_concurrent_versions.html#description">1.4.2.-
+                    Description of the class of the library</a><br />
+                  <a href="P1.4_concurrent_versions.html#problems">1.4.3.-
+                    Problems associated to the concurrency. Solutions
+                    implemented</a><br />
+                  <a href="P1.4_concurrent_versions.html#deletion">1.4.4.-
+                    Access by position and deletion in the first/last position</a></div>
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
                 <a href="P1.5_next_improvements.html#next_improvements">1.5.-
                   Next Improvements</a><br />
                 <div style="margin-left: 40px;"><a href="P1.5_next_improvements.html#parallel">1.5.1-
@@ -102,21 +146,129 @@ Note: Editing website content is documented at:http://www.boost.org/development/
         <p> </p>
         <br />
         <p><a name="concurrent"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">1.4.-
+<<<<<<< HEAD
             Class structure Code description</span></p>
         <p class="cuerpo_texto"> </p>
         <p class="cuerpo_texto"><br />
         </p>
         <p><a name="description"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">1.4.1.-
+=======
+            Concurrent version</span></p>
+        <p class="cuerpo_texto"> </p>
+        <p class="cuerpo_texto"><a name="lock"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">1.4.1.-
+            Lock description<br />
+          </span></p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">When only 1 thread don't have conflict in the
+          access to a resource or data structure. When you have several threads
+          the conflicts  associates to the concurrency can appear. The tools for
+          to prevent the conflicts are the locks. With the countertrees we use
+          two types of locks</p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <img align="left" style="border: 25px solid white;" title="shared lock"
+          alt="shared lock diagram" src="img/shared_lock.png" />
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">There are operations without concurrency
+          conflicts, typically read operations and operations labeled as const,
+          which don't modify the resource. </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">By example, the GCC STL data structures admit
+          concurrency in read operations , but not with operations of insert,
+          delete or modifications. </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">With this operations use the shared lock. The
+          idea of this is “don't modify the data structure while the operation”.
+        </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">Many operations with shared lock can work
+          concurrently over the data structure.</p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto"> When  a data structure or resource don't admit
+          the concurrency on an operation, it is necessary to lock the entire
+          data structure for to do it. This is an exclusive lock .Operations
+          with exclusive lock are  (insert, delete, modification ...)</p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <img align="left" style="border: 25px solid white; " title="exclusive lock"
+          alt="exclusive lock diagram" src="img/exclusive_lock.png" />
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">Many operations with exclusive lock, have a
+          first part where must look for internal information  needed for the
+          second part where the modification of the data structure is done. </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">By example : insert an value in a set. The first
+          part is to find the node pointer where must connect the node, and the
+          second part in the connection to the node , and the re-balancing if
+          necessary.</p>
+        <p class="cuerpo_texto"><br />
+          The first part of  the operation can coexist with operations with
+          shared lock , but the second, don't.</p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">The lock of the data structures can be done in
+          several ways, mainly the time which the structure is locked. </p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">The most common element used is the mutex, which
+          is the used in the data structures based on countertrees.</p>
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p class="cuerpo_texto">When the lock time is  short (several hundred of
+          clock cycles)  the element used for to lock is the spinlock. ( The
+          spinlock is not directly contempled in C++11, but it must be easily
+          implemented with the atomic variables. You can see in
+          countertree/common/spinlock.hpp ). This is used in the suballocator's
+          lock</p>
+        <br />
+        Take on consideration that the introduction of locks, in the data
+        structure management, introduce delays, and the performance of this data
+        structure, down ( sometimes fall down). Due this, you must consider when
+        is better to do with 1 thread without concurrency or with several
+        threads with concurrency.<br />
+        <br />
+        <br />
+        <br />
+        <p class="cuerpo_texto"><br />
+        </p>
+        <p><a name="description"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">1.4.2.-
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
             Description of the classes of the library<br />
           </span></p>
         <br />
         This library have 5 data structures based on the countertrees ( <span style="font-weight: bold;">
           cntree_vector, cntree_set, cntree_multiset, cntree_map and
+<<<<<<< HEAD
           cntree_multimap</span>)  and a pool for to accelerate these data
         structures (<span style="font-weight: bold;">suballocator</span>)<br />
         These 5 classes and the pool are template base classes which  can be
         thread-safe or not, depending of the template parameters cnc, if true
         the class is concurrent if false not. <br />
+=======
+          cntree_multimap</span>) . <br />
+        These 5 classes and the pool can be thread-safe or not, depending of the
+        template parameters used. <br />
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
         <br />
         <span style="font-weight: bold;">cntree_vector</span><br />
         <div style="margin-left: 40px;">
@@ -253,6 +405,7 @@ Note: Editing website content is documented at:http://www.boost.org/development/
         not considered in the STL<br />
         <br />
         <br />
+<<<<<<< HEAD
         <br />
         <a name="deletion"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">1.4.2.-
           Access by position and deletion in the first/last position.</span><br />
@@ -485,6 +638,10 @@ class="style10">;</span></span></code>
           this, you will find a description in the next point 1.1.4..- Detailed
           lock description. If you don't need you can jump it.</p>
         <br />
+=======
+        <a name="problems"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">1.4.3.-
+          Problems associated to the concurrency. Solutions implemented</span> <br />
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
         <br />
         In the multicore development, a great percent of the problems are
         associates to a small couple of situations. This point  describe the
@@ -586,12 +743,23 @@ class="style10"></span></code></pre>
         <br />
         <br />
         <div class="caja_codigo">
+<<<<<<< HEAD
           <pre><code><span class="style2"><br /> 
 </span></code><code><span class="style11">template &lt;class Function&gt; <br />mypair insert_if </span><span
 class="style10">( </span><span class="style11">Function &amp;&amp; </span><span
 class="style10"> </span><span class="style11">M</span><span class="style10">,  </span><span
 class="style5">const </span><span class="style11">value_type</span><span class="style10">&amp; </span><span
 class="style11">val </span><span class="style10">)
+=======
+          <pre><code><span class="style2">
+</span></code><code><span class="style11">mypair insert_if </span><span class="style10">( </span><span
+class="style11">std</span><span class="style10">::</span><span class="style11">function </span><span
+class="style10">&lt; </span><span class="style5">bool </span><span class="style10">( </span><span
+class="style5">const </span><span class="style11">value_type </span><span class="style10">&amp; )&gt;  </span><span
+class="style11">M</span><span class="style10">,  </span><span class="style5">const </span><span
+class="style11">value_type</span><span class="style10">&amp; </span><span class="style11">val </span><span
+class="style10">)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 </span><br /><span class="style10"><br /></span></code></pre>
         </div>
         <br />
@@ -687,6 +855,7 @@ style="color: rgb(42, 68, 55);">      </span><code><span class="style10"></span>
         Simple, thread safe and robust<br />
         <br />
         <br />
+<<<<<<< HEAD
       </div>
       <br />
       <p class="cuerpo_texto"><a name="lock"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">1.4.4.-
@@ -893,6 +1062,193 @@ class="style10"></span></code></pre>
       <br />
       <p class="cuerpo_texto"><br />
       </p>
+=======
+        <br />
+        <a name="deletion"></a> <span style="font-size: 16pt;font-weight: bold; color: black;">1.4.4.-
+          Access by position and deletion in the first/last position.</span><br />
+        <br />
+        The 5  base classes of countertree ( cntree_vector_tree, cntree_set,
+        cntree_multiset, cntree_map and cntree_multimap ) have operations for to
+        extract elements in the first and last positions. The functions front
+        and back exist only  in std::vector and std::deque, All the others
+        functions are new for all the classes. <br />
+        <br />
+        These functions permit to implement a <span style="font-weight: bold;">concurrent
+          stack</span> or a <span style="font-weight: bold;">concurrent queue</span>
+        with the  cntree_vector_tree, cntree_set, cntree_multiset, cntree_map
+        and cntree_multimap in a trivial and safe mode.<br />
+        <br />
+        All the classes have too, the <span style="font-weight: bold;">access
+          by position</span> like the vectors, with the <span style="font-weight: bold;">function
+          pos</span>, in the const and non const version, and the functions with
+        iterators <span style="font-weight: bold;">iterator_pos</span> and <span
+          style="font-weight: bold;">const_iterator_pos,</span> which returns
+        the iterators of the elements in a position in the tree.<br />
+        <br />
+        <br />
+        <div class="caja_codigo">
+          <pre><code><span class="style10"></span></code><code><span class="style11"><code><span
+style="font: 10pt Liberation Mono;"><span class="style10">
+</span></span></code></span></code><code><span class="style11"><code><span style="font: 10pt Liberation Mono;"><span
+class="style2">//***************************************************************************
+//        VECTOR_TREE , MAP  &amp;  MULTIMAP 
+//***************************************************************************</span></span></code></span></code><code><span
+class="style11"><code><span style="font: 10pt Liberation Mono;"><span class="style11">
+</span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style16">front </span><span class="style10">(</span><span class="style5">void </span><span
+class="style10">) </span><span class="style11">NOEXCEPT
+</span><span class="style5"></span></span></code></span></code><code><span class="style11"><code><span
+style="font: 10pt Liberation Mono;"><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style16">back </span><span class="style10">( </span><span class="style5">void </span><span
+class="style10">) </span><span class="style11">NOEXCEPT</span></span></code></span></code><code><span
+class="style11"><code><span style="font: 10pt Liberation Mono;"><span class="style5"><br /></span></span></code></span></code><code><span
+class="style11"><code><span style="font: 10pt Liberation Mono;"><span class="style10"><code><span
+style="font: 10pt Liberation Mono;"><span class="style5"></span><span class="style11">value_t </span><span
+class="style10">&amp; </span><span class="style11">pos </span><span class="style10">( </span><span
+class="style11">unsigned_type Pos1</span><span class="style10">) </span><span class="style5">
+</span><span class="style16">iterator </span><span class="style11">iterator_pos </span><span
+class="style10">( </span><span class="style11">signed_type Pos1</span><span class="style10">) </span><span
+class="style5"> </span><span class="style11">NOEXCEPT</span></span></code>
+</span></span></code></span></code><code><span class="style11"><code><span style="font: 10pt Liberation Mono;"><span
+class="style2"><br />//***************************************************************************
+//             A L L    T H E    C L A S S E S <br />//       VECTOR_TREE , SET , MULTISET , MAP  &amp;  MULTIMAP 
+//***************************************************************************</span></span></code></span></code><code><span
+class="style11"><code><span style="font: 10pt Liberation Mono;"><span class="style11"><br /></span></span></code></span></code><code><span
+class="style11"><code><span style="font: 10pt Liberation Mono;"><span class="style5">const </span><span
+class="style11">value_t </span><span class="style10">&amp; </span><span class="style16">front </span><span
+class="style10">( </span><span class="style5">void</span><span class="style10">) </span><span
+class="style5">const </span><span class="style11">NOEXCEPT
+</span><span class="style5">const </span><span class="style11">value_t </span><span
+class="style10">&amp; </span><span class="style16">back </span><span class="style10">( </span><span
+class="style5">void </span><span class="style10">) </span><span class="style5">const </span><span
+class="style11">NOEXCEPT
+</span><span class="style2"></span></span></code></span></code><code><span class="style11"><code><span
+style="font: 10pt Liberation Mono;"><span class="style10"><code><span style="font: 10pt Liberation Mono;"><span
+class="style5">const </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">pos </span><span class="style10">( </span><span class="style11">unsigned_type Pos1</span><span
+class="style10">) </span><span class="style5">const</span></span></code></span></span></code></span></code><code><span
+class="style11"><code><span style="font: 10pt Liberation Mono;"><span class="style2">
+</span></span></code></span></code><code><span class="style11"><code><span style="font: 10pt Liberation Mono;"><span
+class="style10"><code><span style="font: 10pt Liberation Mono;"><span class="style16">const_iterator </span><span
+class="style11">const_iterator_pos </span><span class="style10">( </span><span class="style11">signed_type Pos1</span><span
+class="style10">)</span></span></code></span></span></code></span></code><code><span
+class="style11"><code><span style="font: 10pt Liberation Mono;"><span class="style10"><code><span
+style="font: 10pt Liberation Mono;"><span class="style10"><code><span class="style11"><code><span
+style="font: 10pt Liberation Mono;"><span class="style10"> </span><span class="style5">const</span></span></code></span></code></span><span
+class="style11"> NOEXCEPT</span></span></code></span></span></code></span></code><code><span
+class="style11"><code><span style="font: 10pt Liberation Mono;"><span class="style5"><br /><br />void     </span><span
+class="style16">pop_front    </span><span class="style10">( </span><span class="style5">void </span><span
+class="style10">)
+</span><span class="style5">uint32_t </span><span class="style11">pop_front_if </span><span
+class="style10">( </span><span class="style16">std</span><span class="style10">::</span><span
+class="style16">function</span><span class="style10">&lt; </span><span class="style5">bool </span><span
+class="style10">(</span><span class="style5">const </span><span class="style16">value_type </span><span
+class="style10">&amp; )&gt;  </span><span class="style11">M1  </span><span class="style10">)
+</span><span class="style2">
+</span><span class="style5">uint32_t </span><span class="style11">pop_copy_front    </span><span
+class="style10">( </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">V</span><span class="style10">)
+</span><span class="style5">uint32_t </span><span class="style11">pop_copy_front_if </span><span
+class="style10">( </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">V</span><span class="style10">, </span><span class="style16">std</span><span
+class="style10">::</span><span class="style16">function</span><span class="style10">&lt; </span><span
+class="style5">bool </span><span class="style10">(</span><span class="style5">const </span><span
+class="style16">value_type </span><span class="style10">&amp; )&gt;  </span><span
+class="style11">M1</span><span class="style10">)
+</span><span class="style2">
+</span><span class="style5">uint32_t </span><span class="style11">pop_move_front    </span><span
+class="style10">( </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">V</span><span class="style10">)
+</span><span class="style5">uint32_t </span><span class="style11">pop_move_front_if </span><span
+class="style10">( </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">V</span><span class="style10">, </span><span class="style16">std</span><span
+class="style10">::</span><span class="style16">function</span><span class="style10">&lt; </span><span
+class="style5">bool </span><span class="style10">(</span><span class="style5">const </span><span
+class="style16">value_type </span><span class="style10">&amp; )&gt;  </span><span
+class="style11">M1</span><span class="style10">)
+</span><span class="style2">
+</span><span class="style5">void     </span><span class="style16">pop_back    </span><span
+class="style10">( </span><span class="style5">void</span><span class="style10">)
+</span><span class="style5">uint32_t </span><span class="style11">pop_back_if </span><span
+class="style10">( </span><span class="style16">std</span><span class="style10">::</span><span
+class="style16">function</span><span class="style10">&lt; </span><span class="style5">bool </span><span
+class="style10">(</span><span class="style5">const </span><span class="style16">value_type </span><span
+class="style10">&amp; )&gt;  </span><span class="style11">M1</span><span class="style10">)
+</span><span class="style2">
+</span><span class="style5">uint32_t </span><span class="style11">pop_copy_back    </span><span
+class="style10">( </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">V</span><span class="style10">)
+</span><span class="style5">uint32_t </span><span class="style11">pop_copy_back_if </span><span
+class="style10">( </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">V</span><span class="style10">,</span><span class="style16">std</span><span
+class="style10">::</span><span class="style16">function</span><span class="style10">&lt; </span><span
+class="style5">bool </span><span class="style10">(</span><span class="style5">const </span><span
+class="style16">value_type </span><span class="style10">&amp; )&gt;  </span><span
+class="style11">M1</span><span class="style10">)
+</span><span class="style2">
+</span><span class="style5">uint32_t </span><span class="style11">pop_move_back    </span><span
+class="style10">( </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">V</span><span class="style10">)
+</span><span class="style5">uint32_t </span><span class="style11">pop_move_back_if </span><span
+class="style10">( </span><span class="style11">value_t </span><span class="style10">&amp; </span><span
+class="style11">V</span><span class="style10">, </span><span class="style16">std</span><span
+class="style10">::</span><span class="style16">function</span><span class="style10">&lt; </span><span
+class="style5">bool </span><span class="style10">(</span><span class="style5">const </span><span
+class="style16">value_type </span><span class="style10">&amp; )&gt;  </span><span
+class="style11">M1</span><span class="style10">)
+</span><span class="style2">
+</span></span></code>
+</span></code></pre></div>
+        <br />
+        The functions with the suffix _if, delete the element if the function
+        return true. The function don't modify the element, only receives then
+        element as parameter and return true or false.<br />
+        <br />
+        Many functions return a uint32_t . The meaning of this value is <br />
+                 0- Element erased<br />
+                 1 - Empty tree<br />
+                 2 - Function returns false<br />
+        <br />
+        With this function don't need check the size of the tree, because if it
+        is empty return 1 , and don't crash the program. If you don't execute
+        the deletion because the function received as parameter return false,
+        the function return 2. It' simple and safe. <br />
+        <br />
+        The <span style="font-weight: bold;">SITUATION 1</span>  described in
+        the previous point it's trivial to codify in a safe mode with these
+        instructions.<br />
+        <br />
+        <div class="caja_codigo">
+          <pre><code><span class="style2"><br /><span style="font-weight: bold;">THREAD T1                                         THREAD T2  </span></span></code><code><span
+class="style2"><br /><br />uint32_t code=S.pop_copy_front ( Elem);           </span></code><code><span
+class="style2">uint32_t code=S.pop_copy_front ( Elem);</span></code><code><span
+class="style2"><code><span class="style2"></span></code>
+</span></code>                        <code><span class="style2"></span></code><code><span
+class="style10"></span></code></pre>
+        </div>
+        <br />
+        There are functions with the terms move and copy in the name. The idea
+        is extract the first or last element of the tree. The functions with
+        copy made a copy of the first/last element with references, and the
+        functions with move made a copy with rvalues. <br />
+        <br />
+        The combination of all the cases, generate a great number of functions ,
+        but they are safe and easy to understand and use, providing to the final
+        user a solution to their problems. <br />
+        <br />
+        If you want a detailed description of the functions with the source code
+        <br />
+        <div style="margin-left: 40px;">
+          <ul>
+            <li> <a title="doxygen documentation" href="html/index.html">5.1.-
+                doxygen documentation</a></li>
+            <li><a title="doxygen files" href="html/files.html">5.2.- source
+                code</a></li>
+          </ul>
+        </div>
+      </div>
+      <br />
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
       <br />
       <br />
       <a style="float:right" href="P1.5_next_improvements.html" title="next_improvements"><img

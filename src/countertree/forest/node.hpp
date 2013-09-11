@@ -58,6 +58,7 @@ T data ;
 //  node ( T &&Dt  ) NOEXCEPT
 //
 //***************************************************************************
+<<<<<<< HEAD
 //---------------------------------------------------------------------------
 //  function : node
 /// @brief Copy constructor. We copy the data, color and counter, but
@@ -65,6 +66,8 @@ T data ;
 /// @param [in] N1 : reference const  to the object to be copied
 //---------------------------------------------------------------------------
 node ( void ) NOEXCEPT:base_node ( ),data( T()){};
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 
 //---------------------------------------------------------------------------
 //  function : node
@@ -76,6 +79,7 @@ node ( const node & N1 ) NOEXCEPT:base_node ( ),data(N1.data){};
 
 //---------------------------------------------------------------------------
 //  function : node
+<<<<<<< HEAD
 /// @brief Copy constructor. We copy the data, color and counter, but
 ///        don't copy the pnodes
 /// @param [in] N1 : reference const  to the object to be copied
@@ -93,10 +97,13 @@ node ( const T &Dt ) NOEXCEPT:base_node (),data(Dt){ };
 
 //---------------------------------------------------------------------------
 //  function : node
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @brief Constructor
 /// @param [in] Dt : Value to copy in the node. By default the empty
 ///                  constructor of the value
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 node ( T &&Dt  ) NOEXCEPT:base_node (),data(std::move(Dt)){ }
 
 
@@ -105,6 +112,9 @@ node ( T &&Dt  ) NOEXCEPT:base_node (),data(std::move(Dt)){ }
 /// @brief Destructor
 //---------------------------------------------------------------------------
 virtual ~node ( void  ) NOEXCEPT{ }
+=======
+//node ( const T &Dt  = T()) NOEXCEPT:base_node (),data(Dt){ };
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 
 //---------------------------------------------------------------------------
 //  function : node

@@ -20,7 +20,11 @@
 #include <boost/countertree/alloc/heap32.hpp>
 #include <boost/countertree/common/spinlock.hpp>
 #include <boost/countertree/myallocator.hpp>
+<<<<<<< HEAD
 #include <boost/countertree/common/mysingleton.hpp>
+=======
+#include <boost/countertree/common/singleton.hpp>
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 
 namespace countertree
 {

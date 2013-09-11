@@ -193,7 +193,11 @@ root(B.root),first(B.first),last(B.last),n_level (B.n_level)
 //  function : ~tree
 /// @brief  Destructor
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 virtual ~tree (void)
+=======
+~tree (void)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   clear();
     root=first=last=NULL;
     n_level =0 ;

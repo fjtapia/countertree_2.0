@@ -10,7 +10,11 @@
 // Distributed under the Boost Software License, Version 1.0. (See accompanying
 // file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt)
 //
+<<<<<<< HEAD
 // NOTES : link with boost_system
+=======
+// NOTES :
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //-----------------------------------------------------------------------------
 #include <iostream>
 #include <stdlib.h>

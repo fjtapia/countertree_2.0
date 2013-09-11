@@ -14,7 +14,11 @@
 #ifndef __COUNTERTREE_FOREST_SET_HPP
 #define __COUNTERTREE_FOREST_SET_HPP
 
+<<<<<<< HEAD
 #include <type_traits>
+=======
+
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 #include <boost/countertree/myallocator.hpp>
 #include <boost/countertree/barrier.hpp>
 #include <boost/countertree/filter.hpp>
@@ -157,8 +161,12 @@ explicit cntree_set ( const key_compare &C1=key_compare(),
 /// @param [in] A1 : Allocator
 //----------------------------------------------------------------
 template <class InputIterator>
+<<<<<<< HEAD
 cntree_set ( InputIterator first,
              InputIterator last,
+=======
+cntree_set ( InputIterator first,      InputIterator last,
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
              const key_compare& C1=key_compare(),
              const alloc_t  &A1=alloc_t ()):st(C1,A1)
 {   //-------------------------begin -----------------------------------
@@ -181,7 +189,11 @@ cntree_set ( const cntree_set & x ):st(x.st.key_comp(),x.st.get_allocator())
 //----------------------------------------------------------------
 //  function : cntree_set
 /// @brief  Copy constructor
+<<<<<<< HEAD
 /// @param [in] x : cntree_set from where move the data
+=======
+/// @param [in] x : cntree_set from where copy the data
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //----------------------------------------------------------------
 cntree_set (  cntree_set && x ): st( x.st.key_comp(),x.st.get_allocator())
 {   //--------------------- begin -----------------
@@ -248,7 +260,11 @@ virtual ~cntree_set(void ){} ;
 //---------------------------------------------------------------------------
 //  function : operator =
 /// @brief Asignation operator
+<<<<<<< HEAD
 /// @param [in] S : cntree_set from where copy the data
+=======
+/// @param [in] S : cntree_setr from where copy the data
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return Reference to the cntree_set after the copy
 //---------------------------------------------------------------------------
 cntree_set & operator = ( const cntree_set &S)
@@ -277,7 +293,11 @@ cntree_set & operator = ( const cntree_set <value_t,cnc2,comp_key_t,alloc_t2> & 
 //----------------------------------------------------------------
 //  function : operator =
 /// @brief Asignation operator
+<<<<<<< HEAD
 /// @param [in] S : cntree_setr from where move the data
+=======
+/// @param [in] S : cntree_setr from where copy the data
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return Reference to the cntree_set after the copy
 //----------------------------------------------------------------
 cntree_set  & operator = (  cntree_set &&S)
@@ -292,7 +312,11 @@ cntree_set  & operator = (  cntree_set &&S)
 //----------------------------------------------------------------
 //  function : operator=
 /// @brief  Copy constructor
+<<<<<<< HEAD
 /// @param [in] x : cntree_set from where move the data
+=======
+/// @param [in] x : cntree_set from where copy the data
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //----------------------------------------------------------------
 template <bool cnc2 >
 cntree_set & operator= (  cntree_set <value_t,cnc2,comp_key_t,alloc_t>&& x )
@@ -499,7 +523,11 @@ std::pair<iterator,iterator> equal_range ( const key_type& x ) const
 //---------------------------------------------------------------------------
 //  function : const_iterator_pos
 /// @brief Find a position in the cntree_set
+<<<<<<< HEAD
 /// @param [in] Pos1 : Position to find
+=======
+/// @param [in] Pos : Position to find
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return const_iterator to the position. If don't exists throws
 ///         an exception
 /// @remarks This operation is O ( log N)
@@ -525,6 +553,7 @@ const_iterator const_iterator_pos ( signed_type Pos1) const NOEXCEPT
 //  template <class ... Args>
 //  iterator emplace_internal(barrier_modify & BM,connector C, Args && ... args)
 //
+<<<<<<< HEAD
 //  template <class P >
 //  mypair insert (  P && Val)
 //
@@ -540,22 +569,42 @@ const_iterator const_iterator_pos ( signed_type Pos1) const NOEXCEPT
 //
 //  template <class Function , class ... Args>
 //  mypair emplace_if ( Function &&  M ,  Args && ... args)
+=======
+//  std::pair <const_iterator,bool> insert ( const value_type &  x );
+//  std::pair <const_iterator,bool> insert (       value_type && x );
+//
+//  iterator  insert ( const_iterator position, const value_type &  x );
+//  iterator  insert ( const_iterator position,       value_type && x );
+//
+//  template <class ... Args>
+//  std::pair <const_iterator, bool>   emplace (Args && ... args)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //
 //  template <class ... Args>
 //  const_iterator   emplace_hint (const_iterator,Args && ... args)
 //
+<<<<<<< HEAD
 //  template <class InputIterator>
 //  void insert ( InputIterator first, InputIterator last )
 //
 //  template <class InputIterator, class Function >
 //  void insert_if (InputIterator first, InputIterator last, Function && M)
 //
+=======
+//  template <class InputIterator>
+//  void insert ( InputIterator first, InputIterator last );
+//
+//  template <class InputIterator>
+//  void insert_if ( InputIterator first, InputIterator last,
+//                    std::function < bool ( const value_type & )>  M  )
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //
 //***************************************************************************
 //
 //---------------------------------------------------------------------------
 //  function : emplace_internal
 /// @brief insert an element in a the position specified by the connector
+<<<<<<< HEAD
 /// @param [in] BM : barrier modify needed for to exec the wait_no_readers
 ///                  inside the function
 /// @param [in] C : connector which indicate where must insert the node
@@ -563,6 +612,12 @@ const_iterator const_iterator_pos ( signed_type Pos1) const NOEXCEPT
 /// @return iterator to the element inserted
 /// @remarks This operation is O ( log(N) ) This operation don't must be used
 ///          by the final users
+=======
+/// @param [in] C : connector which indicate where must insert the node
+/// @param [in] args : arguments to build the node to insert
+/// @return iterator to the element inserted
+/// @remarks This operation is O ( log(N) )
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //---------------------------------------------------------------------------
 template <class ... Args>
 const_iterator emplace_internal(barrier_modify & BM,connector C, Args && ... args)
@@ -576,6 +631,7 @@ const_iterator emplace_internal(barrier_modify & BM,connector C, Args && ... arg
 //---------------------------------------------------------------------
 //  function : insert
 /// @brief insert a value in the cntree_set
+<<<<<<< HEAD
 /// @param [in] val : value to insert.It can ve a value , a reference or an rvalue
 /// @return pair <iterator,bool> with the iterator to the element inserted or
 ///         or to the element that prevented the insertion, and a bool indication
@@ -589,20 +645,39 @@ mypair insert (  P && Val)
     node_t *PAux =  st.connector_norep ( std::forward<P>(Val), C );
     bool SW = ( PAux == NULL);
     const_iterator It = (SW)? emplace_internal(BM,C,std::forward<P>(Val)): st.get_cit (PAux);
+=======
+/// @param [in] val : value to insert
+/// @return pair <iterator,bool> with the iterator to the element inserted or
+///         or to the element that prevented the insertion, and a bool indication
+///         if the insertion is done
+//----------------------------------------------------------------
+mypair insert (const value_t & Val)
+{   barrier_modify BM  ( BD);
+    connector C ;
+    node_t *PAux =  st.connector_norep ( Val, C );
+    bool SW = ( PAux == NULL);
+    const_iterator It = (SW)? emplace_internal(BM, C, Val): st.get_cit (PAux);
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     return mypair ( It, SW);
 };
 //---------------------------------------------------------------------
 //  function : insert_if
 /// @brief insert a value in the cntree_set
+<<<<<<< HEAD
 /// @param [in] val : value to insert.It can ve a value , a reference or an rvalue
 /// @param [in] M : function with the format bool( const value_t &).
 ///                  if return true the element is iserted , if false not
+=======
+/// @param [in] val : value to insert
+/// @param [in] M : function whixh decide if the node is inserted
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return pair <iterator,bool> with the iterator to the element inserted or
 ///         or to the element that prevented the insertion, and a bool indication
 ///         if the insertion is done.
 ///         When the element is rejected by the function , the itertor of the pair
 ///         is end() and the bool false
 //----------------------------------------------------------------
+<<<<<<< HEAD
 template <class Function, class P >
 mypair insert_if (Function && M ,P && Val)
 {   //------------------------begin--------------------------------
@@ -614,10 +689,23 @@ mypair insert_if (Function && M ,P && Val)
     if ( SW)
     {   SW = M( std::forward<P>(Val));
         It = (SW) ?emplace_internal ( BM, C, std::forward<P>(Val)) :cend() ;
+=======
+mypair insert_if (std::function < bool(const value_type &)> M ,const value_type& Val)
+{   //------------------------begin--------------------------------
+    barrier_modify BM  ( BD);
+    connector C ;
+    node_t *PAux =  st.connector_norep ( Val, C );
+    const_iterator It ;
+    bool SW = ( PAux == NULL);
+    if ( SW)
+    {   SW = M( Val);
+        It = (SW) ?emplace_internal ( BM, C, Val) :cend() ;
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     }
     else It = st.get_cit ( PAux);
     return mypair ( It, SW);
 };
+<<<<<<< HEAD
 
 //---------------------------------------------------------------------------
 //  function : insert
@@ -634,13 +722,74 @@ const_iterator  insert ( const_iterator , const value_type & val )
 //  function : insert
 /// @brief insert a value in the cntree_set
 /// @param [in] val : value to insert with a move operation
+=======
+//---------------------------------------------------------------------
+//  function : insert
+/// @brief insert a value in the cntree_set
+/// @param [in] val : value to insert
+/// @return pair <iterator,bool> with the iterator to the element inserted or
+///         or to the element that prevented the insertion, and a bool indication
+///         if the insertion is done
+//----------------------------------------------------------------
+mypair insert (  value_type&& val )
+{   barrier_modify BM  ( BD);
+    connector C ;
+    node_t *PAux =  st.connector_norep ( val, C );
+    bool SW = ( PAux == NULL);
+    const_iterator It = (SW)? emplace_internal(BM, C, std::move(val)): st.get_cit (PAux);
+    return mypair ( It, SW);
+};
+
+//---------------------------------------------------------------------------
+//  function : insert_if
+/// @brief insert a value in the cntree_set
+/// @param [in] val : value to insert
+/// @param [in] M : function whixh decide if the node is inserted
+/// @return pair <iterator,bool> with the iterator to the element inserted or
+///         or to the element that prevented the insertion, and a bool indication
+///         if the insertion is done.
+///         When the element is rejected by the function , the itertor of the pair
+///         is end() and the bool false
+//---------------------------------------------------------------------------
+mypair insert_if ( std::function < bool ( const value_type &)> M, value_type&& val)
+{   //------------------------begin--------------------------------
+    barrier_modify BM  ( BD);
+    connector C ;
+    node_t *PAux =  st.connector_norep ( val, C );
+    const_iterator It ;
+    bool SW = ( PAux == NULL);
+    if ( SW)
+    {   SW = M( val);
+        It = (SW) ?emplace_internal ( BM, C, std::move(val)) :cend() ;
+    }
+    else It = st.get_cit ( PAux);
+    return mypair ( It, SW);
+};
+//---------------------------------------------------------------------------
+//  function : insert
+/// @brief insert a value in the cntree_set
+/// @param [in] X : value to insert
+/// @return  returns an iterator to the inserted element, or to the element
+///          that prevented the insertion.
+//---------------------------------------------------------------------------
+const_iterator  insert ( const_iterator , const value_type& val )
+{   return ( insert (val)).first ;
+}
+//---------------------------------------------------------------------------
+//  function : insert
+/// @brief insert a value in the cntree_set
+/// @param [in] X : value to insert
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return  returns an iterator to the inserted element, or to the element
 ///          that prevented the insertion.
 //---------------------------------------------------------------------------
 const_iterator  insert ( const_iterator , value_type&& val )
 {   return ( insert ( std::move( val))).first;
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //---------------------------------------------------------------------
 //  function : emplace
 /// @brief insert a value in the cntree_set
@@ -649,8 +798,12 @@ const_iterator  insert ( const_iterator , value_type&& val )
 ///         or to the element that prevented the insertion, and a bool indication
 ///         if the insertion is done
 //----------------------------------------------------------------
+<<<<<<< HEAD
 template <class ... Args>
 mypair emplace (Args && ... args)
+=======
+template <class ... Args> mypair emplace (Args && ... args)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //-----------------begin------------------
     barrier_modify BM  ( BD);
     connector C ;
@@ -673,17 +826,27 @@ mypair emplace (Args && ... args)
 //---------------------------------------------------------------------------
 //  function : emplace_if
 /// @brief insert a value in the cntree_set
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool( const value_t &).
 ///                 if return true the element is iserted , if false not
 /// @param [in] args : arguments needed for to build the node to insert in the cntree_set
+=======
+/// @param [in] X : value to insert
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return pair <iterator,bool> with the iterator to the element inserted or
 ///         or to the element that prevented the insertion, and a bool indication
 ///         if the insertion is done.
 ///         When the element is rejected by the function , the itertor of the pair
 ///         is end() and the bool false
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 template <class Function , class ... Args>
 mypair emplace_if ( Function &&  M ,  Args && ... args)
+=======
+template <class ... Args>
+mypair emplace_if (std::function < bool ( const value_type & )>  M ,
+                   Args && ... args)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //------------------------begin--------------------------------
     barrier_modify BM  ( BD);
     connector C ;
@@ -713,8 +876,14 @@ mypair emplace_if ( Function &&  M ,  Args && ... args)
 //  function : emplace_hint
 /// @brief insert a value in the cntree_set
 /// @param [in] X : value to insert
+<<<<<<< HEAD
 /// @return iterator to the element inserted or or to the element that
 ///         prevented the insertion if the insertion is done if not end()
+=======
+/// @return pair <iterator,bool> with the iterator to the element inserted or
+///         or to the element that prevented the insertion, and a bool indication
+///         if the insertion is done
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //----------------------------------------------------------------
 template <class ... Args>
 const_iterator   emplace_hint (const_iterator,Args && ... args)
@@ -740,12 +909,20 @@ void insert ( InputIterator first, InputIterator last )
 /// @brief Insertion of range of elements from two iterators
 /// @param [in] first : Iterator to the first element of the range
 /// @param [in] last : Iterator to the last lement of the range
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool( const value_t &).
 ///                  if return true the element is iserted , if false not
 /// @return none
 //----------------------------------------------------------------
 template <class InputIterator, class Function >
 void insert_if (InputIterator first, InputIterator last, Function && M)
+=======
+/// @return none
+//----------------------------------------------------------------
+template <class InputIterator>
+void insert_if ( InputIterator first, InputIterator last,
+                std::function < bool ( const value_type & )>  M  )
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //------------- begin --------------------
     barrier_modify BM ( BD);
     BM.wait_no_readers() ;
@@ -763,6 +940,7 @@ void insert_if (InputIterator first, InputIterator last, Function && M)
 //##########################################################################
 //
 //***************************************************************************
+<<<<<<< HEAD
 //                     P O P _ F R O N T
 //
 //  void pop_front ( void )
@@ -779,6 +957,47 @@ void insert_if (InputIterator first, InputIterator last, Function && M)
 //
 //  template <class Function>
 //  uint32_t pop_move_front_if ( value_t & V, Function && M1)
+=======
+// P O P _ F R O N T , P O P _ B A C K , E R A S E , E R A S E _ P O S
+//
+//  void     pop_front    ( void );
+//  uint32_t pop_front_if ( std::function< bool (const value_type & )>  M1  )
+//
+//  uint32_t pop_copy_front    ( value_t & V)
+//  uint32_t pop_copy_front_if ( value_t & V,
+//                               std::function< bool (const value_type & )>  M1)
+//
+//  uint32_t pop_move_front    ( value_t & V)
+//  uint32_t pop_move_front_if ( value_t & V,
+//                               std::function< bool (const value_type & )>  M1)
+//
+//  void     pop_back    ( void );
+//  uint32_t pop_back_if ( std::function< bool (const value_type & )>  M1)
+//
+//  uint32_t pop_copy_back    ( value_t & V)
+//  uint32_t pop_copy_back_if ( value_t & V,
+//                              std::function< bool (const value_type & )>  M1)
+//
+//  uint32_t pop_move_back    ( value_t & V)
+//  uint32_t pop_move_back_if ( value_t & V,
+//                              std::function< bool (const value_type & )>  M1)
+//
+//  void           erase    ( const_iterator iter)
+//  const_iterator erase_if ( const_iterator iter,
+//                            std::function < bool ( const value_type & )>  M)
+//
+//  signed_type erase    ( const_iterator first_it, const_iterator last_it)
+//  signed_type erase_if ( const_iterator first_it, const_iterator last_it,
+//                         std::function < bool ( const value_type & )>  M)
+//
+//  void erase_pos    ( signed_type Pos)
+//  void erase_pos_if ( signed_type Pos,
+//                      std::function < bool(const value_type &)> M)
+//
+//  void erase_pos    ( signed_type Prim, signed_type NElem )
+//  void erase_pos_if ( signed_type Prim, signed_type NElem,
+//                      std::function < bool(const value_type &)> M)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //
 //***************************************************************************
 //
@@ -797,18 +1016,27 @@ void pop_front ( void )
 //---------------------------------------------------------------------------
 //  function : pop_front_if
 /// @brief erase the first element of the container
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
+=======
+/// @param [in] none
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return code of the operation
 ///         0- Element erased
 ///         1 - Empty tree
 ///         2 - Function returns false
 /// @remarks This operation is O (constant)
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 template <class Function>
 uint32_t pop_front_if ( Function &&  M1  )
 {   //--------------------------- begin ------------------
     barrier_modify BM ( BD);
+=======
+uint32_t pop_front_if ( std::function< bool (const value_type & )>  M1  )
+{   barrier_modify BM ( BD);
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     if ( st.size() == 0 ) return 1 ;
     bool SW =  M1 ( st.front());
     if ( SW)
@@ -840,16 +1068,24 @@ uint32_t pop_copy_front ( value_t & V)
 //  function :pop_copy_front_if
 /// @brief erase the first element of the tree and return a copy
 /// @param [out] V : reference to a variable where copy the element
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return code of the operation
 ///         0- Element erased
 ///         1 - Empty tree
 ///         2 - Function returns false
 /// @remarks This operation is O(1)
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 template <class Function>
 uint32_t pop_copy_front_if ( value_t & V, Function && M1)
+=======
+uint32_t pop_copy_front_if ( value_t & V,
+                             std::function< bool (const value_type & )>  M1)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //-------------------------- begin -----------------------------
     barrier_modify BM ( BD);
     if ( st.size() == 0) return 1 ;
@@ -881,15 +1117,23 @@ uint32_t pop_move_front ( value_t & V)
 //  function :pop_move_front_if
 /// @brief erase the first element of the tree and return a copy with rvalues
 /// @param [out] V : reference to a variable where copy the element
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return code of the operation
 ///         0- Element erased
 ///         1 - Empty tree
 /// @remarks This operation is O(1)
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 template <class Function>
 uint32_t pop_move_front_if ( value_t & V, Function && M1)
+=======
+uint32_t pop_move_front_if ( value_t & V,
+                             std::function< bool (const value_type & )>  M1)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //-------------------------- begin -----------------------------
     barrier_modify BM ( BD);
     if ( st.size() == 0) return 1 ;
@@ -899,6 +1143,7 @@ uint32_t pop_move_front_if ( value_t & V, Function && M1)
     st.pop_front() ;
     return 0;
 };
+<<<<<<< HEAD
 //
 //***************************************************************************
 //                    P O P _ B A C K
@@ -919,6 +1164,9 @@ uint32_t pop_move_front_if ( value_t & V, Function && M1)
 //  uint32_t pop_move_back_if ( value_t & V, Function && M1)
 //
 //***************************************************************************
+=======
+
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //---------------------------------------------------------------------------
 //  function :pop_back
 /// @brief erase the last element of the container
@@ -934,18 +1182,27 @@ void pop_back ( void)
 //---------------------------------------------------------------------------
 //  function :pop_back_if
 /// @brief erase the last element of the container
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
+=======
+/// @param [in] M1 : function to check the value
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return code of the operation
 ///         0- Element erased
 ///         1 - Empty tree
 ///         2 - Function returns false
 /// @remarks This operation is O(constant)
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 template <class Function>
 uint32_t pop_back_if ( Function &&  M1)
 {   //---------------------- begin ----------------
     barrier_modify BM ( BD);
+=======
+uint32_t pop_back_if ( std::function< bool (const value_type & )>  M1)
+{   barrier_modify BM ( BD);
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     if ( st.size() == 0 ) return 1 ;
     bool SW = M1 ( st.back());
     if ( SW)
@@ -976,16 +1233,24 @@ uint32_t pop_copy_back ( value_t & V)
 //  function :pop_copy_back_if
 /// @brief erase the last element of the tree and return a copy
 /// @param [out] V : reference to a variable where copy the element
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return code of the operation
 ///         0- Element erased
 ///         1 - Empty tree
 ///         2 - Function returns false
 /// @remarks This operation is O(1)
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 template <class Function>
 uint32_t pop_copy_back_if ( value_t & V, Function && M1)
+=======
+uint32_t pop_copy_back_if ( value_t & V,
+                             std::function< bool (const value_type & )>  M1)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //-------------------------- begin -----------------------------
     barrier_modify BM ( BD);
     if ( st.size() == 0) return 1 ;
@@ -1017,15 +1282,23 @@ uint32_t pop_move_back ( value_t & V)
 //  function :pop_move_back_if
 /// @brief erase the last element of the tree and return a copy with rvalues
 /// @param [out] V : reference to a variable where copy the element
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @return code of the operation
 ///         0- Element erased
 ///         1 - Empty tree
 /// @remarks This operation is O(1)
 //---------------------------------------------------------------------------
+<<<<<<< HEAD
 template <class Function>
 uint32_t pop_move_back_if ( value_t & V, Function && M1)
+=======
+uint32_t pop_move_back_if ( value_t & V,
+                             std::function< bool (const value_type & )>  M1)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //-------------------------- begin -----------------------------
     barrier_modify BM ( BD);
     if ( st.size() == 0) return 1 ;
@@ -1035,6 +1308,7 @@ uint32_t pop_move_back_if ( value_t & V, Function && M1)
     st.pop_back();
     return 0;
 };
+<<<<<<< HEAD
 //
 //***************************************************************************
 //                  E R A S E , E R A S E _ P O S
@@ -1067,6 +1341,9 @@ uint32_t pop_move_back_if ( value_t & V, Function && M1)
 //
 //***************************************************************************
 //
+=======
+
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //----------------------------------------------------------------
 //  function : erase
 /// @brief erase the element pointed by iter
@@ -1084,12 +1361,19 @@ const_iterator erase ( const_iterator iter )
 //  function : erase_if
 /// @brief erase the element pointed by iter
 /// @param [in] iter : iterator to the element to erase
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
 /// @return iterator to the next element to iter
 //----------------------------------------------------------------
 template <class Function>
 const_iterator erase_if ( const_iterator iter, Function && M)
+=======
+/// @return none
+//----------------------------------------------------------------
+const_iterator erase_if ( const_iterator iter,
+                          std::function < bool ( const value_type & )>  M)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //---------- begin -------------
     barrier_modify BM ( BD);
     const_iterator Alfa = iter +1 ;
@@ -1116,6 +1400,7 @@ const_iterator erase ( const_iterator first, const_iterator last )
 /// @brief erase a range of elements between first_it and last_it
 /// @param [in] first_it : const_iterator to the first element
 /// @param [in] last_it : const_iterator to the final element of the range
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
 /// @return number of elements erased
@@ -1124,6 +1409,13 @@ const_iterator erase ( const_iterator first, const_iterator last )
 template <class Function>
 signed_type erase_if ( const_iterator first_it, const_iterator last_it,
                       Function &&  M)
+=======
+/// @return number of elements erased
+/// @remarks
+//---------------------------------------------------------------------------
+signed_type erase_if ( const_iterator first_it, const_iterator last_it,
+                      std::function < bool ( const value_type & )>  M)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //--------------------------- begin ---------------------------------
     barrier_modify BM ( BD);
     BM.wait_no_readers() ;
@@ -1147,6 +1439,7 @@ signed_type erase ( const key_type& x )
 //----------------------------------------------------------------
 //  function : erase_if
 /// @brief Erase all the elements with a key
+<<<<<<< HEAD
 /// @param [in] x : key of all the elements to erase
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
@@ -1154,6 +1447,13 @@ signed_type erase ( const key_type& x )
 //----------------------------------------------------------------
 template <class Function>
 signed_type erase_if ( const key_type& x , Function && M)
+=======
+/// @param [in] x : key of all the elements to erase
+/// @return number of elements erased
+//----------------------------------------------------------------
+signed_type erase_if ( const key_type& x ,
+                       std::function < bool ( const value_type & )>  M)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //------------ begin ---------------
     barrier_modify BM ( BD);
     iterator I = st.find_norep(x) ;
@@ -1184,6 +1484,7 @@ void erase_pos( signed_type Pos)
 //  function : erase_pos_if
 /// @brief erase the element of the position pos
 /// @param [in] pos : position to delete
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
 /// @return void
@@ -1191,6 +1492,13 @@ void erase_pos( signed_type Pos)
 //---------------------------------------------------------------------------
 template <class Function>
 void erase_pos_if( signed_type Pos, Function && M)
+=======
+/// @return void
+/// @remarks This operation is O ( log(N) )
+//---------------------------------------------------------------------------
+void erase_pos_if( signed_type Pos,
+                  std::function < bool(const value_type &)> M)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //--------------------- begin --------------
     barrier_modify BM ( BD);
     iterator I = st.iterator_pos ( Pos);
@@ -1201,7 +1509,12 @@ void erase_pos_if( signed_type Pos, Function && M)
 };
 //---------------------------------------------------------------------------
 //  function : erase_pos
+<<<<<<< HEAD
 /// @brief erase  NElem elements beginning in the position Prim
+=======
+/// @brief erase the lements between the position Prim and the position Ult.
+///        The position Ult is deleted
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 /// @param [in] Prim : position to the first element to erase
 /// @param [in] NElem : Number of elements to delete
 /// @return void
@@ -1219,6 +1532,7 @@ void erase_pos ( signed_type Prim, signed_type NElem)
 ///        The position Ult is deleted
 /// @param [in] Prim : position to the first element to erase
 /// @param [in] NElem : Number of elements to delete
+<<<<<<< HEAD
 /// @param [in] M : function with the format bool(const value_t &).
 ///                 if return true the element is deleted , if false not
 /// @return void
@@ -1226,6 +1540,13 @@ void erase_pos ( signed_type Prim, signed_type NElem)
 //---------------------------------------------------------------------------
 template <class Function >
 signed_type erase_pos_if ( signed_type Prim, signed_type NElem,Function && M)
+=======
+/// @return void
+/// @remarks
+//---------------------------------------------------------------------------
+signed_type erase_pos_if ( signed_type Prim, signed_type NElem,
+                           std::function < bool(const value_type &)> M)
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   //----------------------------- begin -----------------------------
     barrier_modify BM ( BD);
     BM.wait_no_readers() ;

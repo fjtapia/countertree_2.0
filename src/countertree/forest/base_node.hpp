@@ -86,12 +86,15 @@ base_node ( const base_node & )  ;
 explicit base_node ( void) NOEXCEPT
 :left(NULL),right(NULL),up(NULL),N(1),color(black){ };
 
+<<<<<<< HEAD
 //---------------------------------------------------------------------------
 //  function : ~node
 /// @brief Destructor
 //---------------------------------------------------------------------------
 virtual ~base_node ( void  ) NOEXCEPT{ };
 
+=======
+>>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 //***************************************************************************
 //   O P E R A T O R = , I N I T , R E M O V E _ C O N S T
 //
