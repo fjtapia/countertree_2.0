@@ -1,7 +1,6 @@
-PROJECT DESCRIPTION
---------------------------
+[ COUNTERTREE + SUBALLOCATOR ] 2.0 PROJECT DESCRIPTION
+-------------------------------------------------------
 
-BRIEF
 
 This library provide a concurrent and thread safe implementation of the 
 tree based data structures (set, multiset, map and multimap, plus a new data 
@@ -46,6 +45,9 @@ suballocators  are
         to the Operating System  and the memory  used by the allocator is the 
         maximum used and never decrease)
 
+If you want just take a look or to see online, you can do in my dropbox page:
+
+https://dl.dropboxusercontent.com/u/8437476/works/countertree_2.0/index.html
 
 
 Francisco José Tapia
