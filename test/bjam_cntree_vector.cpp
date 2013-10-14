@@ -34,11 +34,7 @@ int BusquedaBinaria ( const cntree::cntree_vector<int> &A , int Valor);
 
 void prueba1 (void)
 {   //------------------------ Inicio -----------------------------
-<<<<<<< HEAD
 	//std::cout<<"Prueba1\n";
-=======
-	std::cout<<"Prueba1\n";
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     cntree::cntree_vector<int32_t > A ;
 
     A.insert_pos( 0,9 ) ;      BOOST_CHECK (A.check() );
@@ -175,11 +171,7 @@ void prueba1 (void)
 
 void prueba2 ( void)
 {   //---------------------- Variables----------------------------
-<<<<<<< HEAD
 	//std::cout<<"Prueba2\n";
-=======
-	std::cout<<"Prueba2\n";
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     cntree::cntree_vector<int> M1 , M2;
 
     M1.insert_pos( 0, 1003) ;       BOOST_CHECK (M1.check()  );
@@ -257,11 +249,7 @@ void prueba2 ( void)
 
 void prueba3 ( void)
 {   //---------------------- Variables----------------------------
-<<<<<<< HEAD
 	//std::cout<<"Prueba3\n";
-=======
-	std::cout<<"Prueba3\n";
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     int Numero [1000];
 
     //------------------------ Inicio -----------------------------
@@ -327,11 +315,7 @@ int BusquedaBinaria ( const cntree::cntree_vector<int> &A , int Valor)
 
 void prueba4 ( void)
 {   //---------------------- Variables----------------------------
-<<<<<<< HEAD
 	//std::cout<<"Prueba4\n";
-=======
-	std::cout<<"Prueba4\n";
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     cntree::cntree_vector<int> M1, M2, M3 ;
        int i ;
 
@@ -423,11 +407,7 @@ void prueba4 ( void)
 
 void prueba5 ( void)
 {   //---------------------------- begin -------------------------
-<<<<<<< HEAD
 	//std::cout<<"Prueba5\n";
-=======
-	std::cout<<"Prueba5\n";
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     cntree::cntree_vector<int >  V1, V2, V3 ;
     std::vector<int> V4 ;
 
@@ -463,11 +443,7 @@ void prueba5 ( void)
 
 void prueba6 ( void)
 {   //---------------------------- begin -------------------------
-<<<<<<< HEAD
     //std::cout<<"Prueba6\n";
-=======
-    std::cout<<"Prueba6\n";
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     typedef cntree::cntree_vector <int,true> VInt ;
     VInt    V1, V2 ;
     cntree::cntree_vector< VInt,true > VT1 ;
@@ -538,11 +514,7 @@ void prueba6 ( void)
 };
 void prueba7 ( void)
 {   //--------------------------- begin --------------------------------------
-<<<<<<< HEAD
 	//std::cout<<"Prueba7\n";
-=======
-	std::cout<<"Prueba7\n";
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     cntree::cntree_vector<int,false> V1, V2,V3,V4 ;
 
     for ( int i =0 ; i < 10 ; ++i)

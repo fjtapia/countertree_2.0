@@ -193,11 +193,7 @@ root(B.root),first(B.first),last(B.last),n_level (B.n_level)
 //  function : ~tree
 /// @brief  Destructor
 //---------------------------------------------------------------------------
-<<<<<<< HEAD
 virtual ~tree (void)
-=======
-~tree (void)
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 {   clear();
     root=first=last=NULL;
     n_level =0 ;
@@ -853,8 +849,6 @@ void pop_back ( void)
 {   assert ( root != NULL);
     erase_internal ( upgrade( last ));
 };
-
-
 //---------------------------------------------------------------------------
 //  function : erase
 /// @brief erase the element pointed by the iterator P1

@@ -663,14 +663,9 @@ void ConRepeticion2 ( void)
 
 void SinRepeticiones_if()
 {   //---------------------------- begin ------------------------
-<<<<<<< HEAD
     //typedef std::pair<const int, double> value_t ;
     typedef  cntree_map<int, double,true>::iterator iterator ;
     typedef  cntree_map<int, double,true>::value_type value_t ;
-=======
-    typedef std::pair<const int, double> value_t ;
-    typedef typename cntree_map<int, double,true>::iterator iterator ;
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
     //typedef typename cntree_map<int, double,true>::const_iterator const_iterator ;
     //typedef typename cntree_map<int, double,true>::mypair    mypair ;
 

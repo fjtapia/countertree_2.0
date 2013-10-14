@@ -1,0 +1,27 @@
+var a00148 =
+[
+    [ "basic_heap32", "a00004.html", "a00004" ],
+    [ "heap32", "a00044.html", "a00044" ],
+    [ "NTOTALWORD32", "a00066.html", null ],
+    [ "NTOTALWORD32< 1, Power2 >", "a00067.html", null ],
+    [ "procreate32", "a00074.html", null ],
+    [ "procreate32< true, Power2, AllocByte >", "a00076.html", "a00076" ],
+    [ "procreate32< false, Power2, AllocByte >", "a00075.html", "a00075" ],
+    [ "basic_heap64", "a00005.html", "a00005" ],
+    [ "heap64", "a00045.html", "a00045" ],
+    [ "NTOTALWORD64", "a00068.html", null ],
+    [ "NTOTALWORD64< 1ULL, Power2 >", "a00069.html", null ],
+    [ "procreate64", "a00077.html", null ],
+    [ "procreate64< true, Power2, AllocByte >", "a00079.html", "a00079" ],
+    [ "procreate64< false, Power2, AllocByte >", "a00078.html", "a00078" ],
+    [ "NBits32", "a00059.html", null ],
+    [ "NBits32< Number32, NB, true >", "a00061.html", null ],
+    [ "NBits32< Number32, NB, false >", "a00060.html", null ],
+    [ "pool32", "a00070.html", "a00070" ],
+    [ "pool32< 0, cnc, AllocByte >", "a00071.html", "a00071" ],
+    [ "NBits64", "a00062.html", null ],
+    [ "NBits64< Number64, NB, true >", "a00064.html", null ],
+    [ "NBits64< Number64, NB, false >", "a00063.html", null ],
+    [ "pool64", "a00072.html", "a00072" ],
+    [ "pool64< 0, cnc, AllocByte >", "a00073.html", "a00073" ]
+];

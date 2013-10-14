@@ -61,11 +61,8 @@ struct select<Alloc,8>
 /// @remarks
 //-------------------------------------------------------------------------
 template <  typename Allocator = std::allocator<void> >
-#ifdef _MSC_VER
-class suballocator:public select<Allocator>::my_suballoc {  };
-#else
- using suballocator = typename select<Allocator>::my_suballoc ;
-#endif
+using suballocator = typename select<Allocator>::my_suballoc ;
+
 
 
 
@@ -107,12 +104,9 @@ struct select_cnc<Alloc,8>
 ///          environment
 /// @remarks
 //---------------------------------------------------------------------------
- template < typename Allocator = std::allocator<void> >
-#ifdef _MSC_VER
-    class suballocator_cnc:public select_cnc<Allocator>::my_suballoc { };
-#else
-    using suballocator_cnc = typename select_cnc<Allocator>::my_suballoc ;
-#endif
+template < typename Allocator = std::allocator<void> >
+using suballocator_cnc = typename select_cnc<Allocator>::my_suballoc ;
+
 //***************************************************************************
 }; //     E N D    A L L O C    &  C N T R E E    N A M E S P A C E
 //***************************************************************************

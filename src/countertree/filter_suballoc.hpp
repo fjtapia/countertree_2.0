@@ -26,10 +26,7 @@ template < typename Allocator > class suballocator32 ;
 template < typename Allocator > class suballocator64 ;
 template < typename Allocator > class suballocator32_cnc ;
 template < typename Allocator > class suballocator64_cnc ;
-#ifdef _MSC_VER
-template < typename Allocator > class suballocator ;
-template < typename Allocator > class suballocator_cnc ;
-#endif
+
 //##########################################################################
 //                                                                        ##
 //          C L A S S       F I L T E R _ S U B A L L O C                 ##
@@ -66,17 +63,7 @@ template <class U_allocator >
 struct filter_suballoc < suballocator64 < U_allocator > >
 {   typedef U_allocator name ;
 };
-#ifdef _MSC_VER
-template <class U_allocator >
-struct filter_suballoc <suballocator <U_allocator > >
-{   typedef U_allocator name ;
-};
 
-template <class U_allocator >
-struct filter_suballoc <suballocator_cnc <U_allocator > >
-{   typedef U_allocator name ;
-};
-#endif
 
 //***************************************************************************
 };//              E N D    C N T R E E    N A M E S P A C E

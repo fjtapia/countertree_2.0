@@ -1,5 +1,4 @@
 var namespaces =
 [
-    [ "countertree", "namespacecountertree.html", "namespacecountertree" ],
-    [ "std", "namespacestd.html", null ]
+    [ "countertree", "a00147.html", "a00147" ]
 ];

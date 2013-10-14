@@ -16,11 +16,7 @@
 #include  <boost/countertree/common/config.hpp>
 #include  <boost/countertree/common/definitions.hpp>
 #include  <boost/countertree/common/spinlock.hpp>
-<<<<<<< HEAD
 #include  <boost/countertree/common/singleton.hpp>
-=======
-#include  <boost/countertree/common/mysingleton.hpp>
->>>>>>> a638c30ad722b2664968a5babd793174f3466a44
 #include <new>
 #include <mutex>
 #include <stdexcept>

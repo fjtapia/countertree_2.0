@@ -49,7 +49,7 @@ public :
 /// @param [in]
 //---------------------------------------------------------------------------
 #ifdef _MSC_VER
-explicit spinlock ( ) NOEXCEPT 
+explicit spinlock ( ) NOEXCEPT
 {    af.clear() ;
 }
 #else
@@ -61,7 +61,7 @@ explicit spinlock ( ) NOEXCEPT : af ( ATOMIC_FLAG_INIT ){ };
 /// @brief  Lock the spinlock
 //---------------------------------------------------------------------------
 void lock() NOEXCEPT
-{   while ( af.test_and_set( ));
+{   while ( af.test_and_set(std::memory_order_acquire) );
 };
 //---------------------------------------------------------------------------
 //  function : try_lock
@@ -70,7 +70,7 @@ void lock() NOEXCEPT
 /// @return true :locked false: not previous locked
 //---------------------------------------------------------------------------
 bool try_lock() NOEXCEPT
-{   return not af.test_and_set();
+{   return not af.test_and_set(std::memory_order_acquire);
 };
 //---------------------------------------------------------------------------
 //  function : unlock
@@ -78,7 +78,7 @@ bool try_lock() NOEXCEPT
 //---------------------------------------------------------------------------
 void unlock() NOEXCEPT
 {   //----------------------- begin -----------------
-    af.clear( );
+    af.clear(std::memory_order_release );
 };
 //***************************************************************************
 };// E N D    C L A S S     S P I N L O C K

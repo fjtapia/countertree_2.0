@@ -1,6 +1,6 @@
 var NAVTREE =
 [
-  [ "Countertree", "index.html", [
+  [ "[ countertree + suballocator ]", "index.html", [
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -13,7 +13,6 @@ var NAVTREE =
     ] ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
-      [ "Class Index", "classes.html", null ],
       [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
@@ -35,15 +34,15 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"algorithms32_8hpp.html",
-"classcountertree_1_1cntree__map.html#a06c93eb0ba9c92dcb8256f4650f1e4bd",
-"classcountertree_1_1cntree__multimap.html#ab54ad9bea649ce4ec187bd9cc3908c69",
-"classcountertree_1_1cntree__set.html#addb16c18fc488a178828fbe63d3ccf41",
-"classcountertree_1_1forest_1_1const__iterator.html#a9e48dfc1633aec80b1fc691255e7eed4",
-"classcountertree_1_1forest_1_1sorted__tree.html#ae407b7606da28d08f5c4bf9ac52cdf0a",
-"classcountertree_1_1forest_1_1tree.html#afb8570b4b8f3076f34067fa4ec34afca",
-"reverse__iterator_8hpp.html",
-"structcountertree_1_1myallocator_3_01void_01_4_1_1rebind.html"
+"a00001.html",
+"a00015.html#a0bfbe905613989911420cb50757d9229",
+"a00016.html#acdff38632eb4e67520c049544acad28b",
+"a00019.html#a07097aafe2ce6155a0eac0d4332b3a5e",
+"a00035.html#a53713fe741f9b616950399e98c7bcd7d",
+"a00072.html#a4a2c29d342d626187ffa2525cb9ef676",
+"a00096.html#af7daae8b7ad7bf0f4359a46adb0856e2",
+"a00103.html#ac69fb7d316396c445b31884bfdf959ab",
+"functions_0x75.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
