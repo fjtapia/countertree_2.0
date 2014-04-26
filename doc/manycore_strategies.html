@@ -1,0 +1,191 @@
+<html>
+  <head>
+    <meta content="text/html; charset=windows-1252" http-equiv="content-type">
+    <link href="files/main.css" type="text/css" rel="stylesheet">
+  </head>
+  <body class="cuerpo_texto">
+    <div style="text-align: center;"><span style=" font-size: 24pt; text-align: center;text-decoration: underline;">
+        MANYCORE STRATEGIES </span><br>
+      <span style=" font-size: 16pt; text-align: center;text-decoration: underline;">
+        <br>
+      </span><span style="font-size: 16pt; text-align: center;">Francisco Jose
+        Tapia (fjtapia@gmail.com)</span><span style=" font-size: 16pt; text-align: center;text-decoration: underline;">
+      </span><br>
+    </div>
+    <br>
+    <br>
+    <span style="font-size: 16pt ;text-decoration: underline;">PROBLEM
+      DESCRIPTION</span><br>
+    <br>
+    Until now, the <span style="font-weight: bold;">main problem</span> in the
+    design of parallel algorithms over tree data structures had been the
+    difficult to <span style="font-weight: bold;">assign the elements</span>
+    stored in the tree between an <span style="font-weight: bold;">arbitrary
+      number of threads</span>. With this library, <span style="font-weight: bold;">this
+      problem is removed</span>. Now, it's time to face the next problems in the
+    design of parallel algorithms.<br>
+    <br>
+    The main problem is the <span style="font-weight: bold;">lock contention
+      when the number of threads grows</span>, in the operations which need an
+    exclusive lock over the data structure ( insertion, deletion, modification
+    ...). The lock contention appear when the number of threads doing&nbsp;
+    exclusively operations with exclusive lock is between 4 to 8, depending of
+    the HW used.<br>
+    <br>
+    In order to <span style="font-weight: bold;">talk about parallel algorithms</span>
+    we have two kinds :<br>
+    <div style="margin-left: 40px;">a) <span style="font-weight: bold;">Algorithms
+        with lock contention</span> , when the number of threads grows.<br>
+      b) <span style="font-weight: bold;">Algorithms without lock contention</span>&nbsp;
+      when the number of threads grows.</div>
+    <br>
+    All the algorithms mentioned here, or are implemented or are designed on
+    paper, for to be implemented in next versions. Some of them can be
+    implemented immediately, but others need to modify the internal algorithm of
+    the tree, in order to implement operations of split and join over trees.<br>
+    <br>
+    These new algorithms affect to the semantic of the functions, by
+    example&nbsp; how to pass to the tree destructor the number of threads to
+    use? The solution to these problems need a study in deep for to evaluate the
+    options and select the best solution. In the documentation this is described
+    in the point <a title="next improvements" href="https://dl.dropboxusercontent.com/u/8437476/works/countertree_2.0/doc/P1.5_next_improvements.html#next_improvements">1.5.-
+      Next Improvements</a><br>
+    <br>
+    <br>
+    <span style="font-size: 16pt ;text-decoration: underline;">SOLUTIONS</span><br>
+    <br>
+    This document&nbsp; expose my viewpoint about the problems and the possible
+    solutions. It's only an opinion, open to new ideas <br>
+    <br>
+    With the trees we can find the next operations :<br>
+    <br>
+    <span style="font-weight: bold; text-decoration: underline;">1.- CONSULT </span><br>
+    <br>
+    <div style="margin-left: 40px;"> Any number of threads can access
+      simultaneously to the tree <span style="font-weight: bold;">without&nbsp;
+        lock contention</span> problems.</div>
+    <br>
+    <span style="text-decoration: underline; font-weight: bold;">2.- ACCESS TO
+      THE ELEMENTS</span>. <br>
+    <br>
+    <div style="margin-left: 40px;"> Any number of threads can access
+      simultaneously to the tree <span style="font-weight: bold;">without&nbsp;
+        lock contention</span> problems, but without the access by position it
+      is very difficult to distribute between an arbitrary number of threads,
+      imagine a tree with 200000000 nodes and a Xeon Phis with 244 threads.)</div>
+    <br>
+    <span style="text-decoration: underline; font-weight: bold;">3.- INSERTION
+      AND DELETION. </span><br>
+    <br>
+    <div style="margin-left: 40px;"> These operations present problems of <span
+        style="font-weight: bold;">lock contentions</span> when the number of
+      threads grow and intensive use.&nbsp; But there is a strategy in order to
+      minimize the problem.<br>
+      <br>
+      If the number of operations is small, the problem is small too. But if you
+      have a great number of operations, you have an algorithm for to resolve
+      it.&nbsp; This algorithm need support from the tree algorithms, operations
+      of split the tree ( we have sub trees ordered) and the join operations of
+      ordered sub trees. (These operations don't be in the actual version of the
+      algorithm, and I expect to include in the next versions, as comment in the
+      point <a title="redesign" href="https://dl.dropboxusercontent.com/u/8437476/works/countertree_2.0/doc/P1.5_next_improvements.html#redesign">1.5.2.-
+        Redesign of the internal algorithm).</a><br>
+      <br>
+      The idea is split the main tree in several sub trees and each thread
+      manages a sub tree. When all the threads finish the operations, we join
+      all the trees obtaining a new main tree.<br>
+      <br>
+      You need to sort all the operations to do, and assign to each thread a
+      range of operations. After this, split the tree between the number of
+      threads and do all the operation over each sub tree. When finish, join the
+      sub trees and it's done.</div>
+    <br>
+    <br>
+    <div style="margin-left: 40px;"> <img title="image1" alt="Insertions in the tree"
+        src="files/arbol1.png"></div>
+    <br>
+    <br>
+    <br>
+    <div style="margin-left: 40px;"> In the picture you can see, we have 8
+      operations to insert and we have 4 threads. The vector are the elements to
+      insert and we have 4 threads.</div>
+    <br>
+    <div style="margin-left: 40px;"> <img title="split tree" alt="insertions in split trees"
+        src="files/arbol2.png"></div>
+    <br>
+    <br>
+    <div style="margin-left: 40px;"> Each sub tree have the same number of
+      operations to do, and when finish, join the sub trees obtaining a new main
+      tree.<br>
+      <br>
+      <span style="font-weight: bold;">This algorithm</span> can be implemented
+      with any number of threads <span style="font-weight: bold;">without lock
+        contentions</span>.&nbsp; The operations of split and join the sub trees
+      are similar in cost to the insertion or the deletion of a node in the
+      tree.</div>
+    <br>
+    <br>
+    <span style="font-weight: bold; text-decoration: underline;">4.- COPY AND
+      DELETE THE TREE. </span><br>
+    <br>
+    <div style="margin-left: 40px;"> Actually the compilers are using an
+      algorithm O(N) which clone the tree. Even with this algorithm, these
+      operations spend a great time if the tree is big. <br>
+    </div>
+    <div style="margin-left: 40px;"> I have designed on paper for to be
+      implemented with the actual version of the counter trees.</div>
+    <br>
+    <div style="margin-left: 80px;">• Parallel algorithm for to <span style="font-weight: bold;">copy
+        and delete tree structures</span>. These algorithms work with any number
+      of threads<br>
+      &nbsp;&nbsp; without lock contentions problems<br>
+      <br>
+      • Parallel algorithms of <span style="font-weight: bold;">copy the tree
+        from a vector, and copy a vector from the tree</span>. These algorithms
+      work with any<br>
+      &nbsp;&nbsp; number of threads without lock contentions problems</div>
+    <br>
+    <br>
+    <span style="font-weight: bold; text-decoration: underline;">5.- UNION,
+      INTERSECTION AND NON INTERSECTION OPERATIONS</span><br>
+    <br>
+    <div style="margin-left: 40px;"> With the access by position it's <span style="font-weight: bold;">easy
+        design parallel algorithms</span> for to do these operations , but have
+      <span style="font-weight: bold;">lock contention</span> in the insertion
+      of the result in the final data structure. With the operations of split
+      and join the tree we can design these <span style="font-weight: bold;">algorithms
+        without lock contentions</span>.</div>
+    <br>
+    <br>
+    The <span style="font-weight: bold;">lock mechanism</span> of the library,
+    in the operations with exclusive lock ( Insert, delete , modification),
+    permit in safe mode the concurrency with operations without exclusive lock (
+    read) in a part of the operation, trying to minimize the time of lock (you
+    have a description in the point&nbsp;<a target="_blank" title="mutex" href="https://dl.dropboxusercontent.com/u/8437476/works/countertree_2.0/doc/single_writer_multiple_readers_mutex.pdf">
+      5.4.- Description of the single writer multiple reader mutex (pdf)</a>.
+    This don't resolve the problem but try to minimize the problems of lock
+    contentions.<br>
+    <br>
+    I think the <span style="font-weight: bold;">access by position is not a
+      magic solution</span> to the problems of the trees, but I think provide a
+    new perspective, and perhaps it would be interested to reevaluate the
+    optimal algorithm ( performance, space used, flexibility ...), in many real
+    situations, according to this new perspective.<br>
+    <br>
+    Thanks by your attention. If you have any question, comment, please, say me
+    and I will try to respond you<br>
+    <br>
+    <br>
+    Francisco Tapia<br>
+    fjtapia@gmail.com<br>
+    <br>
+    <span style="font-size:10pt ;font-weight: bold; font-style: italic;">You can
+      find the code and the documentation in my web pages in dropbox <br>
+      <a title="countertree + suballocator library" href="https://dl.dropboxusercontent.com/u/8437476/works/countertree_2.0/index.html">https://dl.dropboxusercontent.com/u/8437476/works/countertree_2.0/index.html</a><br>
+      <br>
+      or if you prefer in a git format <br>
+      <a title="github" href="https://github.com/fjtapia/countertree_2.0">https://github.com/fjtapia/countertree_2.0</a></span><br>
+    <br>
+    <br>
+  </body>
+</html>

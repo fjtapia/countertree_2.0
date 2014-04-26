@@ -15,7 +15,6 @@ Note: Editing website content is documented at:http://www.boost.org/development/
   <body>
     <div id="heading">
       <div class="heading-inner">
-        <div class="heading-placard"></div>
         <h1 class="heading-title"> <a href="http://www.boost.org/"> <img src="img/space.png"
               alt="Boost C++ Libraries" class="heading-logo" /> <span class="heading-boost">Boost</span>
             <span class="heading-cpplibraries">C++ Libraries</span> <img style="width: 300px; height: 80px;"
@@ -133,37 +132,52 @@ Note: Editing website content is documented at:http://www.boost.org/development/
           <div style="margin-left: 80px;"><br />
           </div>
           <div style="margin-left: 40px;">
-            <div style="margin-left: 40px;"> <a href="P1.0_introduction.html#introduction">1.-
-                Introduction</a><br />
-              <div style="margin-left: 40px;"><a href="P1.0_introduction.html#countertree">1.1.-
-                  Description of the Counter Trees</a><br />
-                <div style="margin-left: 40px;"><a href="P1.0_introduction.html#iterators">1.1.1.-
-                    Iterators</a></div>
-                <a href="P1.2_description_suballocators.html#suballocator">1.2.-
-                  Description of the Suballocators </a><br />
-                <a href="P1.2_description_suballocators.html#countertree_suballocator">1.3.-
-                  Description of Counter Trees + Suballocators </a><br />
-                <a href="P1.4_concurrent_versions.html#concurrent">1.4.- Class
-                  structure Code description</a><br />
-                <div style="margin-left: 40px;"> <a href="P1.4_concurrent_versions.html#description">1.4.1.-
-                    Description of the classes of the library</a><br />
-                  <a href="P1.4_concurrent_versions.html#deletion">1.4.2.-
-                    Access by position and deletion in the first/last position</a></div>
-                <div style="margin-left: 40px;"><a href="P1.4_concurrent_versions.html#problems">1.4.3.-
-                    New functions of the classes</a></div>
-                <div style="margin-left: 40px;"> <a href="P1.4_concurrent_versions.html#deletion">1.4.4.-
-                    </a><a href="P1.4_concurrent_versions.html#lock">Detailed
-                    lock description</a></div>
-                <a href="P1.5_next_improvements.html#next_improvements">1.5.-
-                  Next Improvements</a><br />
-                <div style="margin-left: 40px;"><a href="P1.5_next_improvements.html#parallel">1.5.1-
-                    Parallel design of copy and clear trees ,logical functions
-                    with trees and several functions of &lt;algorithm&gt;</a><br />
-                  <a href="P1.5_next_improvements.html#redesign">1.5.2- Redesign
-                    of the internal algorithm</a><br />
-                  <a href="P1.5_next_improvements.html#augmented">1.5.3-
-                    Augmented trees</a></div>
+            <div style="margin-left: 40px;">
+              <div style="margin-left: 40px;"><a href="P1.0_introduction.html#introduction">1.-
+                  Introduction</a><br />
+                <div style="margin-left: 40px;"> <a href="P1.0_introduction.html#countertree">1.1.-
+                    Description of the Counter Trees</a><br />
+                  <a href="P1.0_introduction.html#benchmark">1.2.- Benchmark of
+                    parallel algorithms</a><br />
+                  <a href="P1.3.0_new_elements.html#new_elements">1.3.- New
+                    elements of the library</a><br />
+                </div>
               </div>
+              <div style="margin-left: 120px;"><a href="P1.3.0_new_elements.html#position">1.3.1.-
+                  Access by position and random access iterators </a> <br />
+                <a href="P1.3.0_new_elements.html#deletion">1.3.2.- Deletion in
+                  the first/last position</a><br />
+              </div>
+              <div style="margin-left: 80px;"> </div>
+              <div style="margin-left: 120px;"><a href="P1.3.0_new_elements.html#iterators">1.3.3.-
+                  Iterators</a></div>
+              <div style="margin-left: 80px;"> </div>
+              <div style="margin-left: 120px;"> <a href="P1.3.4_description_suballocators.html#suballocator">1.3.4.-
+                  Memory Problems (Suballocators<span style="color: #0000a0;">)</span></a><br />
+                <a href="P1.3.4_description_suballocators.html#countertree_suballocator">1.3.5.-
+                  Description of Counter Trees + Suballocators </a><br />
+                <a href="P1.3.6_lock_system.html#lock">1.3.6.- New Lock system
+                  (Single Write Multiple Read Mutex)</a> <br />
+                1<a href="P1.3.6_lock_system.html#new_functions">.3.7.- Safe
+                  concurrent programming. (New functions)</a><br />
+              </div>
+              <div style="margin-left: 80px;"> <a href="P1.4_class_structure.html#class_structure">1.4.-
+                  Class structure Code description</a><br />
+              </div>
+              <div style="margin-left: 120px;"> <a href="P1.4_class_structure.html#description">1.4.1.-
+                  Description of the classes of the library</a><br />
+              </div>
+              <div style="margin-left: 80px;"> <a href="P1.5.0_future.html#next_improvements">1.5.-
+                  Future Improvements</a><br />
+              </div>
+              <div style="margin-left: 120px;"><a href="P1.5.0_future.html#strategies">1.5.1-
+                  Strategies for many core Systems. Parallel algorithms for very
+                  large trees</a> <br />
+              </div>
+              <div style="margin-left: 80px;"> </div>
+              <div style="margin-left: 120px;"><a href="P1.5.0_future.html#redesign">1.5.2-
+                  Redesign of the internal algorithm</a><br />
+                <a href="P1.5.0_future.html#augmented">1.5.3- Augmented trees</a></div>
               <div style="margin-left: 40px;"> <br />
                 <a href="P2.0_vector_tree.html">2.- Counter Trees with unordered
                   elements ( <span class="texto_codigo">vector_tree</span>)</a>
@@ -223,10 +237,10 @@ Note: Editing website content is documented at:http://www.boost.org/development/
                 <div style="margin-left: 40px;"><a href="html/index.html">5.1.-
                     Doxygen documentation</a><br />
                   <a href="html/files.html">5.2.- Source code</a><br />
-                  <a href="The_Suballocator_Algorithms.pdf" target="_blank">5.3.-
+                  <a target="_blank" href="The_Suballocator_Algorithms.pdf">5.3.-
                     Algorithm description of the Suballocator (pdf)</a><br />
-                  <a href="single_writer_multiple_readers_mutex.pdf" target="_blank">5.4.-
-                    Description of the single writer multiple reader mutex (pdf)</a>
+                  <a target="_blank" href="single_writer_multiple_readers_mutex.pdf">5.4.-
+                    Description of the single writer multiple reader mutex (pdf)</a><br />
                 </div>
                 <br />
               </div>
@@ -234,7 +248,10 @@ Note: Editing website content is documented at:http://www.boost.org/development/
             <div style="margin-left: 80px;"><a href="P6.0_references.html" title="references">6.-
                 References</a><br />
               <br />
+              <a href="countertree_2.0.zip" title="countertree_2.0.zip">7.-
+                Download</a><br />
             </div>
+            <br />
             <br />
           </div>
         </div>
