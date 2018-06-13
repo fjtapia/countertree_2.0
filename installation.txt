@@ -1,23 +1,26 @@
 INSTALLATION INSTRUCTIONS
 --------------------------
 
-The easy option is to copy the folder srs/countertree in the folder boost, where are 
-located the Boost libraries. 
+The easiest way to install the library is to copy or symlink the directory
+“src/countertree” inside the “boost” directory, where the Boost libraries
+are located.
 
-If this is not possible, create a folder boost, and copy inside the folder 
-countertree, and include the path in the list of folders for to find the include files.
+If this is not possible, create a directory called “boost”, and copy the
+directory “countertree” inside it, and include the path where the “boost”
+directory resides, in the list of directories for to find the include files.
 
-The folders benchmarks_GCC_4.7, benchmarks_CLANG_3.3 and benchmarks_VC12CTP, 
-contain the programs for to generate the results showed in the web pages. 
+The folders benchmarks_GCC_4.7, benchmarks_CLANG_3.3 and benchmarks_VC12CTP,
+contain the programs to generate the results shown in the web pages.
 
-Take care about the results, they can vary a lot depending of the machine, 
-and mainly of the size of the cache memory.
+Note that the benchmark results can vary a lot depending of the machine,
+as well as significantly based on the size of the cache memory.
 
-My idea when create this library is to be useful to the community of programmers. 
+My intention for creating this library is for it to be useful to the
+community of programmers.
 
-I need you for to improve the library.  If you find any fail or problem, 
-or have an idea or suggestion, please, mail me, and help me to reach the 
-final objective, to be useful.
+I could use your help with improving it.  If you find any bug or problem,
+or have an idea or a suggestion, please mail me, and help me in perfecting
+it and making it more useful.
 
 
 Francisco José Tapia

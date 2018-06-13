@@ -2,20 +2,21 @@
 -------------------------------------------------------
 
 
-This library provide a concurrent and thread safe implementation of the 
+This library provides a concurrent and thread safe implementation of the
 tree based data structures (set, multiset, map and multimap, plus a new data 
-structure named vector_tree)  with random access iterators and access by 
-position like a vector. 
+structure named vector_tree), with random access iterators and access by
+position, similar to a vector.
 
-This permit to distribute the elements stored in the trees, between an 
-arbitrary number of threads, identically as do with the vectors, making 
-easy the design of parallel algorithms applied to the tree based data 
-structures (as you can see in 2.3.- Examples and 3.6.- Examples), and their 
-use by the multicore development tools as OpenMP, Threading Building Blocks ...
+This allows one to distribute the elements stored in the trees, between an
+arbitrary number of threads, similarly to how it is done with vectors,
+facilitating the design of parallel algorithms applied to the tree based data
+structures (as you can see in 2.3.- Examples and 3.6.- Examples), and their
+use by the multicore development tools such as OpenMP, or
+Threading Building Blocks.
 
-These data structures are based on a kind of red-black trees (Counter Tree) 
-which  permit the access by position, like in a vector, to the elements stored 
-in the tree, and random access iterators. 
+These data structures are based on a kind of red-black trees (called
+Counter Tree) which allows access by position, similar to a vector, to the
+elements stored in the tree, and random access iterators.
 
 Based on this trees this library provide, in the namespace countertree,  
 classes set, multiset, map and multimap, compatible with the class with the 
